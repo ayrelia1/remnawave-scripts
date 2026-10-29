@@ -1,0 +1,503 @@
+[
+  {
+    "name": "10gag",
+    "title": "Sidewalk | A little break from the ordinary",
+    "text": "Sidewalk\n\nGood finds for your spare five minutes\n\nAll\nMemes\nImages\nGIFs\nVideos\nPopular today\n\nLooking around for the next good find…",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200",
+        "text": "Sidewalk\n\nGood finds for your spare five minutes\n\nAll\nMemes\nImages\nGIFs\nVideos\nPopular today\n\nLooking around for the next good fin"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "sticky top-0 z-10 bg-white dark:bg-gray-800 shadow-md transition-all duration-300 py-4",
+        "text": "Sidewalk\n\nGood finds for your spare five minutes\n\nAll\nMemes\nImages\nGIFs\nVideos\nPopular today"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-2xl font-bold text-gray-800 dark:text-white",
+        "text": "Sidewalk"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "container mx-auto px-4 py-6",
+        "text": "Looking around for the next good find…"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "convertit",
+    "title": "Cutlane | Make room for your next story",
+    "text": "Cutlane\nВозможности\nУроки\nВойти\n🌍\nВыбрать язык\nНебольшой ролик. Ваша собственная история.\n\nСоберите удачные моменты, найдите нужный ритм и добавьте последние детали: подпись, музыку или новый кадр. Рабочее пространство, в котором история остаётся на первом плане.\n\nОткрыть рабочую область\n\nВыберите свой формат:\n\nYouTube\nTikTok\nInstagram\nSnapchat\nFacebook\nTwitter\nStart with a video link\n\nAdd the address of a clip to choose the starting point for your next edit.\n\nAdd the address of your clip\n\nEnter a valid video link\n\nOpen the workspace\nBring a link from the video platform you use\nВсё, из чего складывается ролик\n\nПодрежьте сцену, добавьте звук и подготовьте вариант для площадки, на которой хотите его показать.\n\nПоследние штрихи\n\nПрименяйте красивые эффекты, фильтры и переходы, чтобы ваши видео выделялись.\n\nСлои и детали\n\nДобавляйте изображения, стикеры и GIF для создания привлекательного контента.\n\nМесто для подписей\n\nСоздавайте и настраивайте субтитры для доступности и вовлечения.\n\nНастроение в звуке\n\nДобавляйте популярную музыку и звуковые эффекты из нашей обширной библиотеки.\n\nДля разных экранов\n\nСоздавайте контент для всех платформ в вертикальном, горизонтальном или квадратном форматах.\n\nФинальный вариант\n\nСкачивайте ваши работы в высоком качестве для профессионального результата.\n\nНесколько сцен вместе\n\nЛегко создавайте реакции, дуэты и многовидеокомпозиции.\n\nВ ритме вашей работы\n\nНаш облачный движок быстро и эффективно обрабатывает ваши работы.\n\nПридайте идее форму\n\nДержите нужные инструменты под рукой, пока выбираете лучший порядок сцен.\n\nОткрыть рабочую область\nОдна история — разные экраны\n\nСоздавайте видео в любом формате для современных платформ:\n\nВертикальные видео для TikTok, Instagram Reels и Stories\nГоризонтальные видео для YouTube и Facebook\nКвадратный формат для постов в Instagram\nПользовательские пропорции для любой платформы\nВысокое качество экспорта\n\nСкачивайте ваши работы в профессиональном качестве:\n\nРазрешение Full HD 1080p\nПоддержка разрешения 4K и 8K\nОптимизированные размеры файлов для быстрой загрузки\nРазличные форматы экспорта (MP4, MOV и др.)\nCutlane\n\nA little space to assemble your next story, one well-timed cut at a time.\n\nProduct\nFeatures\nTutorials\nUpdates\nCompany\nAbout\nBlog\nCareers\nContact\nSupport\nHelp Center\nCommunity\nFeedback\n\n© 2025 Cutlane. All rights reserved.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gradient-to-b from-[#0F0F1A] to-[#1A1A2E] text-white",
+        "text": "Cutlane\nВозможности\nУроки\nВойти\n🌍\nВыбрать язык\nНебольшой ролик. Ваша собственная история.\n\nСоберите удачные моменты, найдите нужн"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "sticky top-0 z-50 backdrop-blur-md bg-[#0F0F1A]/80 border-b border-purple-900/20",
+        "text": "Cutlane\nВозможности\nУроки\nВойти"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-2xl font-bold bg-gradient-to-r from-[#FF2E93] to-[#7E2EFF] text-transparent bg-clip-text",
+        "text": "Cutlane"
+      },
+      {
+        "tag": "NAV",
+        "id": "",
+        "classes": "hidden md:flex gap-6",
+        "text": "Возможности\nУроки"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "container mx-auto px-4 overflow-hidden",
+        "text": "Небольшой ролик. Ваша собственная история.\n\nСоберите удачные моменты, найдите нужный ритм и добавьте последние детали: подпись, му"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-16 md:py-24 relative",
+        "text": "Небольшой ролик. Ваша собственная история.\n\nСоберите удачные моменты, найдите нужный ритм и добавьте последние детали: подпись, му"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight",
+        "text": "Небольшой ролик. Ваша собственная история."
+      },
+      {
+        "tag": "SECTION",
+        "id": "how-it-works",
+        "classes": "py-16 relative",
+        "text": "Start with a video link\n\nAdd the address of a clip to choose the starting point for your next edit.\n\nAdd the address of your clip\n"
+      },
+      {
+        "tag": "SECTION",
+        "id": "features",
+        "classes": "py-16 md:py-24 relative",
+        "text": "Всё, из чего складывается ролик\n\nПодрежьте сцену, добавьте звук и подготовьте вариант для площадки, на которой хотите его показать"
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "bg-[#0A0A14] border-t border-purple-900/20 py-12 mt-16",
+        "text": "Cutlane\n\nA little space to assemble your next story, one well-timed cut at a time.\n\nProduct\nFeatures\nTutorials\nUpdates\nCompany\nAbo"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "converter",
+    "title": "Formatwell | Files in the format you need",
+    "text": "Formatwell\nFeatures\nSupported Formats\nPricing\nLog in\nSign up\nThe right format for the next step\n\nA document for a colleague, an image for a page or a clip for a different screen. Start with your file and choose where it goes next.\n\nChoose a file to begin\nExplore file types\nA range of file types\n\nMove between familiar document, image, sound and video formats.\n\nKeep the details\n\nChoose the output that fits your next task and review the format before continuing.\n\nA considered workflow\n\nChoose the destination format before moving on to the processing step.\n\nMake formats part of the workflow\n\nKeep the routine steps in one place, from choosing a source file to setting its destination.\n\nLess time between tasks\n\nKeep file preparation alongside your other tasks, with the next action always within reach.\n\nA focused workspace\n\nStart with a file from your device and review the selected format before you continue.\n\nRoom for smaller screens\n\nThe workspace adapts to the screen you have with you, including a smaller browser window.\n\nWork through a collection\n\nExplore the collection options when your work involves more than one document or media file.\n\nA workspace beyond the desktop\n\nMove routine file preparation into a dedicated workspace beside your current project.\n\nPick up where you left off\n\nReturn to your work from the browser and review the available file and sharing options.\n\nReady to Get Started?\nSign Up Free\nFind a destination for your file\n\nBrowse the format families below before choosing how to prepare your next file.\n\nVideo\nImage\nDocument\nAudio\nOther\nMP4\n\nConvert to:\n\nAVI\nMOV\nMKV\nWMV\nWEBM\nFLV\nAVI\n\nConvert to:\n\nMP4\nMOV\nMKV\nWMV\nWEBM\nMOV\n\nConvert to:\n\nMP4\nAVI\nMKV\nWMV\nWEBM\nMKV\n\nConvert to:\n\nMP4\nAVI\nMOV\nWMV\nWEBM\nWEBM\n\nConvert to:\n\nMP4\nAVI\nMOV\nMKV\nWMV\n\nCan't find the format you need? View our full list of supported formats\n\nChoose how you work\n\nCompare the existing plans and choose the allowance that matches your routine.\n\nFree\n$0/month\n\nPerfect for occasional use and basic conversions.\n\n5 conversions per day\nFiles up to 100MB\nBasic conversion options\nNo batch processing\nStandard quality\nSign Up Free\nMOST POPULAR\nPro\n$9.99/month\n\nFor professionals who need regular conversions.\n\nUnlimited conversions\nFiles up to 2GB\nAdvanced conversion options\nBatch processing (up to 10 files)\nHigh quality output\nGet Started\nBusiness\n$29.99/month\n\nFor teams and businesses with high-volume needs.\n\nUnlimited conversions\nFiles up to 10GB\nPremium conversion options\nUnlimited batch processing\nPremium quality with lossless option\nContact Sales\nEnterprise Solutions\n\nIf your team needs a different allowance or workflow, open a conversation about the available options.\n\nContact Our Sales Team\nFrom other people’s workflows\n\nA few notes about making file preparation part of the working day.\n\n\"Formatwell has been a game-changer for our team. We can quickly convert files for our clients without compromising on quality. The batch processing feature saves us hours every week!\"\n\nSarah Johnson\n\nMarketing Director, CreativeCloud Inc.\n\n\"I work with different video formats daily, and Formatwell handles everything I throw at it. The conversion quality is top-notch, and the speed is impressive even with large files.\"\n\nDavid Chen\n\nVideo Editor, FrameWorks Studios\n\n\"As a designer, I need reliable tools that don't compromise quality. Formatwell converts my design files perfectly every time. The intuitive interface makes it easy to use.\"\n\nEmma Rodriguez\n\nGraphic Designer, Artistry Design Co.\n\nFind a place for your next file.\n\n500K+\nActive Users\n50M+\nFiles Converted\n4.8/5\nAverage Rating\nFormatwell\n\nEveryday files, ready for their next destination. Documents, images and media in one workspace.\n\nQuick Links\nHome\nFeatures\nSupported Formats\nPricing\nSupport\nHelp Center\nFAQs\nContact Us\nPrivacy Policy\nTerms of Service\nNewsletter\n\nSubscribe to our newsletter for updates and tips.\n\nSubscribe\n\n© 2026 Formatwell. All rights reserved.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gray-50 flex flex-col",
+        "text": "Formatwell\nFeatures\nSupported Formats\nPricing\nLog in\nSign up\nThe right format for the next step\n\nA document for a colleague, an im"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "fixed w-full z-30 transition-all duration-300 bg-transparent py-4",
+        "text": "Formatwell\nFeatures\nSupported Formats\nPricing\nLog in\nSign up"
+      },
+      {
+        "tag": "NAV",
+        "id": "",
+        "classes": "hidden md:flex items-center space-x-8",
+        "text": "Features\nSupported Formats\nPricing\nLog in\nSign up"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "flex-grow",
+        "text": "The right format for the next step\n\nA document for a colleague, an image for a page or a clip for a different screen. Start with y"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent",
+        "text": "The right format for the next step"
+      },
+      {
+        "tag": "SECTION",
+        "id": "features",
+        "classes": "py-16 bg-white",
+        "text": "Make formats part of the workflow\n\nKeep the routine steps in one place, from choosing a source file to setting its destination.\n\nL"
+      },
+      {
+        "tag": "SECTION",
+        "id": "formats",
+        "classes": "py-16 bg-gradient-to-br from-gray-50 to-gray-100",
+        "text": "Find a destination for your file\n\nBrowse the format families below before choosing how to prepare your next file.\n\nVideo\nImage\nDoc"
+      },
+      {
+        "tag": "SECTION",
+        "id": "pricing",
+        "classes": "py-16 bg-white",
+        "text": "Choose how you work\n\nCompare the existing plans and choose the allowance that matches your routine.\n\nFree\n$0/month\n\nPerfect for oc"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-16 bg-gray-50",
+        "text": "From other people’s workflows\n\nA few notes about making file preparation part of the working day.\n\n\"Formatwell has been a game-cha"
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "bg-gray-900 text-white pt-12 pb-8",
+        "text": "Formatwell\n\nEveryday files, ready for their next destination. Documents, images and media in one workspace.\n\nQuick Links\nHome\nFeat"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "downloader",
+    "title": "Parcelink | A place for your next transfer",
+    "text": "Рабочая область доступна по приглашению\n\nParcelink\n\nРабочее место для ссылок, форматов и следующих файлов в очереди. Добавьте источник и выберите подходящий вариант передачи.\nПримечание: Наш сервис строго запрещает загрузку материалов, защищенных авторским правом.\n\n22\nАктивные серверы\n👍\n👍\n👍\n👍\n👍\n👍\n99.9%\nВремя работы\n⭐\n⭐\n⭐\n⭐\n⭐\n⭐\n3TB/s\nСкорость\n⚡\n⚡\n⚡\n⚡\n⚡\n⚡\nЧто будем загружать?\nАвтоопределение\nВидео\nАудио\nДокумент\nАрхив\nМеньше шагов до файла\n\nВыберите источник и тип файла, затем переходите к подготовке передачи.\n\nСсылки в одном месте\n\nАдрес источника и выбранный формат остаются рядом, пока вы готовите следующую загрузку.\n\nДоступные направления\n\nОткройте список направлений, чтобы посмотреть показанное состояние каждого подключения.\n\nОбзор подключений: 22 Серверов онлайн\nБета v0.9.2\n\n© 2026 Parcelink. Все права защищены.\n\nРазработано в ЕС. Соответствует GDPR.\n\nМы уважаем права интеллектуальной собственности и запрещаем загрузку контента, защищенного авторским правом.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-mesh text-white overflow-x-hidden",
+        "text": "Рабочая область доступна по приглашению\n\nParcelink\n\nРабочее место для ссылок, форматов и следующих файлов в очереди. Добавьте исто"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl md:text-5xl font-bold mb-4 flex items-center justify-center gap-3 text-gradient",
+        "text": "Parcelink"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "filecloud",
+    "title": "Foliohaven | A home for the files you keep",
+    "text": "Foliohaven\nEN\nA little order for everything you keep\n\nYour folders. Your projects. A place for both.\n\n2TB Storage\nUp to 1Gb/s\nEuropean Servers\nGlobal Access\nBring your collection into focus\n\nFrom a single document to the whole project\n\n✨\nA familiar workspace\n\nFind a clear place for the files you return to every day.\n\n🚀\nPass it along\n\nKeep a shared folder close to the work it belongs to.\n\n💫\nGive things a home\n\nBuild a folder structure that makes sense to you.\n\n⚡\nA place on your desktop\n\nExplore the desktop options for your usual operating system.\n\n100K+\nActive Users\n2PB+\nData Stored\n5TB+\nDaily Transfer\nAround the network\nFrankfurt\n\nGermany\n\nUptime\n99.99%\nBerlin\n\nGermany\n\nUptime\n99.98%\nAmsterdam\n\nNetherlands\n\nUptime\n99.99%\nRotterdam\n\nNetherlands\n\nUptime\n99.97%\nA closer look at the workspace\nSpeed Comparison\nReliability Score\nHow the space is arranged\n\n\"The project folders finally have a place of their own.\"\n\nJohn D.\n\n\"The layout makes it easy to find the folder I need.\"\n\nMarie L.\n\n\"A useful way to keep everyday work together.\"\n\nAlex K.\n\nLogin\nRegister\nEmail\nPassword\nLogin\nFoliohaven\n\nA home for the documents, folders and ideas that travel with your work.\n\nFeatures\n2TB Storage\nFast Upload Speed\nEuropean Servers\nGlobal Access\nSecurity\nEnd-to-end Encryption\nTwo-factor Auth\nRegular Backups\n24/7 Monitoring\nContact\nsupport@cloudstore.com\n+1 (555) 123-4567\nLive Chat Support\n\nMade with\nby Foliohaven\n\n© 2025 Foliohaven. All rights reserved.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gradient-to-br from-indigo-100 to-white",
+        "text": "Foliohaven\nEN\nA little order for everything you keep\n\nYour folders. Your projects. A place for both.\n\n2TB Storage\nUp to 1Gb/s\nEuro"
+      },
+      {
+        "tag": "NAV",
+        "id": "",
+        "classes": "fixed w-full bg-white/80 backdrop-blur-sm z-50",
+        "text": "Foliohaven\nEN"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "pt-32 pb-20 text-center relative overflow-hidden",
+        "text": "A little order for everything you keep\n\nYour folders. Your projects. A place for both.\n\n2TB Storage\nUp to 1Gb/s\nEuropean Servers\nG"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-5xl font-bold text-gray-900 mb-6",
+        "text": "A little order for everything you keep"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-20 bg-gradient-to-br from-indigo-600 to-indigo-800 text-white relative overflow-hidden",
+        "text": "Bring your collection into focus\n\nFrom a single document to the whole project\n\n✨\nA familiar workspace\n\nFind a clear place for the "
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-20 bg-white",
+        "text": "100K+\nActive Users\n2PB+\nData Stored\n5TB+\nDaily Transfer"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-20 bg-gray-50",
+        "text": "Around the network\nFrankfurt\n\nGermany\n\nUptime\n99.99%\nBerlin\n\nGermany\n\nUptime\n99.98%\nAmsterdam\n\nNetherlands\n\nUptime\n99.99%\nRotterda"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-20 bg-white",
+        "text": "A closer look at the workspace\nSpeed Comparison\nReliability Score\nHow the space is arranged"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "py-20 bg-gray-50",
+        "text": "\"The project folders finally have a place of their own.\"\n\nJohn D.\n\n\"The layout makes it easy to find the folder I need.\"\n\nMarie L."
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "bg-indigo-900 text-white py-12",
+        "text": "Foliohaven\n\nA home for the documents, folders and ideas that travel with your work.\n\nFeatures\n2TB Storage\nFast Upload Speed\nEurope"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "games-site",
+    "title": "Cartridge Club | Ещё один уровень",
+    "text": "Cartridge Club\nGames\nHow It Works\nReviews\nACCESS VAULT\nЗнакомый картридж.\nНовый вечер за игрой.\n\nАркады, платформеры и приключения прошлых лет.\nСвой круг любителей классики.\n\nВ окне браузера\nОт выбора до старта\nКлуб по приглашениям\nЗАПРОСИТЬ ПРИГЛАШЕНИЕ\nПолка с картриджами\n\nВыбирай платформу и находи игру под настроение сегодняшнего вечера.\n\nВсе платформы\nNES\nSNES\nSega Genesis\nGame Boy\nNES\nВыбор клуба\nCopper Pipe Quest\n\nТрубы, тайные проходы и один очень упрямый герой. Найди путь к следующему уровню.\n\n1988\n\nК ИГРЕ\nNES\nThe Lantern Knight\n\nФонарь освещает дорогу к забытым башням. Собери находки и разгадай старую историю.\n\n1986\n\nК ИГРЕ\nGENESIS\nВыбор клуба\nCoastline Dash\n\nБеги вдоль побережья, собирай кольца и выбирай короткий путь через каждый уровень.\n\n1991\n\nК ИГРЕ\nSNES\nEchoes of the Prism\n\nГруппа путешественников ищет осколки призмы, от которой зависит судьба их мира.\n\n1994\n\nК ИГРЕ\nSNES\nВыбор клуба\nMidnight Dojo\n\nВечерний турнир начинается. Выбери бойца и найди свой ритм в каждом поединке.\n\n1993\n\nК ИГРЕ\nGAMEBOY\nFalling Shapes\n\nРасположи падающие фигуры без лишних промежутков и освободи место следующей.\n\n1989\n\nК ИГРЕ\nNES\nSignal Patrol\n\nПройди маршрут патруля и восстанови связь. Одному или с напарником — решать тебе.\n\n1987\n\nК ИГРЕ\nGENESIS\nLast Stop Brawlers\n\nПоследняя остановка ещё впереди: улицы, соперники и музыка ночного города.\n\n1992\n\nК ИГРЕ\nSNES\nCircuit Ranger\n\nПроверь заброшенные сектора и верни питание станциям механического города.\n\n1993\n\nК ИГРЕ\nGAMEBOY\nВыбор клуба\nPocket Companions\n\nПознакомься с маленькими спутниками и отправляйся исследовать большой мир.\n\n1996\n\nК ИГРЕ\nNES\nThe Amber Kingdom\n\nДорога к янтарному дворцу ведёт через деревни, горы и древние подземелья.\n\n1986\n\nК ИГРЕ\nSNES\nВыбор клуба\nShadow on the Rooftops\n\nПрыжки между крышами, точные движения и путь, который открывается терпеливым.\n\n1991\n\nК ИГРЕ\nGENESIS\nOrbit Patrol\n\nСтань пилотом орбитального патруля и проведи корабль через пояс астероидов.\n\n1993\n\nК ИГРЕ\nNES\nThe House at Willow Hill\n\nДом на холме хранит много закрытых дверей. Найди ключи и узнай его историю.\n\n1989\n\nК ИГРЕ\nSNES\nIron Horizon\n\nСобери меха для следующего выхода и проверь, что осталось за железным горизонтом.\n\n1995\n\nК ИГРЕ\nGENESIS\nDune Dispatch\n\nДоставь сообщение через пустыню: карта большая, а запас топлива ограничен.\n\n1992\n\nК ИГРЕ\nGAMEBOY\nKickoff Club\n\nКороткие матчи, знакомые правила и ещё один шанс забить решающий мяч.\n\n1990\n\nК ИГРЕ\nSNES\nВыбор клуба\nThe Clockmaker’s Map\n\nКарта часовщика ведёт через разные эпохи. Ищи подсказки, оставленные не в своё время.\n\n1994\n\nК ИГРЕ\nNES\nLittle Polar Journey\n\nМаленький полярный путешественник ищет дорогу среди льдин и снежных тоннелей.\n\n1990\n\nК ИГРЕ\nGENESIS\nCoastal Circuit\n\nПовороты у моря и длинные прямые. Выбери машину и улучши время своего круга.\n\n1994\n\nК ИГРЕ\nОт полки до первого уровня\n\nЗнакомые миры остаются знакомыми, а путь к ним становится короче.\n\n1\nЭмуляция\n\nВыбирай игру с полки и переходи в окно запуска, оставаясь в браузере.\n\n2\nОблачные сохранения\n\nВозвращайся к знакомому месту в игре и продолжай приключение с сохранённого момента.\n\n3\nSave States\n\nОставляй точку возвращения перед сложным участком, чтобы попробовать другой подход.\n\nСистемные требования:\nСовременный браузер\nКлавиатура или геймпад\nСтабильное интернет-соединение\nНостальгическое настроение\nРазговоры после игры\n\nИстории тех, кто задержался ещё на один уровень.\n\nNESFreak1991\n\nBattletoads (NES)\n\n\"Не мог поверить, что смогу снова играть в Battletoads с сохранениями в любой момент. Это настоящая машина времени!\"\n\nSegaGirl\n\nSonic 2 (Genesis)\n\n\"Дикий восторг! Как будто мне снова 9 лет, и я сижу перед телевизором с Sega, только теперь могу играть где угодно.\"\n\nROMhunter\n\nFinal Fantasy IV (SNES)\n\n\"Использую уже год. Надежно, без лагов, сохранения работают идеально. Лучшее место для ретро-игр.\"\n\n8BitQueen\n\nZelda: A Link to the Past (SNES)\n\n\"Пробовала разные эмуляторы, но этот сервис просто на другом уровне. Интерфейс в стиле 90-х добавляет атмосферы!\"\n\nGamerDino\n\nContra (NES)\n\n\"Прошел Contra без чит-кодов впервые в жизни благодаря функции сохранения. Спасибо за возможность исполнить детскую мечту!\"\n\nRetroHunter2000\n\nMortal Kombat II (SNES)\n\n\"Инвайт получил от друга месяц назад — с тех пор не вылезаю из Mortal Kombat. Жена уже не знает, что делать :)\"\n\nCartridge Club\n\nНебольшой клуб больших приключений из эпохи картриджей. Найди знакомую игру и устрой себе вечер классики.\n\nНавигация\nИгры\nКак это работает\nОтзывы\nFAQ\nПлатформы\nNES\nSNES\nSega Genesis\nGame Boy\nВсе платформы\n\nВсе игры являются abandonware и представлены исключительно в образовательных целях\n\n© 2025 Cartridge Club. Все права защищены.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gray-950 text-gray-100 relative overflow-hidden",
+        "text": "Cartridge Club\nGames\nHow It Works\nReviews\nACCESS VAULT\nЗнакомый картридж.\nНовый вечер за игрой.\n\nАркады, платформеры и приключения"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "sticky top-0 z-50 transition-all duration-300 bg-transparent py-4",
+        "text": "Cartridge Club\nGames\nHow It Works\nReviews\nACCESS VAULT"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-xl sm:text-2xl glow-text font-['Press_Start_2P'] tracking-tight",
+        "text": "Cartridge Club"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "",
+        "text": "Знакомый картридж.\nНовый вечер за игрой.\n\nАркады, платформеры и приключения прошлых лет.\nСвой круг любителей классики.\n\nВ окне бра"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "pt-16 pb-24 relative overflow-hidden",
+        "text": "Знакомый картридж.\nНовый вечер за игрой.\n\nАркады, платформеры и приключения прошлых лет.\nСвой круг любителей классики.\n\nВ окне бра"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-2xl sm:text-3xl md:text-4xl mb-6 leading-tight glow-text",
+        "text": "Знакомый картридж.\nНовый вечер за игрой."
+      },
+      {
+        "tag": "SECTION",
+        "id": "games",
+        "classes": "py-16 bg-gray-950/80",
+        "text": "Полка с картриджами\n\nВыбирай платформу и находи игру под настроение сегодняшнего вечера.\n\nВсе платформы\nNES\nSNES\nSega Genesis\nGame"
+      },
+      {
+        "tag": "SECTION",
+        "id": "how-it-works",
+        "classes": "py-20 bg-gray-900/50",
+        "text": "От полки до первого уровня\n\nЗнакомые миры остаются знакомыми, а путь к ним становится короче.\n\n1\nЭмуляция\n\nВыбирай игру с полки и "
+      },
+      {
+        "tag": "SECTION",
+        "id": "testimonials",
+        "classes": "py-20 bg-gray-950",
+        "text": "Разговоры после игры\n\nИстории тех, кто задержался ещё на один уровень.\n\nNESFreak1991\n\nBattletoads (NES)\n\n\"Не мог поверить, что смо"
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "bg-gray-900 border-t border-gray-800 pt-12 pb-6",
+        "text": "Cartridge Club\n\nНебольшой клуб больших приключений из эпохи картриджей. Найди знакомую игру и устрой себе вечер классики.\n\nНавигац"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "modmanager",
+    "title": "Patchbay | Ваша коллекция игровых сборок",
+    "text": "Patchbay\nFeatures\nInterface\nTestimonials\nOpen your collection\nA home for your next loadout\nPatchbay —\nпорядок в каждой игровой сборке\n\nСоберите модификации, настройки и любимые подборки в одной библиотеке. Возвращайтесь к нужной сборке без долгих поисков.\n\nОткрыть свою библиотеку\nПосмотреть возможности\nПолка для модификаций\n\nДо 1 ТБ на аккаунт для всех ваших модификаций\n\nМежду устройствами\n\nБиблиотека рядом на привычных устройствах\n\nСкорость\n\nСинхронизация со скоростью до 10 ГБ/сек\n\nБольше времени на саму игру\n\nНайдите место для каждой сборки в Patchbay\n\nВсё, что нужно для вашей следующей сборки\n\nPatchbay помогает разложить модификации по играм и вернуться к подходящей конфигурации.\n\nХранение модов в облаке\n\nДо 1 ТБ для модификаций и подборок из вашей игровой библиотеки\n\nПродолжайте с нужной сборкой\n\nПередача между устройствами со скоростью до 10 ГБ/сек\n\nВсё видно с первого взгляда\n\nРазложите игры, версии и подборки так, чтобы быстро находить нужное\n\nПоделитесь подборкой\n\nСохраняйте свои подборки рядом с коллекциями, которыми поделились друзья\n\nНа привычном устройстве\n\nВыберите привычную платформу: Windows, macOS, Linux, Android или iOS\n\nВ кругу своих\n\nПолучите приглашение от участника и откройте собственную библиотеку\n\nГотов к новой игровой сессии\n\nНаша сеть из более чем 22 активных серверов по всему миру обеспечивает мгновенный доступ к вашей коллекции модов с минимальной задержкой и максимальной скоростью передачи данных.\n\nСборки под рукой\nРаботает офлайн\nPatchbay Sync активен\nСинхронизация: 10 ГБ/сек\nНаглядный порядок в коллекции\n\nВ библиотеке Patchbay есть место для игр, модификаций и деталей, которые важно не потерять.\n\nPatchbay Desktop\nGame Library\nMinecraft\nSkyrim\nCyberpunk 2077\nFallout 4\nDashboard\nCommunity\nSettings\nMinecraft Mods\n42 mods\nOptiFine HD\nVersion: 1.19.2\n2.3M\nJEI\nVersion: 1.19.2\n1.8M\nBiomes O Plenty\nVersion: 1.19.2\n950K\nCreate\nVersion: 1.19.2\n780K\nRecent Activity\nView All\nInstalled OptiFine HD\n2 minutes ago\nDetails\nUpdated JEI\n1 hour ago\nDetails\nDisabled Biomes O Plenty\n3 hours ago\nDetails\nСвоя система подборок\n\nОрганизуйте моды по категориям, играм и настройкам\n\nПорядок в версиях\n\nПроверка целостности и защита от вредоносного кода\n\nВход по приглашению\n\nПриглашение участника открывает бесплатный вход в коллекцию\n\nПривычный способ работы\n\nОткрывайте свою игровую подборку через клиент на удобном устройстве\n\nВпечатления участников клуба\n\nКак участники Patchbay собирают и хранят свои игровые подборки.\n\nАлексей Ветров\n\nPro Gamer\n\n\"Patchbay полностью изменил мой подход к модам. Больше не нужно тратить часы на поиск и установку - все синхронизируется автоматически.\"\nЕлена Майер\n\nСтример\n\n\"Идеальное решение для стримеров. Я могу быстро переключаться между разными сборками модов в прямом эфире без задержек.\"\nМихаил Дорн\n\nМоддер\n\n\"Как разработчик модов, я ценю возможность делиться своими творениями в одно нажатие кнопки. Клиент работает безупречно на всех платформах.\"\nPatchbay\nFeatures\nInterface\nTestimonials\nSupport\n© 2026 Patchbay. All rights reserved.\nPrivacy Policy\nTerms of Service\nCookies",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-gray-100",
+        "text": "Patchbay\nFeatures\nInterface\nTestimonials\nOpen your collection\nA home for your next loadout\nPatchbay —\nпорядок в каждой игровой сбо"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent",
+        "text": "Patchbay\nFeatures\nInterface\nTestimonials\nOpen your collection"
+      },
+      {
+        "tag": "NAV",
+        "id": "",
+        "classes": "hidden md:flex items-center gap-8 text-sm",
+        "text": "Features\nInterface\nTestimonials"
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "classes": "pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden",
+        "text": "A home for your next loadout\nPatchbay —\nпорядок в каждой игровой сборке\n\nСоберите модификации, настройки и любимые подборки в одно"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl md:text-6xl font-bold mb-6 leading-tight",
+        "text": "Patchbay —\nпорядок в каждой игровой сборке"
+      },
+      {
+        "tag": "SECTION",
+        "id": "features",
+        "classes": "py-20 md:py-32 relative bg-gray-950",
+        "text": "Всё, что нужно для вашей следующей сборки\n\nPatchbay помогает разложить модификации по играм и вернуться к подходящей конфигурации."
+      },
+      {
+        "tag": "SECTION",
+        "id": "interface",
+        "classes": "py-20 md:py-32 relative",
+        "text": "Наглядный порядок в коллекции\n\nВ библиотеке Patchbay есть место для игр, модификаций и деталей, которые важно не потерять.\n\nPatchb"
+      },
+      {
+        "tag": "SECTION",
+        "id": "testimonials",
+        "classes": "py-20 md:py-32 relative bg-gray-950",
+        "text": "Впечатления участников клуба\n\nКак участники Patchbay собирают и хранят свои игровые подборки.\n\nАлексей Ветров\n\nPro Gamer\n\n\"Patchba"
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "pt-20 pb-10 relative bg-gray-950",
+        "text": "Patchbay\nFeatures\nInterface\nTestimonials\nSupport\n© 2026 Patchbay. All rights reserved.\nPrivacy Policy\nTerms of Service\nCookies"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "speedtest",
+    "title": "LineMeter | Проверка параметров соединения",
+    "text": "🚀\n⚡\n📡\n🌐\n💫\n✨\n🚀\n⚡\nLineMeter\nПосмотрим, как чувствует себя соединение\n\nЗапустите проверку, чтобы пройти этапы подключения и увидеть ход измерения. Для ручной оценки канала доступны тестовые файлы.\n\nПроверить соединение\nПроверка с помощью файла\nСкачать тестовый файл · 1 GB\nСкачать тестовый файл · 10 GB\nLineMeter\n\nConnection tools for everyday checks\n\n© 2025 LineMeter. All rights reserved.",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen flex flex-col bg-gray-50",
+        "text": "🚀\n⚡\n📡\n🌐\n💫\n✨\n🚀\n⚡\nLineMeter\nПосмотрим, как чувствует себя соединение\n\nЗапустите проверку, чтобы пройти этапы подключения и увид"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "bg-white shadow-sm",
+        "text": "LineMeter"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "flex-grow flex items-center justify-center p-4",
+        "text": "Посмотрим, как чувствует себя соединение\n\nЗапустите проверку, чтобы пройти этапы подключения и увидеть ход измерения. Для ручной о"
+      },
+      {
+        "tag": "FOOTER",
+        "id": "",
+        "classes": "bg-gray-800 text-gray-300 py-8",
+        "text": "LineMeter\n\nConnection tools for everyday checks\n\n© 2025 LineMeter. All rights reserved."
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "YouTube",
+    "title": "Кадротека | Истории, которые хочется посмотреть",
+    "text": "Кадротека\nСвежая подборка\n🏠\nОткрыть подборки\n🧭\nПодписки\n📚\nВаши полки\nИстория\n⏰\nПонравившиеся\n❤️\nСмотреть позже\n🕒\nТемы для просмотра\nСейчас смотрят\n🔥\nМузыка\n🎵\nИгры\n🎮\nСпорт\n🏆\nНовости\n📰\nОбучение\n💡\n🌟\nВся подборка\n🎮\nИгры\n🎵\nМузыка\n🎙️\nПодкасты\n📡\nПрямой эфир\n👨‍🍳\nКулинария\n🆕\nНовые\n👁️\nПросмотренные\n🎯\nНаходки редакции\n32:47\nНаблюдаем за птицами у воды\n\nПолевые заметки\n\n4.5 млн просмотров • 3 месяца назад\n\n34:17\nСтарые лестницы и новые открытия\n\nСледы времени\n\n2.8 млн просмотров • 5 дней назад\n\n42:18\nКак компьютер учится замечать закономерности\n\nПростые модели\n\n375 тыс. просмотров • 5 дней назад\n\n24:15\nХлеб с хрустящей корочкой: заметки пекаря\n\nТёплая кухня\n\n2.4 млн просмотров • 2 месяца назад\n\n19:58\nНебольшая мелодия для первого урока\n\nНотная тетрадь\n\n980 тыс. просмотров • 2 недели назад\n\n28:15\nРазминка для тех, кто долго сидит\n\nПауза для движения\n\n3.4 млн просмотров • 1 неделя назад\n\n19:45\nМеньше лишнего: разбираем домашние полки\n\nДом без спешки\n\n925 тыс. просмотров • 1 неделя назад\n\n42:55\nОт наброска до первой иллюстрации\n\nШтрих за штрихом\n\n750 тыс. просмотров • 4 дня назад\n\n28:45\nТри аккорда для вечерней мелодии\n\nШесть струн\n\n1.3 млн просмотров • 5 дней назад\n\n31:42\nУжин из простых сезонных продуктов\n\nОдин стол\n\n2.2 млн просмотров • 1 неделя назад\n\n32:18\nПрозрачные слои: рисуем акварелью\n\nВода и пигмент\n\n756 тыс. просмотров • 1 неделя назад\n\n18:24\nДорога вдоль озера за один выходной\n\nЗа поворотом\n\n850 тыс. просмотров • 1 неделя назад\n\n25:18\nМиниатюрный сад на рабочем столе\n\nЛист и ветка\n\n1.1 млн просмотров • 2 недели назад\n\n28:05\nДомашняя мастерская: первые инструменты\n\nДело рук\n\n3.2 млн просмотров • 1 месяц назад\n\n25:40\nЗдания, которые меняют улицу\n\nСреда обитания\n\n1.8 млн просмотров • 4 дня назад\n\n15:22\nЗелень на подоконнике: дневник наблюдений\n\nМаленькая грядка\n\n892 тыс. просмотров • 1 неделя назад",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 dark:from-slate-800 dark:to-slate-900 text-slate-900 dark:text-white flex flex-col",
+        "text": "Кадротека\nСвежая подборка\n🏠\nОткрыть подборки\n🧭\nПодписки\n📚\nВаши полки\nИстория\n⏰\nПонравившиеся\n❤️\nСмотреть позже\n🕒\nТемы для прос"
+      },
+      {
+        "tag": "HEADER",
+        "id": "",
+        "classes": "sticky top-0 z-10 bg-white/5 backdrop-blur-xl border-b border-white/10",
+        "text": "Кадротека"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent",
+        "text": "Кадротека"
+      },
+      {
+        "tag": "MAIN",
+        "id": "",
+        "classes": "flex-1 overflow-y-auto p-4 md:p-6 pt-4",
+        "text": "🌟\nВся подборка\n🎮\nИгры\n🎵\nМузыка\n🎙️\nПодкасты\n📡\nПрямой эфир\n👨‍🍳\nКулинария\n🆕\nНовые\n👁️\nПросмотренные\n🎯\nНаходки редакции\n32:47"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "503-1",
+    "title": "Harbor Queue | Ресурс временно занят",
+    "text": "Ресурс временно занят\n\nHarbor Queue · HTTP 503\n\nВсе обработчики сейчас заняты. Подождите немного: страница сама повторит обращение, когда закончится отсчёт.\n\nКарточка обращения\n\nАдрес подключения: 203.0.113.42\n\nНомер обращения: 68YoDdC9z8gJtdlYnZfOEw6GMPWTVBDlZ0LRmxbyrNb\n\n05:00\n\nМожно оставить вкладку открытой\n\nКогда таймер дойдёт до нуля, браузер обновит страницу. Возможно, к этому моменту появится свободный обработчик.\n\nСледующая автоматическая попытка после завершения отсчёта\n\nЕсли ожидание затянулось, передайте поддержке номер обращения из карточки выше.\n\nHarbor Queue · Ожидаем свободный обработчик",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-slate-900 text-white flex items-center justify-center p-4",
+        "text": "Ресурс временно занят\n\nHarbor Queue · HTTP 503\n\nВсе обработчики сейчас заняты. Подождите немного: страница сама повторит обращение"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl font-bold text-red-500",
+        "text": "Ресурс временно занят"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "503-2",
+    "title": "Juniper Status | Пауза в обработке запроса",
+    "text": "Небольшая пауза\nJuniper Status · HTTP 503\n\nСейчас запрос не удаётся обработать.\n\nСведения об обращении\n\nПодключение: 203.0.113.42\n\nОбращение: 1A188075AB0-60D20CEC42ADCC2E1C25067DF9384AAF\n\nДо следующей проверки\n05:00\nЧто произойдёт дальше\n\nОставьте эту вкладку открытой. После завершения отсчёта браузер ещё раз запросит страницу.\n\nОжидаем возможность повторить обращение\n\nЕсли после обновления страница не открылась, сообщите поддержке номер обращения из блока выше.\n\nJuniper Status · Запрос ожидает повторной проверки",
+    "classes": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "classes": "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white",
+        "text": "Небольшая пауза\nJuniper Status · HTTP 503\n\nСейчас запрос не удаётся обработать.\n\nСведения об обращении\n\nПодключение: 203.0.113.42\n"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "text-4xl font-bold text-white",
+        "text": "Небольшая пауза"
+      }
+    ],
+    "overflow": false,
+    "errors": []
+  }
+]

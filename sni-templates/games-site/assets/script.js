@@ -7335,13 +7335,13 @@ const LoginModal = ({ onClose }) => {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/80 backdrop-blur-sm", onClick: onClose }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full max-w-md relative z-10 bg-gray-900 border-2 border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.4)] rounded-lg overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 py-4 bg-gray-800 flex justify-between items-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-['Press_Start_2P'] text-sm sm:text-base glow-text-pink", children: mode === "login" ? "Доступ к Хранилищу" : "Запрос Приглашения" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-['Press_Start_2P'] text-sm sm:text-base glow-text-pink", children: mode === "login" ? "Вход в игровой клуб" : "Приглашение в клуб" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onClose, className: "text-gray-400 hover:text-white", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-5 w-5" }) })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-6", children: mode === "login" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 p-4 bg-gray-800/50 rounded border border-cyan-900/50 flex items-start", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(AlertTriangle, { className: "h-5 w-5 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300 font-['VT323'] text-lg", children: "Доступ только по приглашениям. Это наша маленькая коллекция для избранных." })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300 font-['VT323'] text-lg", children: "Коллекция открывается по приглашению участника клуба." })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { className: "space-y-4", onSubmit: handleLoginSubmit, children: [
           error && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-3 bg-red-900/30 border border-red-500 rounded text-red-400 font-['VT323'] text-lg", children: error }),
@@ -7404,7 +7404,7 @@ const LoginModal = ({ onClose }) => {
       ] }) : requestSent ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "py-8 text-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-6 mx-auto h-16 w-16 rounded-full bg-green-900/30 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-8 w-8 text-green-500" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-['Press_Start_2P'] text-sm sm:text-base mb-4 text-green-400", children: "Запрос отправлен!" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-['VT323'] text-xl text-gray-300 mb-8", children: "Мы подберём тебе игру по душе и пришлем приглашение, когда найдется место в нашем клубе." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-['VT323'] text-xl text-gray-300 mb-8", children: "Заявка осталась у нас. Когда в клубе появятся приглашения, можно будет вернуться к своей игровой полке." }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
@@ -7414,7 +7414,7 @@ const LoginModal = ({ onClose }) => {
           }
         )
       ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleRequestSubmit, className: "space-y-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-4 p-4 bg-gray-800/50 rounded border border-purple-900/50", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300 font-['VT323'] text-lg", children: "Мы подберём тебе игру по душе и пришлем приглашение, когда найдется место в нашем клубе." }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-4 p-4 bg-gray-800/50 rounded border border-purple-900/50", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300 font-['VT323'] text-lg", children: "Заявка осталась у нас. Когда в клубе появятся приглашения, можно будет вернуться к своей игровой полке." }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: "requestEmail", className: "block mb-2 font-['VT323'] text-lg text-gray-300", children: "Ваш E-mail:" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
@@ -7484,8 +7484,8 @@ const Header = () => {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Gamepad2, { className: "h-8 w-8 text-purple-400" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-xl sm:text-2xl glow-text font-['Press_Start_2P'] tracking-tight", children: [
-          "Retro",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400", children: "Stream" })
+          "Cartridge",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400", children: " Club" })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center space-x-4", children: [
@@ -7533,27 +7533,27 @@ const Hero = () => {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "pt-16 pb-24 relative overflow-hidden", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "retro-container", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl mx-auto text-center relative z-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-2xl sm:text-3xl md:text-4xl mb-6 leading-tight glow-text", children: [
-        "Играй в классику.",
+        "Знакомый картридж.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "Прямо в браузере."
+        "Новый вечер за игрой."
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xl sm:text-2xl mb-8 text-gray-300 font-['VT323']", children: [
-        "Тысячи культовых игр. Никаких установок.",
+        "Аркады, платформеры и приключения прошлых лет.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400 glow-text-pink", children: "Только по приглашениям." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400 glow-text-pink", children: "Свой круг любителей классики." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap justify-center gap-4 mb-12", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center bg-gray-900/60 px-5 py-3 rounded-lg border border-purple-700", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "h-5 w-5 text-purple-400 mr-2" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "Без скачиваний" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "В окне браузера" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center bg-gray-900/60 px-5 py-3 rounded-lg border border-cyan-700", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "h-5 w-5 text-cyan-400 mr-2" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "Мгновенный запуск" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "От выбора до старта" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center bg-gray-900/60 px-5 py-3 rounded-lg border border-orange-700", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "h-5 w-5 text-orange-400 mr-2" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "Закрытое сообщество" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['VT323'] text-xl", children: "Клуб по приглашениям" })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7576,8 +7576,8 @@ const Hero = () => {
     showModal && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-50 flex items-center justify-center p-4", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/80 backdrop-blur-sm", onClick: () => setShowModal(false) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full max-w-md relative z-10 bg-gray-900 border-2 border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.4)] rounded-lg p-6 text-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-['Press_Start_2P'] text-lg mb-4 text-purple-400", children: "Приглашения временно кончились" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-['VT323'] text-xl text-gray-300 mb-6", children: "Попробуйте позже" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-['Press_Start_2P'] text-lg mb-4 text-purple-400", children: "Сейчас все приглашения разобраны" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-['VT323'] text-xl text-gray-300 mb-6", children: "Загляните в другой раз" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
@@ -7593,169 +7593,169 @@ const Hero = () => {
 const games = [
   {
     id: 1,
-    title: "Pixel Plumber Adventures",
+    title: "Copper Pipe Quest",
     platform: "nes",
     imageUrl: "/assets/images/image_1.jpg",
     year: 1988,
     isPopular: true,
-    description: "Помоги отважному водопроводчику спасти принцессу в этом захватывающем платформере!"
+    description: "Трубы, тайные проходы и один очень упрямый герой. Найди путь к следующему уровню."
   },
   {
     id: 2,
-    title: "Hero's Quest",
+    title: "The Lantern Knight",
     platform: "nes",
     imageUrl: "/assets/images/image_2.jpg",
     year: 1986,
-    description: "Классическое фэнтези-приключение храброго рыцаря в поисках древних артефактов."
+    description: "Фонарь освещает дорогу к забытым башням. Собери находки и разгадай старую историю."
   },
   {
     id: 3,
-    title: "Speed Runner",
+    title: "Coastline Dash",
     platform: "genesis",
     imageUrl: "/assets/images/image_3.jpg",
     year: 1991,
     isPopular: true,
-    description: "Стремительный платформер о быстром зверьке, собирающем кольца и сражающемся со злым учёным."
+    description: "Беги вдоль побережья, собирай кольца и выбирай короткий путь через каждый уровень."
   },
   {
     id: 4,
-    title: "Crystal Chronicles",
+    title: "Echoes of the Prism",
     platform: "snes",
     imageUrl: "/assets/images/image_4.jpg",
     year: 1994,
-    description: "Эпическая RPG о группе героев, противостоящих древнему злу в мире магии и технологий."
+    description: "Группа путешественников ищет осколки призмы, от которой зависит судьба их мира."
   },
   {
     id: 5,
-    title: "Battle Arena Champions",
+    title: "Midnight Dojo",
     platform: "snes",
     imageUrl: "/assets/images/image_5.jpg",
     year: 1993,
     isPopular: true,
-    description: "Динамичный файтинг с уникальными бойцами и специальными приёмами."
+    description: "Вечерний турнир начинается. Выбери бойца и найди свой ритм в каждом поединке."
   },
   {
     id: 6,
-    title: "Block Puzzle",
+    title: "Falling Shapes",
     platform: "gameboy",
     imageUrl: "/assets/images/image_6.jpg",
     year: 1989,
-    description: "Культовая головоломка с падающими блоками. Собирай линии и получай очки!"
+    description: "Расположи падающие фигуры без лишних промежутков и освободи место следующей."
   },
   {
     id: 7,
-    title: "Metal Squad",
+    title: "Signal Patrol",
     platform: "nes",
     imageUrl: "/assets/images/image_7.jpg",
     year: 1987,
-    description: "Напряженный экшн-платформер про двух бойцов спецназа. Сражайся в одиночку или с другом!"
+    description: "Пройди маршрут патруля и восстанови связь. Одному или с напарником — решать тебе."
   },
   {
     id: 8,
-    title: "Urban Fighters",
+    title: "Last Stop Brawlers",
     platform: "genesis",
     imageUrl: "/assets/images/image_8.jpg",
     year: 1992,
-    description: "Уличные драки с отличным саундтреком. Очисти город от преступности!"
+    description: "Последняя остановка ещё впереди: улицы, соперники и музыка ночного города."
   },
   {
     id: 9,
-    title: "Cyber Hunter X",
+    title: "Circuit Ranger",
     platform: "snes",
     imageUrl: "/assets/images/image_9.jpg",
     year: 1993,
-    description: "Футуристический экшн про робота-охотника, сражающегося с мятежными машинами."
+    description: "Проверь заброшенные сектора и верни питание станциям механического города."
   },
   {
     id: 10,
-    title: "Monster Trainer",
+    title: "Pocket Companions",
     platform: "gameboy",
     imageUrl: "/assets/images/image_10.jpg",
     year: 1996,
     isPopular: true,
-    description: "Собери команду волшебных существ и стань величайшим тренером!"
+    description: "Познакомься с маленькими спутниками и отправляйся исследовать большой мир."
   },
   {
     id: 11,
-    title: "Dragon Warrior",
+    title: "The Amber Kingdom",
     platform: "nes",
     imageUrl: "/assets/images/image_11.jpg",
     year: 1986,
-    description: "Классическая JRPG о молодом воине, отправившемся спасать королевство от древнего дракона."
+    description: "Дорога к янтарному дворцу ведёт через деревни, горы и древние подземелья."
   },
   {
     id: 12,
-    title: "Ninja Gaiden X",
+    title: "Shadow on the Rooftops",
     platform: "snes",
     imageUrl: "/assets/images/image_12.jpg",
     year: 1991,
     isPopular: true,
-    description: "Сложный платформер о ниндзя, владеющем древним мечом и магическими техниками."
+    description: "Прыжки между крышами, точные движения и путь, который открывается терпеливым."
   },
   {
     id: 13,
-    title: "Space Hunters",
+    title: "Orbit Patrol",
     platform: "genesis",
     imageUrl: "/assets/images/image_13.jpg",
     year: 1993,
-    description: "Космический шутер с видом сбоку. Защити галактику от инопланетного вторжения!"
+    description: "Стань пилотом орбитального патруля и проведи корабль через пояс астероидов."
   },
   {
     id: 14,
-    title: "Ghost Manor",
+    title: "The House at Willow Hill",
     platform: "nes",
     imageUrl: "/assets/images/image_14.jpg",
     year: 1989,
-    description: "Хоррор-платформер о храбром исследователе, раскрывающем тайны проклятого особняка."
+    description: "Дом на холме хранит много закрытых дверей. Найди ключи и узнай его историю."
   },
   {
     id: 15,
-    title: "Mech Warriors",
+    title: "Iron Horizon",
     platform: "snes",
     imageUrl: "/assets/images/image_15.jpg",
     year: 1995,
-    description: "Сражения гигантских роботов в постапокалиптическом мире. Собери идеальную боевую машину!"
+    description: "Собери меха для следующего выхода и проверь, что осталось за железным горизонтом."
   },
   {
     id: 16,
-    title: "Desert Strike Force",
+    title: "Dune Dispatch",
     platform: "genesis",
     imageUrl: "/assets/images/image_16.jpg",
     year: 1992,
-    description: "Военный экшн с видом сверху. Выполняй секретные миссии на вражеской территории."
+    description: "Доставь сообщение через пустыню: карта большая, а запас топлива ограничен."
   },
   {
     id: 17,
-    title: "Pixel Soccer",
+    title: "Kickoff Club",
     platform: "gameboy",
     imageUrl: "/assets/images/image_17.jpg",
     year: 1990,
-    description: "Аркадный футбол с простым управлением и захватывающими матчами."
+    description: "Короткие матчи, знакомые правила и ещё один шанс забить решающий мяч."
   },
   {
     id: 18,
-    title: "Time Travelers",
+    title: "The Clockmaker’s Map",
     platform: "snes",
     imageUrl: "/assets/images/image_18.jpg",
     year: 1994,
     isPopular: true,
-    description: "Путешествуй через разные эпохи, исправляя временные парадоксы в этой уникальной RPG."
+    description: "Карта часовщика ведёт через разные эпохи. Ищи подсказки, оставленные не в своё время."
   },
   {
     id: 19,
-    title: "Arctic Adventure",
+    title: "Little Polar Journey",
     platform: "nes",
     imageUrl: "/assets/images/image_19.jpg",
     year: 1990,
-    description: "Исследуй ледяные пещеры и помоги пингвину найти дорогу домой в этом милом платформере."
+    description: "Маленький полярный путешественник ищет дорогу среди льдин и снежных тоннелей."
   },
   {
     id: 20,
-    title: "Retro Racing GT",
+    title: "Coastal Circuit",
     platform: "genesis",
     imageUrl: "/assets/images/image_20.jpg",
     year: 1994,
-    description: "Гоночная аркада с реалистичной физикой и разнообразными трассами со всего мира."
+    description: "Повороты у моря и длинные прямые. Выбери машину и улучши время своего круга."
   }
 ];
 const GameShowcase = () => {
@@ -7772,8 +7772,8 @@ const GameShowcase = () => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "games", className: "py-16 bg-gray-950/80", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "retro-container", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col md:flex-row md:items-end justify-between mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "Коллекция Игр" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-lg", children: "Библиотека классических игр для твоих ностальгических приключений." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "Полка с картриджами" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-lg", children: "Выбирай платформу и находи игру под настроение сегодняшнего вечера." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 md:mt-0 flex flex-col sm:flex-row gap-4", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
@@ -7782,7 +7782,7 @@ const GameShowcase = () => {
             "input",
             {
               type: "text",
-              placeholder: "Поиск игры...",
+              placeholder: "Название с твоей полки…",
               value: searchTerm,
               onChange: (e) => setSearchTerm(e.target.value),
               className: "retro-input pl-10"
@@ -7838,7 +7838,7 @@ const GameCard = ({ game, onPlayClick }) => {
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-2 left-2 bg-gray-900/80 text-xs px-2 py-1 rounded font-bold uppercase", children: game.platform }),
         game.isPopular && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full flex items-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(File, { className: "h-3 w-3 mr-1" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Популярно" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Выбор клуба" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent p-4 flex flex-col justify-end transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-70"}`, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-['VT323'] text-xl font-bold mb-1", children: game.title }),
@@ -7849,7 +7849,7 @@ const GameCard = ({ game, onPlayClick }) => {
             onClick: onPlayClick,
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Play, { className: "h-4 w-4 mr-2" }),
-              "Играть"
+              "К игре"
             ] 
           })
         ] })
@@ -7860,8 +7860,8 @@ const GameCard = ({ game, onPlayClick }) => {
 const HowItWorks = () => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "how-it-works", className: "py-20 bg-gray-900/50", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "retro-container", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-12", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "Как Работает" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-2xl mx-auto", children: "Мы возродили классику, чтобы ты мог вернуться в детство, но с современными удобствами" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "От полки до первого уровня" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-2xl mx-auto", children: "Знакомые миры остаются знакомыми, а путь к ним становится короче." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid md:grid-cols-3 gap-8", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7869,7 +7869,7 @@ const HowItWorks = () => {
         {
           icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Monitor, { className: "h-12 w-12 text-cyan-400" }),
           title: "Эмуляция",
-          description: "Наш эмулятор загружается прямо в браузере и запускает игры моментально без установки дополнительного ПО",
+          description: "Выбирай игру с полки и переходи в окно запуска, оставаясь в браузере.",
           step: 1
         }
       ),
@@ -7878,7 +7878,7 @@ const HowItWorks = () => {
         {
           icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Cloud, { className: "h-12 w-12 text-purple-400" }),
           title: "Облачные сохранения",
-          description: "Твой прогресс сохраняется в облаке. Начни игру дома, продолжи на работе — всё синхронизировано",
+          description: "Возвращайся к знакомому месту в игре и продолжай приключение с сохранённого момента.",
           step: 2
         }
       ),
@@ -7887,7 +7887,7 @@ const HowItWorks = () => {
         {
           icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Save, { className: "h-12 w-12 text-orange-400" }),
           title: "Save States",
-          description: "Сохраняйся в любой момент игры одним нажатием — больше никаких ограничений и кодов для сохранения",
+          description: "Оставляй точку возвращения перед сложным участком, чтобы попробовать другой подход.",
           step: 3
         }
       )
@@ -7978,8 +7978,8 @@ const testimonials = [
 const Testimonials = () => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "testimonials", className: "py-20 bg-gray-950", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "retro-container", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-12", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "Отзывы Игроков" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-2xl mx-auto", children: "Что говорят ностальгирующие геймеры о нашем секретном клубе" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl sm:text-3xl mb-4 glow-text", children: "Разговоры после игры" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl max-w-2xl mx-auto", children: "Истории тех, кто задержался ещё на один уровень." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6", children: testimonials.map((testimonial) => /* @__PURE__ */ jsxRuntimeExports.jsx(TestimonialCard, { testimonial }, testimonial.id)) })
   ] }) });
@@ -8022,11 +8022,11 @@ const Footer = () => {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center mb-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Gamepad2, { className: "h-6 w-6 text-purple-400 mr-2" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-xl font-['Press_Start_2P'] glow-text", children: [
-            "Retro",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400", children: "Stream" })
+            "Cartridge",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-purple-400", children: " Club" })
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl mb-4 max-w-md", children: "Твоя машина времени в эпоху 8 и 16-битных развлечений. Играй в классику без компромиссов и скачиваний." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 font-['VT323'] text-xl mb-4 max-w-md", children: "Небольшой клуб больших приключений из эпохи картриджей. Найди знакомую игру и устрой себе вечер классики." }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(SocialIcon, { icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Github, {}), href: "#" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(SocialIcon, { icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Twitter, {}), href: "#" }),
@@ -8056,7 +8056,7 @@ const Footer = () => {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pt-6 mt-6 border-t border-gray-800 text-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-500 text-sm mb-2", children: "Все игры являются abandonware и представлены исключительно в образовательных целях" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-600 text-xs", children: "© 2025 RetroStream. Все права защищены." })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-600 text-xs", children: "© 2025 Cartridge Club. Все права защищены." })
     ] })
   ] }) });
 };

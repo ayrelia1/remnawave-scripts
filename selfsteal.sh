@@ -18,7 +18,7 @@ fi
 
 # Debug mode - set via --debug flag
 DEBUG_MODE=false
-SCRIPT_URL="https://raw.githubusercontent.com/dignezzz/remnawave-scripts/main/selfsteal.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/selfsteal.sh"
 UPDATE_URL="$SCRIPT_URL"
 
 while [[ $# -gt 0 ]]; do
@@ -127,17 +127,17 @@ declare -A TEMPLATE_FOLDERS=(
 )
 
 declare -A TEMPLATE_NAMES=(
-    ["1"]="😂 10gag - Сайт мемов"
-    ["2"]="📁 Convertit - Конвертер файлов"
-    ["3"]="🎬 Converter - Видеостудия-конвертер"
-    ["4"]="⬇️ Downloader - Даунлоадер"
-    ["5"]="☁️ FileCloud - Облачное хранилище"
-    ["6"]="🎮 Games-site - Ретро игровой портал"
-    ["7"]="🛠️ ModManager - Мод-менеджер для игр"
-    ["8"]="🚀 SpeedTest - Спидтест"
-    ["9"]="📺 YouTube - Видеохостинг с капчей"
-    ["10"]="⚠️ 503 Error - Страница ошибки v1"
-    ["11"]="⚠️ 503 Error - Страница ошибки v2"
+    ["1"]="😂 Sidewalk - Сайт мемов"
+    ["2"]="📁 Cutlane - Видеоредактор"
+    ["3"]="🎬 Formatwell - Конвертер файлов"
+    ["4"]="⬇️ Parcelink - Менеджер загрузок"
+    ["5"]="☁️ Foliohaven - Облачное хранилище"
+    ["6"]="🎮 Cartridge Club - Ретро игровой портал"
+    ["7"]="🛠️ Patchbay - Коллекции игровых модов"
+    ["8"]="🚀 LineMeter - Проверка соединения"
+    ["9"]="📺 Кадротека - Видеохостинг с капчей"
+    ["10"]="⚠️ Harbor Queue - Страница ожидания 503"
+    ["11"]="⚠️ Juniper Status - Страница состояния 503"
 )
 
 # Color definitions
@@ -3731,6 +3731,7 @@ show_current_template_info() {
 # or reorders DOM (that would break the bundles) — uniqueness comes from
 # title/brand/meta/manifest changes, a per-install CSS hue rotation, byte
 # noise, cache-busters and a freshly generated favicon.
+# ===== TESTABLE-BLOCK: template-randomization =====
 randomize_template() {
     local dir="$1"
     [ -d "$dir" ] || return 0
@@ -3756,13 +3757,13 @@ randomize_template() {
         -o -iname '.gitignore' -o -iname '.gitattributes' \) -delete 2>/dev/null || true
 
     # --- 2. per-install identity ----------------------------------------
-    local adjs=(Swift Bright Lumen Nimbus Vivid Prime Atlas Pulse Nova Quartz Onyx Vertex Cobalt Ember Drift Solace Zephyr Apex Halcyon Meridian Aero Cedar Indigo Mistral)
-    local nouns=(Cloud Vault Hub Forge Works Studio Labs Stream Desk Space Grid Port Wave Loop Stack Nest Spark Core Pixel Harbor Bay Field Crest Point)
+    local adjs=(Alder Alpine Apricot Aspen Autumn Birch Bramble Brook Canvas Clover Copper Coral Fern Flint Garnet Hazel Heron Linden Maple Meadow Moss Mulberry Ochre Olive Opal Orchard Pebble Petal Pine Reed Rowan Saffron Silver Spruce Stone Willow Wren)
+    local nouns=(Alcove Arcade Basket Bench Cabin Circle Clearing Corner Courtyard Cove Garden Grove Landing Lantern Ledger Loft Meadow Mill Notebook Passage Pavilion Pier Porch Room Shelf Terrace Trail Window Yard)
     local brand; brand="$(_rt_pick "${adjs[@]}") $(_rt_pick "${nouns[@]}")"
     local short="${brand%% *}"
-    local tails=("$brand" "$brand — $(_rt_pick Home Dashboard Portal Online Service Cloud Center Access)" "$short · $(_rt_pick Files Media Tools Hub Suite)")
+    local tails=("$brand" "$brand | $(_rt_pick Workspace Collection Journal Library Workshop)" "$short · $(_rt_pick Explore Discover Browse Create Welcome)")
     local new_title; new_title="$(_rt_pick "${tails[@]}")"
-    local descs=("Fast, simple and secure." "Your files, anywhere you go." "Built for speed and privacy." "Reliable service, every day." "Modern tools that just work." "Simple. Fast. Yours.")
+    local descs=("A little space for the things you come back to." "Make room for your next idea." "Find your place and take the next step." "A considered workspace for everyday tasks." "Keep useful things close at hand." "Something worth keeping, somewhere easy to find." "Browse the collection at your own pace." "Small details for a more organized day." "Your next project starts with a little space." "A place to pick up where you left off.")
     local new_desc; new_desc="$(_rt_pick "${descs[@]}")"
 
     # per-install color rotation: shift UI hue, counter-rotate media so photos
@@ -3777,6 +3778,9 @@ randomize_template() {
         sed -i "s#<title>[^<]*</title>#<title>${new_title}</title>#" "$f" 2>/dev/null || true
         sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
         sed -i "s#\(name=[\"']description[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_desc}\"#Ig" "$f" 2>/dev/null || true
+        # Keep social previews and installed-app labels aligned with the new identity.
+        sed -i "s#\(property=[\"']og:title[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_title}\"#Ig; s#\(property=[\"']og:description[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_desc}\"#Ig" "$f" 2>/dev/null || true
+        sed -i "s#\(name=[\"']\(application-name\|apple-mobile-web-app-title\)[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${brand}\"#Ig; s#\(property=[\"']og:site_name[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${brand}\"#Ig" "$f" 2>/dev/null || true
         # drop external Google Fonts (off-box fetch + breaks if blocked in RU); system fonts take over
         sed -i "/fonts\.googleapis\.com/d; /fonts\.gstatic\.com/d" "$f" 2>/dev/null || true
         # neutralize phone-home IP beacon -> same-origin 404 -> existing fallback text
@@ -3808,12 +3812,15 @@ SVG
     # --- 6. fix placeholder manifest brand ------------------------------
     while IFS= read -r -d '' f; do
         sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
+        sed -i "s#\(\"name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${brand}\"#g; s#\(\"short_name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${short}\"#g; s#\(\"description\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${new_desc}\"#g" "$f" 2>/dev/null || true
     done < <(find "$dir" -type f \( -iname '*.webmanifest' -o -iname 'manifest.json' \) -print0 2>/dev/null)
 
     log_success "Template mutated — brand: ${brand}, hue +${deg}° (unique per install)"
     return 0
 }
+# ===== END TESTABLE-BLOCK: template-randomization =====
 
+# ===== TESTABLE-BLOCK: template-download =====
 download_template() {
     local template_type="$1"
     local template_folder=""
@@ -3862,6 +3869,8 @@ download_template() {
     return 1
 }
 
+# ===== END TESTABLE-BLOCK: template-download =====
+
 # Download via git sparse-checkout
 download_via_git() {
     local template_folder="$1"
@@ -3875,7 +3884,7 @@ download_via_git() {
     local temp_dir="/tmp/selfsteal-template-$$"
     create_dir_safe "$temp_dir" || return 1
     
-    if ! git clone --filter=blob:none --sparse "https://github.com/DigneZzZ/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
+    if ! git clone --filter=blob:none --sparse "https://github.com/ayrelia1/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
         rm -rf "$temp_dir"
         return 1
     fi
@@ -3907,7 +3916,7 @@ download_via_api() {
     
     echo -e "${WHITE}📦 Using wget for recursive download...${NC}"
     
-    local api_url="https://api.github.com/repos/DigneZzZ/remnawave-scripts/git/trees/main?recursive=1"
+    local api_url="https://api.github.com/repos/ayrelia1/remnawave-scripts/git/trees/main?recursive=1"
     local tree_data
     tree_data=$(curl -s "$api_url" 2>/dev/null)
     
@@ -3928,7 +3937,7 @@ download_via_api() {
             [ -z "$file_path" ] && continue
             
             local relative_path="${file_path#sni-templates/$template_folder/}"
-            local file_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/$file_path"
+            local file_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/$file_path"
             
             local file_dir
             file_dir=$(dirname "$relative_path")
@@ -3955,8 +3964,8 @@ download_via_curl_fallback() {
     
     echo -e "${WHITE}📦 Using curl fallback method...${NC}"
     
-    local base_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/sni-templates/$template_folder"
-    local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png")
+    local base_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/sni-templates/$template_folder"
+    local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png" "web-app-manifest-192x192.png" "web-app-manifest-512x512.png")
     local asset_files=("assets/style.css" "assets/script.js" "assets/main.js")
     
     local files_downloaded=0

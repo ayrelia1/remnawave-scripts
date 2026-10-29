@@ -7449,14 +7449,14 @@ const Header = ({ onLogin }) => {
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 py-4 flex justify-between items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(CloudLightning, { className: "text-indigo-400 h-6 w-6" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-bold tracking-tight", children: "Cloud Mods" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-bold tracking-tight", children: "Patchbay" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("nav", { className: "hidden md:flex items-center gap-8 text-sm", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#features", className: "text-gray-300 hover:text-indigo-400 transition-colors", children: "Features" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#interface", className: "text-gray-300 hover:text-indigo-400 transition-colors", children: "Interface" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#testimonials", className: "text-gray-300 hover:text-indigo-400 transition-colors", children: "Testimonials" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { small: true, onClick: onLogin, children: "Login with Invite" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { small: true, onClick: onLogin, children: "Open your collection" })
       ] })
     }
   );
@@ -7466,27 +7466,27 @@ const Hero = ({ onLogin, onLearnMore }) => {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 relative z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto text-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "inline-flex items-center px-3 py-1 mb-6 rounded-full bg-indigo-900/30 border border-indigo-700/30 text-indigo-400 text-sm", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(DownloadCloud, { className: "mr-2 h-4 w-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Next-gen mod management" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "A home for your next loadout" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-6xl font-bold mb-6 leading-tight", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block", children: "Cloud Mods —" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400", children: "твои моды, всегда с тобой" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block", children: "Patchbay —" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400", children: "порядок в каждой игровой сборке" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto", children: "Храни, синхронизируй и управляй всеми своими игровыми модификациями в одном месте, независимо от устройства." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto", children: "Соберите модификации, настройки и любимые подборки в одной библиотеке. Возвращайтесь к нужной сборке без долгих поисков." }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row gap-4 justify-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { primary: true, onClick: onLogin, children: "Войти по инвайт-коду" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onLearnMore, children: "Узнать подробнее" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { primary: true, onClick: onLogin, children: "Открыть свою библиотеку" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onLearnMore, children: "Посмотреть возможности" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-12 grid grid-cols-1 md:grid-cols-3 gap-8", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-indigo-500/20 rounded-full h-12 w-12 flex items-center justify-center mb-4 mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CloudLightning, { className: "h-6 w-6 text-indigo-400" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold mb-2", children: "Облачное хранение" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold mb-2", children: "Полка для модификаций" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-sm", children: "До 1 ТБ на аккаунт для всех ваших модификаций" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-violet-500/20 rounded-full h-12 w-12 flex items-center justify-center mb-4 mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CloudCog, { className: "h-6 w-6 text-violet-400" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold mb-2", children: "Кросс-платформенность" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-sm", children: "Работает на всех устройствах и операционных системах" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold mb-2", children: "Между устройствами" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-sm", children: "Библиотека рядом на привычных устройствах" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-blue-500/20 rounded-full h-12 w-12 flex items-center justify-center mb-4 mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(DownloadCloud, { className: "h-6 w-6 text-blue-400" }) }),
@@ -7505,8 +7505,8 @@ const Hero = ({ onLogin, onLearnMore }) => {
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute bottom-4 left-4 right-4 text-left", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-2xl font-bold mb-2", children: "Профессиональный мод-менеджмент" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300", children: "Оптимизируйте свой игровой процесс с Cloud Mods" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-2xl font-bold mb-2", children: "Больше времени на саму игру" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-300", children: "Найдите место для каждой сборки в Patchbay" })
         ] })
       ] })
     ] }) }),
@@ -7520,32 +7520,32 @@ const features = [
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Gamepad2, { className: "h-6 w-6 text-fuchsia-400 group-hover:text-fuchsia-300" }),
     title: "Хранение модов в облаке",
-    description: "До 1 ТБ на аккаунт для всех ваших модификаций из любых игр"
+    description: "До 1 ТБ для модификаций и подборок из вашей игровой библиотеки"
   },
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "h-6 w-6 text-yellow-400 group-hover:text-yellow-300" }),
-    title: "Мгновенная синхронизация",
-    description: "Скорость передачи данных до 10 ГБ/сек между всеми устройствами"
+    title: "Продолжайте с нужной сборкой",
+    description: "Передача между устройствами со скоростью до 10 ГБ/сек"
   },
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Layers, { className: "h-6 w-6 text-emerald-400 group-hover:text-emerald-300" }),
-    title: "Панель управления",
-    description: "Интуитивный интерфейс для организации модов, игр и категорий"
+    title: "Всё видно с первого взгляда",
+    description: "Разложите игры, версии и подборки так, чтобы быстро находить нужное"
   },
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Users, { className: "h-6 w-6 text-blue-400 group-hover:text-blue-300" }),
-    title: "Совместное использование",
-    description: "Синхронизация модов с открытыми библиотеками и друзьями"
+    title: "Поделитесь подборкой",
+    description: "Сохраняйте свои подборки рядом с коллекциями, которыми поделились друзья"
   },
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Monitor, { className: "h-6 w-6 text-purple-400 group-hover:text-purple-300" }),
-    title: "Клиенты для всех ОС",
-    description: "Windows, macOS, Linux, Android и iOS - работает везде"
+    title: "На привычном устройстве",
+    description: "Выберите привычную платформу: Windows, macOS, Linux, Android или iOS"
   },
   {
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "h-6 w-6 text-rose-400 group-hover:text-rose-300" }),
-    title: "Инвайт-система",
-    description: "Эксклюзивный доступ по инвайт-кодам от текущих пользователей"
+    title: "В кругу своих",
+    description: "Получите приглашение от участника и откройте собственную библиотеку"
   }
 ];
 const Features = () => {
@@ -7557,10 +7557,10 @@ const Features = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 relative z-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center max-w-3xl mx-auto mb-16", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl md:text-4xl font-bold mb-6", children: [
-          "Максимальная мощность для ваших",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "игровых модов" })
+          "Всё, что нужно для ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "вашей следующей сборки" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "Cloud Mods предоставляет полный набор инструментов для организации и управления модификациями в любых играх" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "Patchbay помогает разложить модификации по играм и вернуться к подходящей конфигурации." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8", children: features.map((feature, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
@@ -7577,8 +7577,8 @@ const Features = () => {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-20 bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col md:flex-row items-center justify-between gap-8", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:w-1/2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("h3", { className: "text-2xl font-bold mb-4", children: [
-            "Создан для",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "скорости" })
+            "Готов к ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "новой игровой сессии" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-gray-400 mb-6", children: [
             "Наша сеть из более чем ",
@@ -7588,7 +7588,7 @@ const Features = () => {
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-4 flex-wrap", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-800 px-4 py-2 rounded-full flex items-center", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(CloudLightning, { className: "h-4 w-4 text-indigo-400 mr-2" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium", children: "Быстрая загрузка" })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium", children: "Сборки под рукой" })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-800 px-4 py-2 rounded-full flex items-center", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "h-4 w-4 text-indigo-400 mr-2" }),
@@ -7599,7 +7599,7 @@ const Features = () => {
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "md:w-1/2 bg-gray-900 rounded-xl p-4 border border-gray-800", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex items-center justify-center aspect-[16/9] overflow-hidden rounded-lg", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-indigo-900/20", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "animate-pulse flex flex-col items-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(CloudLightning, { className: "h-12 w-12 text-indigo-400 mb-4" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-indigo-300", children: "Cloud Mods Sync активен" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-indigo-300", children: "Patchbay Sync активен" })
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-gray-900 to-transparent" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm rounded-md px-3 py-1 flex items-center gap-2 border border-indigo-500/20", children: [
@@ -7620,11 +7620,11 @@ const Interface = () => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "interface", className: "py-20 md:py-32 relative", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 relative z-10", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center max-w-3xl mx-auto mb-16", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl md:text-4xl font-bold mb-6", children: [
-        "Мощный",
+        "Наглядный ",
         " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400", children: "интерфейс" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400", children: "порядок в коллекции" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "Знакомьтесь с интуитивно понятной панелью управления Cloud Mods, разработанной для геймеров" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "В библиотеке Patchbay есть место для игр, модификаций и деталей, которые важно не потерять." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden border border-gray-800 shadow-2xl shadow-indigo-500/5 bg-gradient-to-b from-gray-900 to-gray-950 mb-16", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute top-0 left-0 right-0 h-12 bg-gray-900 border-b border-gray-800 flex items-center px-4", children: [
@@ -7633,7 +7633,7 @@ const Interface = () => {
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-full bg-yellow-500" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-full bg-green-500" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto bg-gray-800 rounded-md px-4 py-1 text-sm text-gray-400", children: "Cloud Mods Desktop" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto bg-gray-800 rounded-md px-4 py-1 text-sm text-gray-400", children: "Patchbay Desktop" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-12 p-4 aspect-[16/9]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-full rounded-lg overflow-hidden", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-56 bg-gray-900 border-r border-gray-800 flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-4", children: [
@@ -7744,23 +7744,23 @@ const Interface = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all hover:border-indigo-500/30", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(MonitorCheck, { className: "h-8 w-8 text-indigo-400 mb-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Управление коллекцией" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Своя система подборок" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Организуйте моды по категориям, играм и настройкам" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all hover:border-indigo-500/30", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "h-8 w-8 text-indigo-400 mb-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Безопасность модов" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Порядок в версиях" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Проверка целостности и защита от вредоносного кода" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all hover:border-indigo-500/30", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Coins, { className: "h-8 w-8 text-indigo-400 mb-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Бесплатный доступ" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Используйте сервис бесплатно при наличии инвайт-кода" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Вход по приглашению" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Приглашение участника открывает бесплатный вход в коллекцию" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all hover:border-indigo-500/30", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Tablet, { className: "h-8 w-8 text-indigo-400 mb-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Мультиплатформенность" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Доступ к модам на любом устройстве с нашим клиентом" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-semibold mb-3", children: "Привычный способ работы" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400", children: "Открывайте свою игровую подборку через клиент на удобном устройстве" })
       ] })
     ] })
   ] }) });
@@ -7770,7 +7770,7 @@ const testimonials = [
     name: "Алексей Ветров",
     role: "Pro Gamer",
     avatar: "assets/pexels-photo-1681010.webp?auto=compress&cs=tinysrgb&w=150",
-    quote: "CloudMod полностью изменил мой подход к модам. Больше не нужно тратить часы на поиск и установку - все синхронизируется автоматически.",
+    quote: "Patchbay полностью изменил мой подход к модам. Больше не нужно тратить часы на поиск и установку - все синхронизируется автоматически.",
     stars: 5
   },
   {
@@ -7791,21 +7791,21 @@ const testimonials = [
     name: "Дмитрий Волков",
     role: "Киберспортсмен",
     avatar: "/assets/pexels-photo-1222271.webp?auto=compress&cs=tinysrgb&w=150",
-    quote: "CloudMod стал неотъемлемой частью моей подготовки к турнирам. Мгновенный доступ к нужным модам и конфигурациям - это именно то, что нужно профессионалам.",
+    quote: "Patchbay стал неотъемлемой частью моей подготовки к турнирам. Мгновенный доступ к нужным модам и конфигурациям - это именно то, что нужно профессионалам.",
     stars: 5
   },
   {
     name: "Анна Светлова",
     role: "Гейм-дизайнер",
     avatar: "/assets/pexels-photo-1239291.webp?auto=compress&cs=tinysrgb&w=150",
-    quote: "Использую CloudMod для тестирования модов в процессе разработки. Удобный интерфейс и быстрая синхронизация значительно ускоряют рабочий процесс.",
+    quote: "Использую Patchbay для тестирования модов в процессе разработки. Удобный интерфейс и быстрая синхронизация значительно ускоряют рабочий процесс.",
     stars: 5
   },
   {
     name: "Игорь Темный",
     role: "Моддер",
     avatar: "/assets/pexels-photo-1516680.webp?auto=compress&cs=tinysrgb&w=150",
-    quote: "Как создатель модов для нескольких игр, я особенно ценю возможность организации и версионирования в CloudMod. Это революция в управлении модификациями.",
+    quote: "Как создатель модов для нескольких игр, я особенно ценю возможность организации и версионирования в Patchbay. Это революция в управлении модификациями.",
     stars: 4
   }
 ];
@@ -7825,10 +7825,10 @@ const Testimonials = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 relative z-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center max-w-3xl mx-auto mb-16", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl md:text-4xl font-bold mb-6", children: [
-          "Что говорят",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "наши пользователи" })
+          "Впечатления ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 ml-2", children: "участников клуба" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "Присоединяйтесь к тысячам довольных геймеров, использующих CloudMod каждый день" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-gray-400 text-lg", children: "Как участники Patchbay собирают и хранят свои игровые подборки." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-8", children: testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -9069,7 +9069,7 @@ const Footer = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-semibold", children: "2. How We Use Your Information" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "We use the collected information to:" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("ul", { className: "list-disc pl-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Provide and maintain Cloud Mods services" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Provide and maintain Patchbay services" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Improve user experience" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Send service updates" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Ensure security" })
@@ -9080,7 +9080,7 @@ const Footer = () => {
   const termsContent = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Last updated: March 15, 2025" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-semibold", children: "1. Acceptance of Terms" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "By accessing Cloud Mods, you agree to these Terms of Service and all applicable laws and regulations." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "By accessing Patchbay, you agree to these Terms of Service and all applicable laws and regulations." }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-semibold", children: "2. User Responsibilities" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("ul", { className: "list-disc pl-6", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Maintain account security" }),
@@ -9089,9 +9089,9 @@ const Footer = () => {
       /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: "Not use the service for illegal activities" })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-semibold", children: "3. Service Availability" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Cloud Mods strives to maintain 99.9% uptime but does not guarantee uninterrupted service." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Patchbay strives to maintain 99.9% uptime but does not guarantee uninterrupted service." }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-semibold", children: "4. Intellectual Property" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Users retain rights to their mods. Cloud Mods claims no ownership over user-uploaded content." })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Users retain rights to their mods. Patchbay claims no ownership over user-uploaded content." })
   ] });
   const cookiesContent = /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Last updated: March 15, 2025" }),
@@ -9164,7 +9164,7 @@ const Footer = () => {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col md:flex-row justify-between items-center mb-12 border-b border-gray-800 pb-12", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-6 md:mb-0", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(CloudLightning, { className: "text-indigo-400 h-6 w-6" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-bold tracking-tight", children: "Cloud Mods" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-bold tracking-tight", children: "Patchbay" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap justify-center gap-8 text-sm", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#features", className: "text-gray-400 hover:text-indigo-400 transition-colors", children: "Features" }),
@@ -9184,7 +9184,7 @@ const Footer = () => {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-gray-500 text-sm", children: [
           "© ",
           (/* @__PURE__ */ new Date()).getFullYear(),
-          " Cloud Mods. All rights reserved."
+          " Patchbay. All rights reserved."
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "text-gray-400 hover:text-indigo-400 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-indigo-500/30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AtSign, { className: "h-4 w-4" }) }) }),
@@ -9661,7 +9661,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         leaveTo: "opacity-0 scale-95",
         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(_t.Panel, { className: "w-full max-w-md transform overflow-hidden rounded-2xl bg-gray-900 border border-indigo-500/30 p-6 text-left align-middle shadow-xl shadow-indigo-500/20 transition-all", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-6", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(_t.Title, { as: "h3", className: "text-xl font-semibold leading-6 text-white", children: "Login with Invite Code" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(_t.Title, { as: "h3", className: "text-xl font-semibold leading-6 text-white", children: "Your invitation to Patchbay" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
@@ -9702,7 +9702,7 @@ const LoginModal = ({ isOpen, onClose }) => {
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { primary: true, className: "w-full", children: "Login" }) })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-sm text-gray-400 text-center", children: "Need an invite code? Ask a current Cloud Mods user" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-sm text-gray-400 text-center", children: "An existing Patchbay member can share an invitation." })
         ] })
       }
     ) }) })

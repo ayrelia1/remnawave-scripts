@@ -1,21 +1,24 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Parcelink",
+  "short_name": "Parcelink",
+  "description": "Organize download links, choose a media format and review available transfer locations in one workspace.",
   "icons": [
     {
-      "src": "/favicon.ico/web-app-manifest-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
-      "src": "/favicon.ico/web-app-manifest-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#142d35",
+  "background_color": "#eef5f2",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "ru"
 }

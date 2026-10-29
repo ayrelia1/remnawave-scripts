@@ -1,10 +1,7 @@
-Чтобы загрузить шаблон себе, перейдите в папку, указанную в конфиге nginx вашего сайта и выполните следующие команды
+# Juniper Status
 
-<pre lang="markdown">
-  mkdir -p assets
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/41238842e021352c180a41e889f2d943c7540c81/503%20error%20pages/v2/index.html
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/41238842e021352c180a41e889f2d943c7540c81/503%20error%20pages/v2/assets/style.css -P assets
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/41238842e021352c180a41e889f2d943c7540c81/503%20error%20pages/v2/assets/main.js -P assets
-    </pre>
+Сервису нужно немного времени. Сведения о запросе и отсчёт до следующей автоматической проверки.
 
-Нужные файлы будут загружены а папки созданы.
+Serve this directory as the site root. Keep the asset directories and relative
+paths together. This is a presentation template with the existing local
+interaction flow; no backend account, storage or processing service is included.

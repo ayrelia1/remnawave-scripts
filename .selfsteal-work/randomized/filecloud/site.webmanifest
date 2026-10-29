@@ -1,0 +1,24 @@
+{
+  "name": "Saffron Garden",
+  "short_name": "Saffron",
+  "description": "Make room for your next idea.",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#163e3c",
+  "background_color": "#f0f7f3",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "en"
+}

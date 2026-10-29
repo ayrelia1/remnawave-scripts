@@ -45,13 +45,13 @@
 
 ```bash
 # Caddy (по умолчанию)
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ install
 
 # Nginx с Unix socket (рекомендуется — см. сравнение ниже)
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx install
 
 # Nginx с TCP-портом вместо socket
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --tcp install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --tcp install
 ```
 
 <details>
@@ -59,13 +59,13 @@ bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal
 
 ```bash
 # Базовая force-установка (без интерактивных запросов и DNS-проверки)
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com install
 
 # С конкретным портом и шаблоном
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com --port 8443 --template 5 install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com --port 8443 --template 5 install
 
 # С ручным wildcard-сертификатом (Nginx или Caddy)
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com \
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com \
     --ssl-cert /path/to/fullchain.crt --ssl-key /path/to/private.key install
 ```
 
@@ -122,9 +122,25 @@ selfsteal          # интерактивное меню
 
 ## 🎨 Шаблоны сайтов
 
-11 AI-генерированных шаблонов; при первой установке выбирается случайный. Скрипт качает их из каталога [`sni-templates/`](https://github.com/DigneZzZ/remnawave-scripts/tree/main/sni-templates) этого репозитория (оригинальная коллекция — [SmallPoppa/sni-templates](https://github.com/SmallPoppa/sni-templates)):
+11 переработанных шаблонов; при первой установке выбирается случайный. Selfsteal скачивает их из каталога [`sni-templates/`](https://github.com/ayrelia1/remnawave-scripts/tree/main/sni-templates) этого форка. Исходная коллекция — [SmallPoppa/sni-templates](https://github.com/SmallPoppa/sni-templates).
 
-`10gag` (мемы) · `converter` (видеоконвертер) · `convertit` (конвертер файлов, самый «тихий» — без внешних CDN) · `downloader` · `filecloud` (облако с формой логина) · `games-site` (ретро-игры) · `modmanager` · `speedtest` (RU-локализация) · `YouTube` (с бесконечной капчей) · `503 Error v1/v2` (страницы ошибок)
+| № | Каталог | Страница |
+|---|---|---|
+| 1 | `10gag` | Sidewalk — лента мемов и реакций |
+| 2 | `convertit` | Cutlane — рабочая область для видео |
+| 3 | `converter` | Formatwell — конвертер файлов |
+| 4 | `downloader` | Parcelink — менеджер загрузок |
+| 5 | `filecloud` | Foliohaven — облачное хранилище |
+| 6 | `games-site` | Cartridge Club — коллекция ретро-игр |
+| 7 | `modmanager` | Patchbay — библиотека модификаций |
+| 8 | `speedtest` | LineMeter — проверка соединения |
+| 9 | `YouTube` | Кадротека — видеокаталог с капчей |
+| 10 | `503-1` | Harbor Queue — ожидание обработки запроса |
+| 11 | `503-2` | Juniper Status — состояние запроса |
+
+Названия каталогов, номера и взаимодействия сохранены. У страниц новые тексты,
+палитры, оформление блоков, метаданные, манифесты и иконки. Это сайты-заглушки:
+реальные сервисы обработки файлов, хранения и авторизации не добавлены.
 
 ```bash
 selfsteal template          # интерактивный выбор с превью и бэкапом текущего
@@ -134,10 +150,17 @@ selfsteal template          # интерактивный выбор с прев�
 
 Базовые шаблоны публичны и байт-в-байт совпадают у всех — цензор может хешировать страницу и вносить в чёрный список. Поэтому при установке шаблон **автоматически мутируется**:
 
-- 🎲 **Уникальность инстанса**: случайные `<title>`/бренд/meta, per-install сдвиг палитры (hue-rotate), байт-«шум» в html/css/js, рандомный `?v=`, свежий `favicon.svg` — два сервера никогда не отдают идентичные файлы
+- 🎲 **Уникальность инстанса**: случайные `<title>`/бренд/meta из обновлённых словарей, согласованные Open Graph и манифест, per-install сдвиг палитры (hue-rotate), байт-«шум» в html/css/js, рандомный `?v=`, свежий `favicon.svg`
 - 🧹 **Зачистка утечек**: удаляются `README.md`/`*.md`/`*.map` (ссылки на исходный репозиторий), глушится «маяк» на `api.ipify.org`, убираются внешние Google Fonts, чинятся `vite.svg` и `site.webmanifest`
 
-Отключение (для отладки): `--no-randomize`.
+Отключение: `--no-randomize` (также `--no-mutate`). Флаг оставляет базовые цвета,
+тексты, метаданные и файлы без установочной мутации. В шаблонах №9, №10 и №11
+при этом сохраняется запрос к `api.ipify.org` для показа IP. В обычном режиме
+запрос, как и раньше, заменяется локальным путём; срабатывает предусмотренный
+страницей запасной текст. IP подставляется JavaScript после загрузки и не
+меняет исходный HTML. Рандомизация происходит при установке/смене шаблона,
+а не на каждый просмотр страницы. Отличие содержимого не гарантирует защиту
+от классификации трафика или сайта.
 
 > ⚠️ Контент с иностранных CDN (giphy/unsplash/pexels) вшит в минифицированные бандлы части шаблонов — его не убрать без поломки страницы. Мутация ломает совпадение по хешу, но **не меняет TLS-отпечаток веб-сервера** (см. сравнение выше).
 
@@ -258,7 +281,7 @@ rm -rf ~/.acme.sh/ca/acme-v02.api.letsencrypt.org
 
 <div align="center">
 
-**Ресурсы:** [Reality (XTLS)](https://github.com/XTLS/REALITY) · [Caddy](https://caddyserver.com/docs/) · [шаблоны сайтов](https://github.com/DigneZzZ/remnawave-scripts/tree/main/sni-templates)
+**Ресурсы:** [Reality (XTLS)](https://github.com/XTLS/REALITY) · [Caddy](https://caddyserver.com/docs/) · [шаблоны сайтов](https://github.com/ayrelia1/remnawave-scripts/tree/main/sni-templates)
 
 [Сообщить об ошибке](https://github.com/DigneZzZ/remnawave-scripts/issues) · [Сообщество gig.ovh](https://gig.ovh) · Автор: **DigneZzZ** · [MIT License](./LICENSE)
 

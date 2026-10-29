@@ -32,6 +32,12 @@ Blocks: `managed-files`, `caddyfile-template`, `caddy-safety`, `caddyfile-migrat
 | `test-caddy-safety.sh` | domain collection, catch-all opt-in, validate-before-reload, health check, automatic rollback, and the 11.09 incident replayed through `migrate_caddyfile` |
 | `test-no-unguarded-writes.sh` | structural scan: every write to a managed config path must be gated |
 | `test-remnanode-version.sh` | old package-based and new bundled node versions, menu/status output with built-in or external Xray, and missing metadata |
+| `test-selfsteal-templates.sh` | all eleven template identities, synchronized randomized metadata, IP lookup handling, distinct installations, and both mutation modes across all three download methods |
+
+The Selfsteal suite extracts marked functions from `selfsteal.sh` and operates
+only on temporary copies. It does not run the installer, contact GitHub or start
+containers. If Node.js is available, `check-selfsteal-template-assets.js` also
+checks every HTML/manifest asset reference, icon dimensions and bundle syntax.
 
 The RemnaNode suite loads functions directly from `remnanode.sh`. It runs the real
 version parser in Node.js with fixture files and replaces only the Docker boundary;

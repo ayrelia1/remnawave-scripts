@@ -1,10 +1,7 @@
-Чтобы загрузить шаблон себе, перейдите в папку, указанную в конфиге nginx вашего сайта и выполните следующие команды
+# Harbor Queue
 
-<pre lang="markdown">
-  mkdir -p assets
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/7767efb754a878fff4dd249f7fbf7a9f6762eca2/503%20error%20pages/v1/index.html
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/7767efb754a878fff4dd249f7fbf7a9f6762eca2/503%20error%20pages/v1/assets/main.js -P assets
-  wget https://raw.githubusercontent.com/SmallPoppa/sni-templates/7767efb754a878fff4dd249f7fbf7a9f6762eca2/503%20error%20pages/v1/assets/style.css -P assets 
-  </pre>
+Запрос ожидает свободного обработчика. Здесь отображаются параметры обращения и время следующей попытки.
 
-  Нужные файлы будут загружены а папки созданы.
+Serve this directory as the site root. Keep the asset directories and relative
+paths together. This is a presentation template with the existing local
+interaction flow; no backend account, storage or processing service is included.
