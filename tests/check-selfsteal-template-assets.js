@@ -18,6 +18,10 @@ for (const folder of folders) {
   const app = html.match(/name="application-name" content="([^"]+)"/)[1];
   const description = html.match(/name="description" content="([^"]+)"/)[1];
   const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'site.webmanifest'), 'utf8'));
+  const inventory = fs.readFileSync(path.join(dir, 'files.list'), 'utf8').trim().split(/\r?\n/).sort();
+  const actual = walk(dir).map(file => path.relative(dir, file).split(path.sep).join('/'))
+    .filter(file => file !== 'files.list').sort();
+  assert.deepEqual(inventory, actual, `${folder}: stale download inventory`);
   assert(!identities.has(app), `${folder}: duplicate identity`);
   identities.add(app);
   assert.equal(manifest.name, app, `${folder}: manifest identity`);

@@ -32,7 +32,7 @@ must still match their original JavaScript class names.
 | `modmanager` | Patchbay | `#222b3e` | `#a5b8e8` | `#eff3f9` | Slate library, muted periwinkle, compact feature panels |
 | `speedtest` | LineMeter | `#193a42` | `#216e78` | `#edf5f5` | Dark instrument masthead, pale measurement panel |
 | `YouTube` | Кадротека | `#18263a` | `#91bce8` | `#edf2f8` | Blue viewing room, three-column desktop collection |
-| `503-1` | Harbor Queue | `#213950` | `#276581` | `#edf3f8` | Light request card with a strong left rule |
+| `503-1` | Harbor Queue | `#213950` | `#276581` | `#edf3f8` | Centered light request card with a strong left rule |
 | `503-2` | Juniper Status | `#203f3c` | `#286e5e` | `#eff6f2` | Green status sheet, paired request and timer panels |
 
 Installation-time hue rotation remains an additional layer over these base
@@ -57,6 +57,15 @@ without adding backend capabilities or new external requests.
 
 Pages scroll naturally. Keep request identifiers wrapping inside status cards,
 forms within the viewport, and all existing actions reachable at 390px width.
+Center the Harbor Queue card within the available viewport; its internal text
+alignment must not change the outer flex alignment.
+
+Each distribution includes a `files.list` download inventory. Keep it in sync
+with the folder contents; the installer validates a staged download and removes
+the inventory before publishing the site. Failed downloads preserve the previous
+document root. Keep that directory's inode unchanged for Docker bind mounts.
+Stable version queries on authored CSS/JS links invalidate older browser caches;
+installation randomization replaces those queries with its own random values.
 
 ## Elevation & Depth
 

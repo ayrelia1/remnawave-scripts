@@ -7,9 +7,9 @@
 # ║  Author:  DigneZzZ (https://github.com/DigneZzZ)               ║
 # ║  License: MIT                                                  ║
 # ╚════════════════════════════════════════════════════════════════╝
-# VERSION=2.11.1
+# VERSION=2.11.2
 
-SCRIPT_VERSION="2.11.1"
+SCRIPT_VERSION="2.11.2"
 
 # Handle @ prefix for consistency with other scripts
 if [ $# -gt 0 ] && [ "$1" = "@" ]; then
@@ -3821,56 +3821,63 @@ SVG
 # ===== END TESTABLE-BLOCK: template-randomization =====
 
 # ===== TESTABLE-BLOCK: template-download =====
-download_template() {
-    local template_type="$1"
-    local template_folder=""
-    local template_name=""
-    
-    # Получаем данные из регистра
-    if [[ -n "${TEMPLATE_FOLDERS[$template_type]:-}" ]]; then
-        template_folder="${TEMPLATE_FOLDERS[$template_type]}"
-        template_name="${TEMPLATE_NAMES[$template_type]}"
-    else
-        log_error "Unknown template type: $template_type"
-        return 1
-    fi
-    
-    echo -e "${WHITE}🎨 Downloading Template: $template_name${NC}"
-    echo -e "${GRAY}$(printf '─%.0s' $(seq 1 50))${NC}"
-    echo
-    
-    # Создаем директорию
-    create_dir_safe "$HTML_DIR" || return 1
-    rm -rf "${HTML_DIR:?}"/* 2>/dev/null || true
-    cd "$HTML_DIR" || return 1
-    
-    # Пробуем разные методы загрузки
-    if download_via_git "$template_folder"; then
-        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
-        setup_file_permissions
-        return 0
-    fi
-    
-    if download_via_api "$template_folder"; then
-        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
-        setup_file_permissions
-        return 0
-    fi
-    
-    if download_via_curl_fallback "$template_folder"; then
-        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
-        setup_file_permissions
-        return 0
-    fi
-    
-    log_error "Failed to download any files"
-    log_warning "Creating fallback template..."
-    create_fallback_html "$template_name"
-    return 1
+validate_template_files() {
+    local dir="$1" file
+    [ -s "$dir/index.html" ] && [ -s "$dir/files.list" ] || return 1
+    grep -qx 'index.html' "$dir/files.list" || return 1
+    grep -qi '<!doctype html' "$dir/index.html" || return 1
+    while IFS= read -r file || [ -n "$file" ]; do
+        file="${file%$'\r'}"
+        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
+        [ -s "$dir/$file" ] || return 1
+        case "$file" in
+            *.js|*.css)
+                if head -c 256 "$dir/$file" | grep -qiE '<!doctype|<html'; then return 1; fi
+                ;;
+        esac
+    done < "$dir/files.list"
 }
+
+download_template() (
+    local template_type="$1" template_folder="${TEMPLATE_FOLDERS[$1]:-}"
+    local template_name="${TEMPLATE_NAMES[$1]:-Template}" target="$HTML_DIR" work method
+    [ -n "$template_folder" ] || { log_error "Unknown template type: $template_type"; return 1; }
+    create_dir_safe "$target" || return 1
+    work=$(mktemp -d "${target}.download.XXXXXX") || return 1
+    trap 'rm -rf -- "$work"' EXIT
+    HTML_DIR="$work/site"
+    log_info "Downloading template: $template_name"
+    for method in download_via_git download_via_api download_via_curl_fallback; do
+        cd "$work" || return 1
+        rm -rf -- "$HTML_DIR"
+        create_dir_safe "$HTML_DIR" || return 1
+        cd "$HTML_DIR" || return 1
+        if "$method" "$template_folder" && validate_template_files "$HTML_DIR"; then
+            # The download inventory is installer metadata, not served site content.
+            rm -f -- "$HTML_DIR/files.list"
+            if [ "${RANDOMIZE_TEMPLATE:-true}" = true ]; then randomize_template "$HTML_DIR"; fi
+            # Keep the document-root directory itself in place for Docker bind mounts.
+            cp -a "$target" "$work/previous" || return 1
+            find "$target" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
+            if ! cp -a "$HTML_DIR/." "$target/"; then
+                find "$target" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
+                cp -a "$work/previous/." "$target/" || log_error "Could not restore previous template"
+                return 1
+            fi
+            HTML_DIR="$target"
+            setup_file_permissions
+            return 0
+        fi
+        log_warning "Incomplete template from $method; trying the next download method"
+    done
+    log_error "Could not download a complete template; previous site preserved"
+    return 1
+)
 
 # ===== END TESTABLE-BLOCK: template-download =====
 
+# ===== TESTABLE-BLOCK: template-transports =====
 # Download via git sparse-checkout
 download_via_git() {
     local template_folder="$1"
@@ -3918,9 +3925,9 @@ download_via_api() {
     
     local api_url="https://api.github.com/repos/ayrelia1/remnawave-scripts/git/trees/main?recursive=1"
     local tree_data
-    tree_data=$(curl -s "$api_url" 2>/dev/null)
+    tree_data=$(curl -fsSL --connect-timeout 10 --max-time 60 "$api_url" 2>/dev/null) || return 1
     
-    if [ -z "$tree_data" ] || ! echo "$tree_data" | grep -q '"path"'; then
+    if [[ "$tree_data" != *'"path"'* ]]; then
         return 1
     fi
     
@@ -3928,7 +3935,16 @@ download_via_api() {
     echo -e "${WHITE}📥 Downloading files...${NC}"
     
     local template_files
-    template_files=$(echo "$tree_data" | grep -o '"path":[^,]*' | sed 's/"path":"//' | sed 's/"//' | grep "^sni-templates/$template_folder/")
+    template_files=$(printf '%s' "$tree_data" | awk '
+        BEGIN { RS = "}" }
+        /"type"[[:space:]]*:[[:space:]]*"blob"/ {
+            if (match($0, /"path"[[:space:]]*:[[:space:]]*"[^"]*"/)) {
+                path = substr($0, RSTART, RLENGTH)
+                sub(/^"path"[[:space:]]*:[[:space:]]*"/, "", path)
+                sub(/"$/, "", path)
+                print path
+            }
+        }' | grep "^sni-templates/$template_folder/" || true)
     
     local files_downloaded=0
     
@@ -3937,15 +3953,19 @@ download_via_api() {
             [ -z "$file_path" ] && continue
             
             local relative_path="${file_path#sni-templates/$template_folder/}"
+            [[ "$relative_path" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+            case "/$relative_path/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
             local file_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/$file_path"
             
             local file_dir
             file_dir=$(dirname "$relative_path")
             [ "$file_dir" != "." ] && create_dir_safe "$file_dir"
             
-            if wget -q "$file_url" -O "$relative_path" 2>/dev/null; then
+            if wget -q --timeout=30 --tries=2 "$file_url" -O "$relative_path" 2>/dev/null; then
                 echo -e "${GREEN}   ✅ $relative_path${NC}"
-                ((files_downloaded++))
+                files_downloaded=$((files_downloaded + 1))
+            else
+                return 1
             fi
         done <<< "$template_files"
         
@@ -3960,46 +3980,22 @@ download_via_api() {
 
 # Fallback download via curl
 download_via_curl_fallback() {
-    local template_folder="$1"
-    
-    echo -e "${WHITE}📦 Using curl fallback method...${NC}"
-    
+    local template_folder="$1" file
     local base_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/sni-templates/$template_folder"
-    local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png" "web-app-manifest-192x192.png" "web-app-manifest-512x512.png")
-    local asset_files=("assets/style.css" "assets/script.js" "assets/main.js")
-    
     local files_downloaded=0
-    
-    echo -e "${WHITE}📥 Downloading common files...${NC}"
-    
-    for file in "${common_files[@]}"; do
-        local url="$base_url/$file"
-        if curl -fsSL "$url" -o "$file" 2>/dev/null; then
-            echo -e "${GREEN}   ✅ $file${NC}"
-            ((files_downloaded++))
-        fi
-    done
-    
-    create_dir_safe "assets"
-    echo -e "${WHITE}📁 Downloading assets...${NC}"
-    
-    for file in "${asset_files[@]}"; do
-        local url="$base_url/$file"
-        local filename
-        filename=$(basename "$file")
-        if curl -fsSL "$url" -o "assets/$filename" 2>/dev/null; then
-            echo -e "${GREEN}   ✅ assets/$filename${NC}"
-            ((files_downloaded++))
-        fi
-    done
-    
-    if [ $files_downloaded -gt 0 ]; then
-        show_download_summary "$files_downloaded" "${TEMPLATE_NAMES[$1]:-Template}"
-        return 0
-    fi
-    
-    return 1
+    curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/files.list" -o files.list || return 1
+    while IFS= read -r file || [ -n "$file" ]; do
+        file="${file%$'\r'}"
+        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
+        create_dir_safe "$(dirname "$file")" || return 1
+        curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/$file" -o "$file" || return 1
+        files_downloaded=$((files_downloaded + 1))
+    done < files.list
+    validate_template_files "$HTML_DIR" || return 1
+    show_download_summary "$files_downloaded" "$template_folder"
 }
+# ===== END TESTABLE-BLOCK: template-transports =====
 
 # Функция для установки правильных прав доступа
 setup_file_permissions() {

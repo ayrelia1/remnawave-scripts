@@ -127,3 +127,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
 body,button,a,p,li,label,input,textarea,select {
   font-family:"Trebuchet MS", "Segoe UI", sans-serif;
 }
+
+@media(max-width:640px) {
+  #root [class~="fixed"][class~="bottom-4"] {
+    position:static;
+    margin-top:1.5rem;
+  }
+}

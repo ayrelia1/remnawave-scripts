@@ -60,3 +60,18 @@ command for the prebuilt template bundles.
 
 Publish the local changes to the fork before installing from its GitHub URL.
 Existing installations need their template reinstalled to receive the new files.
+
+## 2026-10-30 download and layout regression checks
+
+- Fixed the Harbor Queue outer flex alignment; browser checks assert horizontal
+  centering at both widths and vertical centering when the card fits the viewport.
+- Exercised the actual API and curl transport code against local fixtures for all
+  eleven distributions, including nested and hashed asset names and game images.
+- Confirmed pretty-printed GitHub JSON skips directory entries, missing scripts
+  and HTML responses masquerading as scripts are rejected, and failed downloads
+  preserve a working site.
+- Rendered the curl-downloaded distributions in Chrome in both mutation modes
+  at 1366px and 390px: all 44 viewport cases passed with no JavaScript exceptions
+  or missing local assets. External media/IP endpoints were controlled fixtures.
+- Added stable authored CSS/JS version queries; randomization still replaces them.
+- Server deployment remains untested; these checks use isolated local copies.

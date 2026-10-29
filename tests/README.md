@@ -33,6 +33,7 @@ Blocks: `managed-files`, `caddyfile-template`, `caddy-safety`, `caddyfile-migrat
 | `test-no-unguarded-writes.sh` | structural scan: every write to a managed config path must be gated |
 | `test-remnanode-version.sh` | old package-based and new bundled node versions, menu/status output with built-in or external Xray, and missing metadata |
 | `test-selfsteal-templates.sh` | all eleven template identities, synchronized randomized metadata, IP lookup handling, distinct installations, and both mutation modes across all three download methods |
+| `test-selfsteal-downloads.sh` | real API and curl transports against local fixtures, complete nested asset downloads, missing/HTML-filled scripts, and preservation of the previous site on failure |
 
 The Selfsteal suite extracts marked functions from `selfsteal.sh` and operates
 only on temporary copies. It does not run the installer, contact GitHub or start

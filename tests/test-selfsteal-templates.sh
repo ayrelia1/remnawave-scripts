@@ -16,6 +16,8 @@ test -s "$WORK_DIR/randomize.sh"
 source "$WORK_DIR/randomize.sh"
 log_info() { :; }
 log_success() { :; }
+log_warning() { :; }
+log_error() { :; }
 WHITE='' GRAY='' NC=''
 
 for template in 10gag convertit converter downloader filecloud games-site modmanager speedtest YouTube 503-1 503-2; do
@@ -60,7 +62,8 @@ for DOWNLOAD_METHOD in git api curl; do
     HTML_DIR="$WORK_DIR/download-$DOWNLOAD_METHOD"
     RANDOMIZE_TEMPLATE=false
     download_template 11 > /dev/null
-    diff -qr "$REPO_ROOT/sni-templates/503-2" "$HTML_DIR" > /dev/null
+    diff -qr --exclude=files.list "$REPO_ROOT/sni-templates/503-2" "$HTML_DIR" > /dev/null
+    test ! -e "$HTML_DIR/files.list"
     RANDOMIZE_TEMPLATE=true
     download_template 11 > /dev/null
     if grep -Rq 'api\.ipify\.org' "$HTML_DIR"; then echo "FAIL: $DOWNLOAD_METHOD: default download kept the external IP lookup"; exit 1; fi

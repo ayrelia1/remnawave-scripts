@@ -82,8 +82,8 @@ p,[class*="text-gray"],[class*="text-slate"] {
 [class*="text-yellow"],[class*="text-red"] {
   color:#965e2e!important;
 }
-[class*="justify-center"] {
-  justify-content:flex-start;
+#root > .min-h-screen {
+  justify-content:center;
 }
 [class*="bg-yellow"] {
   background:#fcf3e6!important;
@@ -133,4 +133,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
 }
 body,button,a,p,li,label,input,textarea,select {
   font-family:"Segoe UI", Arial, sans-serif;
+}
+
+/* Keep the status line in document flow, including on short mobile screens. */
+#root .max-w-2xl > .absolute.bottom-4 {
+  position:static;
+  margin-top:1.5rem;
+  padding-inline:.25rem;
 }
