@@ -1,7 +1,7 @@
 # Selfsteal Template Verification
 
-Verified locally on 2026-10-29. No server installation, release, commit or push
-was performed.
+Verified locally on 2026-10-29. These checks did not install or deploy services
+on a server.
 
 ## Automated checks
 
