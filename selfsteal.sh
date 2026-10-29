@@ -3419,7 +3419,7 @@ install_command() {
     
     # List of available templates
     local templates=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11")
-    local template_names=("10gag" "Converter" "Convertit" "Downloader" "FileCloud" "Games-site" "ModManager" "SpeedTest" "YouTube" "503 Error v1" "503 Error v2")
+    local template_names=("Sidewalk" "Cutlane" "Formatwell" "Parcelink" "Foliohaven" "Cartridge Club" "Patchbay" "LineMeter" "Кадротека" "Harbor Queue" "Juniper Status")
     
     local selected_template=""
     local selected_name=""
