@@ -1,0 +1,17 @@
+{
+  "name": "Orbit Almanac",
+  "short_name": "Orbit",
+  "description": "Краткий атлас четырёх планет земной группы: размеры, годы и интересные детали.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#151d35",
+  "background_color": "#151d35",
+  "icons": [
+    {
+      "src": "/identity/orbits-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

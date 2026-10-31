@@ -1,0 +1,17 @@
+{
+  "name": "Seven Small Days",
+  "short_name": "Seven",
+  "description": "Небольшой недельный трекер: выберите одно простое дело и отмечайте свои дни.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#eef4ee",
+  "background_color": "#eef4ee",
+  "icons": [
+    {
+      "src": "/identity/weekmarks-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

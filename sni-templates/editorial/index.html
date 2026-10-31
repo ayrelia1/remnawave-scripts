@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folio Desk — редакционный кабинет</title>
+<meta name="description" content="Материалы редакции: поиск, черновики и подготовка текстов к публикации.">
+<meta name="application-name" content="Folio Desk">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Folio Desk — редакционный кабинет">
+<meta property="og:description" content="Материалы редакции: поиск, черновики и подготовка текстов к публикации.">
+<meta property="og:site_name" content="Folio Desk">
+<meta name="theme-color" content="#f2f5f6">
+<link rel="icon" type="image/svg+xml" href="/identity/folio-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/desk/styles/workbench.css">
+<script defer src="/desk/scripts/workbench.js"></script>
+</head>
+<body data-page="library">
+<a class="skip" href="#content">К содержимому</a>
+<div class="desk-shell"><aside class="desk-sidebar"><a href="/" class="desk-logo"><span class="logo-square" aria-hidden="true">F</span><span data-site-name>Folio Desk</span></a><p class="side-caption">Редакционный кабинет</p><nav aria-label="Разделы кабинета"><a href="/">▤ Материалы</a><a href="/workspace/editor.html">＋ Создать материал</a></nav><div class="side-bottom"><span class="avatar" aria-hidden="true">Р</span><div><strong>Редакция</strong><small>Личное рабочее пространство</small></div></div></aside><div class="desk-workspace"><header class="desk-top"><span>Рабочее пространство / Редакция</span><span class="workspace-tag">Контент</span></header><main id="content" tabindex="-1"><div class="page-heading"><div><p class="eyebrow">Всё под рукой</p><h1>Материалы</h1><p>Заметки, руководства и идеи, которые готовятся к публикации.</p></div><a class="action" href="/workspace/editor.html">Создать материал</a></div><section class="desk-stats" aria-label="Сводка материалов"><article><span>Всего материалов</span><strong id="stat-total">—</strong></article><article><span>Черновики</span><strong id="stat-draft">—</strong></article><article><span>Готовы к публикации</span><strong id="stat-ready">—</strong></article></section><section class="desk-list panel" aria-labelledby="list-title"><div class="section-top"><h2 id="list-title">Библиотека редакции</h2><span class="muted">До 100 материалов</span></div><div class="toolbar"><label>Поиск по названию<input type="search" id="article-search" placeholder="Найти материал…"></label><label>Состояние<select id="article-filter"><option value="all">Все материалы</option><option value="draft">Черновики</option><option value="ready">Готовые</option></select></label><button id="clear-articles" class="secondary" type="button">Сбросить</button></div><p id="desk-message" class="form-message" role="status">Открываем библиотеку…</p><div class="error-box" id="load-error" hidden><p>Не удалось открыть материалы.</p><button id="retry-load" type="button">Повторить загрузку</button></div><p class="table-hint">Прокрутите таблицу вправо, чтобы увидеть все колонки.</p><div class="table-scroll" tabindex="0" role="region" aria-labelledby="list-title"><table><caption class="sr-only">Материалы редакции</caption><thead><tr><th scope="col">Материал</th><th scope="col">Рубрика</th><th scope="col">Состояние</th><th scope="col">Обновлён</th></tr></thead><tbody id="article-rows"></tbody></table></div><div class="empty-box" id="article-empty" hidden><h3>Ничего не найдено</h3><p>Попробуйте другое название или сбросьте фильтры.</p></div><div class="pager"><button id="article-prev" class="secondary" type="button" disabled>Назад</button><span id="article-range">0 материалов</span><button id="article-next" class="secondary" type="button" disabled>Дальше</button></div></section><p id="storage-note" class="muted" role="status"></p><noscript><p>Для библиотеки и редактора включите JavaScript.</p></noscript></main><footer><span data-site-name>Folio Desk</span> · изменения сохраняются в этом браузере</footer></div></div>
+<dialog id="leave-dialog" aria-labelledby="leave-title"><h2 id="leave-title">Оставить несохранённый текст?</h2><p>Изменения на этой странице ещё не сохранены. Можно остаться и закончить работу.</p><div class="dialog-actions"><button id="stay-here" type="button">Остаться</button><button id="leave-now" class="secondary" type="button">Перейти без сохранения</button></div></dialog>
+</body>
+</html>

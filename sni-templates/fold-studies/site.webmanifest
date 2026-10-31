@@ -1,0 +1,17 @@
+{
+  "name": "Fold Studies",
+  "short_name": "Fold",
+  "description": "Пять спокойных шагов от прямоугольного листа к бумажному кораблику.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#e9f3f7",
+  "background_color": "#e9f3f7",
+  "icons": [
+    {
+      "src": "/identity/creases-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

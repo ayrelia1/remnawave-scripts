@@ -1,36 +1,36 @@
-# Self-contained Website Collection
+# Independent Website Collection
 
 ## Overview
 
-Eleven independent Russian-language sites live in `sni-templates/`. Nine are
-useful reference or browser tools; two retain the 503 service-unavailable
-concept. All are complete authored HTML documents. There is no shared public
+Eleven independent Russian-language sites live in `sni-templates/`. Seven are
+reference/browser tools, one is an editorial cabinet, one a forum, and two retain
+the 503 service-unavailable concept. Each has separate HTML, CSS, JavaScript,
+SVG icons and an application manifest; the forum and cabinet also load local JSON. There is no shared public
 brand, framework runtime, backend service, remote font or media CDN.
 
-The subject determines the layout: a botanical specimen grid, architectural
-notebook, tea desk, recipe ledger, reading shelf, paper-fold lesson, contrast
+The subject determines the layout: a botanical specimen grid, discussion
+board, tea desk, recipe ledger, editorial workspace, paper-fold lesson, contrast
 specimen, weekly calendar, orbital map and two distinct service-status sheets.
 No fake account forms, uploads, invented service metrics or unimplemented actions.
 
 ## Colors
 
-Model B: each `index.html` owns its canonical `:root` tokens in its embedded
-stylesheet. Components consume `--paper`, `--ink`, `--accent` and `--wash`.
+Model B: each primary stylesheet owns its canonical `:root` tokens. Components consume `--paper`, `--ink`, `--accent` and `--wash`.
 This table mirrors the authored token values; there are no theme adapters.
 
 | ID | Folder / subject | Paper | Ink | Accent | Wash |
 |---|---|---|---|---|---|
-| 1 | `10gag` / Bracken Fieldbook | #f1f5ec | #22382b | #416b43 | #dce7d5 |
-| 2 | `convertit` / Bayline Notes | #edf1f6 | #21394b | #285d8e | #d9e4ef |
-| 3 | `converter` / Steep Hour | #f7f0e5 | #43372d | #85512d | #e9dcc5 |
-| 4 | `downloader` / Spoon Ratio | #fff4e8 | #493124 | #9b4328 | #f3ddc6 |
-| 5 | `filecloud` / Margin Shelf | #efedf7 | #302a50 | #68559c | #ded8ef |
-| 6 | `games-site` / Fold Studies | #e9f3f7 | #243e55 | #23628d | #cee1eb |
-| 7 | `modmanager` / Chroma Deck | #f0f0f4 | #282d42 | #535d9d | #dcdfea |
-| 8 | `speedtest` / Seven Small Days | #eef4ee | #293f38 | #456c58 | #dce8dd |
-| 9 | `YouTube` / Orbit Almanac | #151d35 | #e7edf9 | #a8bbef | #242f4e |
-| 10 | `503-1` / Slate Workshop | #f0f2f5 | #263747 | #456880 | #dde4ec |
-| 11 | `503-2` / Still Service | #f5eef6 | #43374f | #735280 | #e8dced |
+| 1 | `bracken` / Bracken Fieldbook | #f1f5ec | #22382b | #416b43 | #dce7d5 |
+| 2 | `courtyard` / Клуб Практика | #f6f4f8 | #49365b | #76508c | #e6deec |
+| 3 | `steep-hour` / Steep Hour | #f7f0e5 | #43372d | #85512d | #e9dcc5 |
+| 4 | `spoon-ratio` / Spoon Ratio | #fff4e8 | #493124 | #9b4328 | #f3ddc6 |
+| 5 | `editorial` / Folio Desk | #f2f5f6 | #24353d | #1e6671 | #e0e8ea |
+| 6 | `fold-studies` / Fold Studies | #e9f3f7 | #243e55 | #23628d | #cee1eb |
+| 7 | `chroma-deck` / Chroma Deck | #f0f0f4 | #282d42 | #535d9d | #dcdfea |
+| 8 | `seven-days` / Seven Small Days | #eef4ee | #293f38 | #456c58 | #dce8dd |
+| 9 | `orbit-almanac` / Orbit Almanac | #151d35 | #e7edf9 | #a8bbef | #242f4e |
+| 10 | `slate-status` / Slate Workshop | #f0f2f5 | #263747 | #456880 | #dde4ec |
+| 11 | `still-status` / Still Service | #f5eef6 | #43374f | #735280 | #e8dced |
 
 At installation the randomizer varies semantic palette tokens while preserving
 light/dark contrast, title/description/application identity, visible logo labels,
@@ -40,30 +40,38 @@ and interaction contracts remain fixed. `--no-randomize` preserves authored HTML
 
 ## Typography
 
-Body: Segoe UI/Arial/system sans; botanical, tea, recipe, reading and 503 display:
-Georgia; fold, weekly and orbital display: Trebuchet MS; architectural display:
-Arial Black; technical values: Consolas. Each heading has a subject-specific scale.
+Body and cabinet: Segoe UI/Arial/system sans; botanical, tea, recipe and 503 display:
+Georgia; forum, fold, weekly and orbital display: Trebuchet MS; technical values:
+Consolas. Each heading has a subject-specific scale.
 All stacks support Cyrillic without network requests and wrap naturally.
 
 ## Layout
 
-Each template directory contains only `index.html`. Styles, scripts and its own
-SVG favicon are embedded. The complete document fits the original curl fallback
-without changing its list of resource paths. Old bundles, filenames, photographs,
-source maps, generators and per-site README files are absent. Parent repository
-documentation is not copied into an installed document root.
+Each site has an authored entry document, separate presentation/behavior/identity
+files and `site.webmanifest`. The forum has `community/{styles,scripts,records}`
+and `discussions/{thread,new}.html`; the cabinet has `desk/{styles,scripts,records}`
+and `workspace/editor.html`. All repository folder names have been replaced;
+the numeric template IDs remain stable. No remote fonts or media are required.
+`files.list` is a checked download inventory, removed before serving the site.
+All transports require the complete inventory, including nested files.
+
+The cabinet uses a dark side navigation, a restrained teal workspace, derived
+record counts and a semantic horizontally scrollable table. The forum uses a
+plum discussion board, a compact category sidebar and a single-column thread.
+Their route, validation, persistence, retry and unsaved-navigation behavior is
+defined in [UX-CONTRACT.md](UX-CONTRACT.md). Neither supplies host admin access,
+accounts, remote publication or multi-user synchronization.
 
 Normal document scrolling owns every page. Two-column layouts collapse at
 650–750px; small controls and long references must remain inside a 320px viewport.
 Status cards center within their available document width and grow naturally
 when their contents exceed a viewport. Footers stay in flow. Reduced motion,
 global scrollbar styling, forced colors and visible keyboard focus are defined
-in every embedded stylesheet.
+in every site's primary stylesheet.
 
 ## Elevation & Depth
 
-Use borders and flat tinted panels. The reading note alone uses an offset
-paper-like shadow. No decorative glow or animated backgrounds.
+Use borders and flat tinted panels. The cabinet and forum use subtle panel borders rather than floating overlays. No decorative glow or animated backgrounds.
 
 ## Shapes
 
@@ -73,21 +81,23 @@ diagrams are decorative and clearly described; orbital distances are not to scal
 
 ## Components
 
-The pages are independent documents, not routes in one application. Native HTML
+The templates are independent sites; forum and cabinet routes share their own
+application controllers. Native HTML
 controls own selection/disclosure/input behavior; their operating-system popup
 geometry is accepted. No shared app component or build dependency is introduced.
 
 | Capability | Canonical owner | Source of truth | Allowed variants | Verification |
 |---|---|---|---|---|
 | Select/Listbox | Native select | Labeled fields in page HTML | Botanical filter, tea type | Browser selected/open states |
-| Form | Native inputs and page handlers | Inline script | Integer recipe input, reading note, goal | Valid/invalid, reload and blocked storage |
-| Scrollbar | Document embedded stylesheet | `html` and scrollbar pseudo-elements | Document and textarea overflow | Narrow layouts and CSS inspection |
+| Form | Native inputs and page handlers | Application script and UX-CONTRACT.md | Recipe input, goal, material, topic, reply | Valid/invalid, reload and blocked storage |
+| Scrollbar | Document primary stylesheet | `html` and scrollbar pseudo-elements | Document and textarea overflow | Narrow layouts and CSS inspection |
 
 All native actions have hover, pressed, focus and disabled states. Feedback uses
 reserved inline `role=status` space. Skip links move focus to the main landmark.
-There are no dialogs, toasts, destructive actions, authentication or remote CRUD.
+The cabinet and forum share app-owned dialog behavior across their own routes.
+There are no toasts, destructive actions, authentication or remote CRUD.
 
-Reading notes and weekly marks are bounded localStorage data, with read/parse/
+Editorial/forum records and weekly marks are bounded localStorage data, with read/parse/
 write failures handled. User strings are assigned to textContent or input values,
 never interpreted as HTML. The tea timer uses wall time with pause/reset and
 completion feedback. Recipe scaling preserves its last valid result on invalid
@@ -106,7 +116,7 @@ number is presentation content; HTTP serving configuration remains the donor's.
 ## Do's and Don'ts
 
 - Keep install prompts, CLI commands/flags, template IDs, server config and menu.
-- Keep all site assets embedded; test the original git/API/curl transport chain.
+- Keep assets separately named and listed in files.list; verify git/API/curl completeness.
 - The one transport repair returns to the HTML directory before deleting Git's
   temporary checkout; no interactive flow or network order changes.
 - Check authored and randomized installs, 320/390/768/1366px layouts, IP/clipboard/

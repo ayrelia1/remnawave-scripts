@@ -1,0 +1,17 @@
+{
+  "name": "Spoon Ratio",
+  "short_name": "Spoon",
+  "description": "Пересчитайте ингредиенты простых овсяных оладий на нужное число порций.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#fff4e8",
+  "background_color": "#fff4e8",
+  "icons": [
+    {
+      "src": "/identity/pantry-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

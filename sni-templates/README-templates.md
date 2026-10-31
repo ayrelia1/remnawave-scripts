@@ -1,37 +1,42 @@
-# Standalone Websites
+# Independent Website Distributions
 
-Each numbered directory contains only `index.html`: body content, styles,
-scripts and its own SVG favicon. Serve a selected directory as the document root.
-No build step, framework, backend, media CDN, font service or asset copying is
-required. IDs and repository folder names are stable for installer compatibility.
+Every site contains separate HTML, styles, JavaScript, SVG icon and application
+manifest files. Template IDs remain 1–11; all donor directory names are replaced.
+Serve the selected site's directory as the document root. No build step, remote
+font service, media CDN, backend or added framework is required.
 
 | ID | Directory | Website |
 |---|---|---|
-| 1 | `10gag` | Bracken Fieldbook — botanical guide |
-| 2 | `convertit` | Bayline Notes — architecture journal |
-| 3 | `converter` | Steep Hour — tea timer |
-| 4 | `downloader` | Spoon Ratio — recipe scaling |
-| 5 | `filecloud` | Margin Shelf — local reading note |
-| 6 | `games-site` | Fold Studies — origami guide |
-| 7 | `modmanager` | Chroma Deck — color contrast tool |
-| 8 | `speedtest` | Seven Small Days — weekly tracker |
-| 9 | `YouTube` | Orbit Almanac — planetary reference |
-| 10 | `503-1` | Slate Workshop — service unavailable |
-| 11 | `503-2` | Still Service — service status |
+| 1 | `bracken` | Bracken Fieldbook — справочник |
+| 2 | `courtyard` | Клуб Практика — форум |
+| 3 | `steep-hour` | Steep Hour — чайный таймер |
+| 4 | `spoon-ratio` | Spoon Ratio — рецепт |
+| 5 | `editorial` | Folio Desk — редакционный кабинет |
+| 6 | `fold-studies` | Fold Studies — оригами |
+| 7 | `chroma-deck` | Chroma Deck — цвета |
+| 8 | `seven-days` | Seven Small Days — недельный трекер |
+| 9 | `orbit-almanac` | Orbit Almanac — планеты |
+| 10 | `slate-status` | Slate Workshop — 503 |
+| 11 | `still-status` | Still Service — 503 |
 
-Both status pages retain a unique per-load reference, visitor IP, a five-minute
-automatic reload and manual retry. IP lookup is available with `--no-randomize`;
-ordinary installation disables the external request. References remain active
-in both modes. They are browser-generated diagnostic labels, not server trace IDs
-or security tokens. Clipboard failure supports manual selection.
+The forum includes `/discussions/thread.html`, `/discussions/new.html` and
+`community/{styles,scripts,records}`. The editorial cabinet includes
+`/workspace/editor.html` and `desk/{styles,scripts,records}`. These browser apps
+persist local records only; no account system or public multi-user publication
+is supplied. See [UX-CONTRACT.md](../UX-CONTRACT.md).
 
-Presentation is varied at installation/change time. `--no-randomize` preserves
-the authored HTML. `--template N` selects a specific site; random selection can
-repeat. Public files can be matched to the fork; no anonymity guarantee follows.
+Every `files.list` is an exact download inventory. The installer requires all
+listed files and removes this inventory before serving the site. Git, API and
+curl all support nested resources. Parent repository documentation is not served.
+
+Both 503 sites retain per-load references, optional IP, five-minute automatic
+reload and manual retry. `--no-randomize` keeps authored metadata/colors and IP
+lookup; ordinary installs vary HTML/CSS/icons/manifest and disable the IP call.
+IDs remain active in both modes. Random template selection can repeat.
 
 See [DESIGN.md](../DESIGN.md) and run `bash tests/test-selfsteal-pages.sh`.
-The former [SmallPoppa collection](https://github.com/SmallPoppa/sni-templates)
-has been replaced; the installer is derived from
+The former SmallPoppa collection is replaced; the installer remains derived from
 [DigneZzZ/remnawave-scripts](https://github.com/DigneZzZ/remnawave-scripts).
-Repository attribution and the [license](../LICENSE) are retained outside the
-served directories.
+Repository [license](../LICENSE) and attribution remain outside the site roots.
+Public files may still be associated with this fork; no anonymity guarantee is
+implied by different text, paths or metadata.

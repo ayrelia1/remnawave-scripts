@@ -32,11 +32,11 @@ Blocks: `managed-files`, `caddyfile-template`, `caddy-safety`, `caddyfile-migrat
 | `test-caddy-safety.sh` | domain collection, catch-all opt-in, validate-before-reload, health check, automatic rollback, and the 11.09 incident replayed through `migrate_caddyfile` |
 | `test-no-unguarded-writes.sh` | structural scan: every write to a managed config path must be gated |
 | `test-remnanode-version.sh` | old package-based and new bundled node versions, menu/status output with built-in or external Xray, and missing metadata |
-| `test-selfsteal-pages.sh` | original git/API/curl implementations for 11 self-contained pages in both modes, pretty-JSON fallback, deleted-cwd regression, metadata and complete installer-contract verification |
+| `test-selfsteal-pages.sh` | original git/API/curl implementations for 11 asset graphs in both modes, pretty-JSON support and missing-asset rejection, deleted-cwd regression, metadata and complete installer-contract verification |
 
 The Selfsteal suite loads the actual functions without running the installer,
 replaces only network commands, and works on temporary page copies. Node checks
-validate inline scripts, standalone distributions and the allowed installer diff
+validate external scripts, complete distributions and the allowed installer diff
 against the original fork. Optional `SELFSTEAL_TEST_OUTPUT` and
 `SELFSTEAL_TEST_RANDOM_OUTPUT` export downloaded and randomized browser fixtures.
 
@@ -48,7 +48,9 @@ node tests/check-selfsteal-browser.cjs /path/to/downloaded /path/to/randomized
 
 This optional suite uses loopback only and closes its own browser/servers. It
 checks four viewport widths, interactions, storage/IP/clipboard failure, no-JS
-content, keyboard focus, and 503 ID/timer/manual/automatic retry contracts.
+content, keyboard focus, and 503 ID/timer/manual/automatic retry contracts. The forum/editorial routes
+also exercise creation/editing, pagination, dirty-navigation dialogs, seed-load
+retry, corrupted local records and 112 viewport cases across all routes.
 
 The RemnaNode suite loads functions directly from `remnanode.sh`. It runs the real
 version parser in Node.js with fixture files and replaces only the Docker boundary;

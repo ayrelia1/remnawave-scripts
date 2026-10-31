@@ -1,0 +1,17 @@
+{
+  "name": "Steep Hour",
+  "short_name": "Steep",
+  "description": "Простой чайный таймер и ориентиры для заваривания зелёного, чёрного чая и улуна.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#f7f0e5",
+  "background_color": "#f7f0e5",
+  "icons": [
+    {
+      "src": "/identity/steeping-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

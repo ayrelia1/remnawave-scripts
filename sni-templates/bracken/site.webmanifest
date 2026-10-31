@@ -1,0 +1,17 @@
+{
+  "name": "Bracken Fieldbook",
+  "short_name": "Bracken",
+  "description": "Небольшой полевой справочник: листья, кора и сезонные приметы знакомых деревьев.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#f1f5ec",
+  "background_color": "#f1f5ec",
+  "icons": [
+    {
+      "src": "/identity/fieldbook-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

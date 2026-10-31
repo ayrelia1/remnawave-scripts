@@ -1,0 +1,17 @@
+{
+  "name": "Chroma Deck",
+  "short_name": "Chroma",
+  "description": "Подберите пару цветов и сравните контраст текста на выбранном фоне.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#f0f0f4",
+  "background_color": "#f0f0f4",
+  "icons": [
+    {
+      "src": "/identity/swatches-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

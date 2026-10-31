@@ -1,0 +1,176 @@
+:root{--paper:#f6f4f8;--ink:#49365b;--accent:#76508c;--wash:#e6deec}
+*{
+  box-sizing:border-box
+}
+html{
+  scroll-behavior:smooth;
+  scrollbar-color:var(--accent) var(--wash);
+  scrollbar-width:auto;
+  scrollbar-gutter:stable
+}
+body{
+  margin:0 auto;
+  padding:0 28px;
+  max-width:1180px;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 'Segoe UI',Arial,sans-serif
+}
+a{
+  color:inherit;
+  text-underline-offset:4px
+}
+a:hover{
+  color:var(--accent)
+}
+h1,h2,h3{
+  line-height:1.2
+}
+p{
+  margin:.8rem 0 1.2rem
+}
+img,svg{
+  max-width:100%
+}
+button,input,select,textarea{
+  font:inherit;
+  color:var(--ink)
+}
+button,.action{
+  border:1px solid transparent;
+  border-radius:6px;
+  padding:.8rem 1.15rem;
+  background:var(--accent);
+  color:var(--paper);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer
+}
+button:hover,.action:hover{
+  filter:brightness(1.12);
+  color:var(--paper)
+}
+button:active,.action:active{
+  transform:translateY(1px)
+}
+button:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none
+}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--accent)
+}
+input,select,textarea{
+  max-width:100%;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:.7rem;
+  background:var(--paper)
+}
+textarea{
+  resize:vertical;
+  min-height:140px
+}
+select,summary{
+  cursor:pointer
+}
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:4px
+}
+footer{
+  padding:1.5rem 0;
+  margin-top:2rem;
+  border-top:1px solid var(--accent);
+  font-size:.8rem
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--accent)
+}
+.lead{
+  font-size:1.12rem;
+  line-height:1.7
+}
+.hint{
+  font-size:.85rem
+}
+.feedback{
+  min-height:3.4em;
+  font-size:.85rem;
+  line-height:1.5
+}
+[hidden]{
+  display:none!important
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:1rem;
+  background:var(--paper);
+  color:var(--ink);
+  z-index:10;
+  padding:.6rem
+}
+.skip:focus{
+  top:.5rem
+}
+::-webkit-scrollbar{
+  width:12px;
+  height:12px
+}
+::-webkit-scrollbar-track{
+  background:var(--wash)
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border:3px solid var(--wash);
+  border-radius:8px
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--ink)
+}
+::-webkit-scrollbar-thumb:active{
+  background:var(--ink)
+}
+@media(forced-colors:active){
+  *{
+  scrollbar-color:auto
+}
+
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto
+}
+*,*:before,*:after{
+  animation:none!important;
+  transition:none!important
+}
+
+}
+@media(max-width:650px){
+  body{
+  padding:0 20px
+}
+footer{
+  margin-top:1rem
+}
+.lead{
+  font-size:1rem
+}
+
+}
+
+
+
+.dialog-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}dialog{border:1px solid var(--accent);border-radius:16px;background:var(--paper);color:var(--ink);max-width:min(520px,calc(100vw - 36px));padding:2rem}dialog::backdrop{background:rgb(15 30 40 / .45)}[aria-invalid=true]{border:2px solid #a13d33}.form-message{min-height:3em;margin:1rem 0;font-size:.9rem}.error-box{border-left:4px solid var(--accent);background:var(--wash);padding:1rem;border-radius:6px}.field-help{font-size:.85rem}.form-stack label{display:block;font-weight:600;margin:1rem 0 .4rem}.form-stack input,.form-stack select,.form-stack textarea{width:100%}.form-stack textarea{resize:none;min-height:210px}.form-stack input:disabled{opacity:.6}.muted{font-size:.85rem}.page-heading{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.page-heading h1{margin:.5rem 0}.empty-box{padding:2rem;text-align:center;background:var(--wash);border-radius:12px}.panel{background:var(--paper);border:1px solid var(--wash);border-radius:14px;padding:1.4rem}.loading{min-height:3rem}.toolbar{display:flex;align-items:end;gap:1rem;flex-wrap:wrap}.toolbar label{font-size:.85rem;display:grid;gap:.3rem}.toolbar input{min-width:0}.pager{display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:1rem 0}.pager button{padding:.6rem .9rem}.row-link{text-decoration:none;font-weight:700;overflow-wrap:anywhere}.row-link:hover{text-decoration:underline}.topic-meta,.post-head strong{overflow-wrap:anywhere}.post-head>div{min-width:0}code{overflow-wrap:anywhere}@media(max-width:650px){.toolbar{align-items:stretch}.toolbar label{width:100%}.page-heading>.action{width:100%;text-align:center}.panel{padding:1rem}.pager{font-size:.85rem;gap:.5rem}dialog{padding:1.3rem}}
+
+body{max-width:1220px;font-family:'Segoe UI',sans-serif}.forum-header{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--wash)}.forum-logo{display:flex;gap:.7rem;align-items:center;text-decoration:none;font-size:1.2rem;font-weight:700}.forum-symbol{display:grid;place-items:center;width:40px;height:40px;border-radius:12px 12px 12px 3px;background:var(--accent);color:var(--paper);flex-shrink:0}.forum-header nav{display:flex;gap:1.3rem;font-size:.9rem}.forum-header nav a{text-decoration:none}.forum-intro{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center;margin:2rem 0;background:var(--wash);padding:2.4rem;border-radius:24px}.forum-intro h1{font:700 clamp(2.4rem,5vw,4.2rem)/1.08 'Trebuchet MS',sans-serif;margin:1rem 0;letter-spacing:-.035em}.forum-intro p{max-width:630px}.speech-art{display:flex;align-items:center;justify-content:center;gap:12px}.speech-art span{display:grid;place-items:center;width:110px;height:120px;background:var(--accent);color:var(--paper);border-radius:30px 30px 30px 4px;font:700 5rem Georgia,serif;transform:rotate(-8deg)}.speech-art span+span{transform:rotate(10deg);background:var(--paper);color:var(--accent);border-radius:30px 30px 4px 30px;width:85px;height:95px}.forum-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:2rem;margin:2rem 0}.forum-toolbar{background:var(--wash);border-radius:12px;padding:1rem;margin-top:1rem}.forum-toolbar label:first-child{flex:1}.topic-list{border-top:1px solid var(--wash)}.topic-card{display:grid;grid-template-columns:42px minmax(0,1fr) 85px;gap:1rem;align-items:start;padding:1.5rem .3rem;border-bottom:1px solid var(--wash)}.topic-avatar{display:grid;place-items:center;border-radius:50%;height:40px;width:40px;background:var(--wash);color:var(--accent);font-weight:700}.topic-card h3{font-size:1.08rem;margin:.2rem 0 .6rem}.topic-card .topic-meta{font-size:.8rem;margin:.4rem 0;color:var(--accent)}.topic-card .reply-count{text-align:right;font-size:.8rem}.reply-count strong{display:block;font-size:1.4rem}.forum-aside{padding-top:1rem}.forum-aside h2{font-size:1.15rem}.forum-aside a{display:flex;justify-content:space-between;padding:.9rem 0;text-decoration:none;border-top:1px solid var(--wash)}.forum-aside details{margin-top:1.2rem}.forum-aside summary{font-weight:700;cursor:pointer}.forum-aside p{font-size:.9rem}.thread-main{max-width:820px;margin:2rem auto}.thread-title{font:700 clamp(2rem,4vw,3.1rem)/1.15 'Trebuchet MS',sans-serif;overflow-wrap:anywhere}.post-card{padding:1.5rem 0;border-top:1px solid var(--wash)}.post-head{display:flex;gap:.8rem;align-items:center;font-size:.85rem}.post-head small{display:block;color:var(--accent)}.post-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;margin-left:52px}.reply-heading{margin-top:2rem}.thread-main>.panel{margin-top:2rem}fieldset{border:0;margin:0;padding:0;min-width:0}#topic-form{margin:2rem 0}.thread-main footer{margin-top:3rem}@media(max-width:850px){.forum-layout{grid-template-columns:1fr}.forum-aside{display:none}.forum-intro{grid-template-columns:1fr 150px;gap:1rem;padding:1.5rem}.speech-art span{width:75px;height:90px;font-size:3.5rem}.speech-art span+span{width:55px;height:70px}}@media(max-width:600px){.forum-header{align-items:flex-start;flex-direction:column;gap:1rem}.forum-intro{grid-template-columns:1fr;padding:1.3rem}.speech-art{display:none}.topic-card{grid-template-columns:32px minmax(0,1fr);gap:.7rem}.topic-card>.topic-avatar{width:30px;height:30px;font-size:.8rem}.topic-card .reply-count{grid-column:2;text-align:left}.reply-count strong{display:inline;font-size:1rem;margin-right:.3rem}.post-body{margin-left:0}.thread-title{font-size:2rem}}

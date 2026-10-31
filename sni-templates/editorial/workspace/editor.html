@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Редактор материала — Folio Desk</title>
+<meta name="description" content="Рабочая страница для написания и сохранения редакционных материалов.">
+<meta name="application-name" content="Folio Desk">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Редактор материала — Folio Desk">
+<meta property="og:description" content="Рабочая страница для написания и сохранения редакционных материалов.">
+<meta property="og:site_name" content="Folio Desk">
+<meta name="theme-color" content="#f2f5f6">
+<link rel="icon" type="image/svg+xml" href="/identity/folio-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/desk/styles/workbench.css">
+<script defer src="/desk/scripts/workbench.js"></script>
+</head>
+<body data-page="editor">
+<a class="skip" href="#content">К содержимому</a>
+<div class="desk-shell"><aside class="desk-sidebar"><a href="/" class="desk-logo"><span class="logo-square" aria-hidden="true">F</span><span data-site-name>Folio Desk</span></a><p class="side-caption">Редакционный кабинет</p><nav aria-label="Разделы кабинета"><a href="/">▤ Материалы</a><a href="/workspace/editor.html">＋ Создать материал</a></nav><div class="side-bottom"><span class="avatar" aria-hidden="true">Р</span><div><strong>Редакция</strong><small>Личное рабочее пространство</small></div></div></aside><div class="desk-workspace"><header class="desk-top"><span>Рабочее пространство / Редакция</span><span class="workspace-tag">Контент</span></header><main id="content" tabindex="-1"><a id="back-to-library" href="/">← К материалам</a><div class="page-heading"><div><p class="eyebrow">Редактор материала</p><h1 id="editor-heading">Новый материал</h1><p>Соберите мысль в текст. Сохранённый материал появится в библиотеке.</p></div></div><div class="editor-layout"><form id="article-form" class="form-stack panel" novalidate><fieldset id="editor-fields" disabled><label for="article-title">Название</label><input id="article-title" maxlength="120" aria-describedby="article-title-help"><p class="field-help" id="article-title-help">От 3 до 120 символов.</p><label for="article-category">Рубрика</label><select id="article-category"><option>Заметки</option><option>Практика</option><option>Подборки</option></select><label for="article-text">Текст материала</label><textarea id="article-text" style="resize:none" rows="12" maxlength="6000" aria-describedby="article-text-help"></textarea><p class="field-help" id="article-text-help">От 10 до 6000 символов. Содержимое хранится на этом устройстве.</p><label for="article-status">Состояние</label><select id="article-status"><option value="draft">Черновик</option><option value="ready">Готов к публикации</option></select><p id="editor-message" class="form-message" role="status">Загружаем материал…</p><button id="save-article" type="submit">Сохранить материал</button></fieldset></form><aside class="editor-guide panel"><p class="eyebrow">Перед сохранением</p><h2>Тексту нужна опора</h2><ul><li>Одна основная мысль в заголовке.</li><li>Короткое вступление: для кого этот материал?</li><li>Конкретные примеры вместо общих обещаний.</li></ul><p>Состояние «Готов» помогает организовать работу. Оно не публикует текст в интернете.</p></aside></div><div class="error-box" id="load-error" hidden><p>Материал недоступен. Проверьте адрес или повторите загрузку.</p><button id="retry-load" type="button">Повторить загрузку</button></div><p id="storage-note" class="muted" role="status"></p><noscript><p>Для редактирования включите JavaScript.</p></noscript></main><footer><span data-site-name>Folio Desk</span> · изменения сохраняются в этом браузере</footer></div></div>
+<dialog id="leave-dialog" aria-labelledby="leave-title"><h2 id="leave-title">Оставить несохранённый текст?</h2><p>Изменения на этой странице ещё не сохранены. Можно остаться и закончить работу.</p><div class="dialog-actions"><button id="stay-here" type="button">Остаться</button><button id="leave-now" class="secondary" type="button">Перейти без сохранения</button></div></dialog>
+</body>
+</html>

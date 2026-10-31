@@ -5,8 +5,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
-const folders = ['10gag','convertit','converter','downloader','filecloud','games-site',
-  'modmanager','speedtest','YouTube','503-1','503-2'];
+const folders = ['bracken','courtyard','steep-hour','spoon-ratio','editorial','fold-studies',
+  'chroma-deck','seven-days','orbit-almanac','slate-status','still-status'];
 const base = path.resolve(process.argv[2] || path.join(__dirname,'../sni-templates'));
 const random = process.argv[3] && path.resolve(process.argv[3]);
 const output = process.env.SELFSTEAL_BROWSER_REPORT;
@@ -22,7 +22,7 @@ async function serve(root) {
       res.writeHead(404); res.end(); return;
     }
     const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8',
-      '.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.webmanifest':'application/manifest+json'};
+      '.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.json':'application/json'};
     res.writeHead(200,{'Content-Type':mime[path.extname(file)] || 'application/octet-stream'});
     res.end(fs.readFileSync(file));
   });
@@ -32,14 +32,46 @@ async function serve(root) {
 }
 
 async function actions(page,folder) {
-  if (folder === '10gag') {
+  if (folder === 'bracken') {
     await page.locator('#leaf-filter').selectOption('needle');
     assert.equal(await page.locator('[data-leaf]:visible').count(),2);
     await page.locator('#leaf-filter').selectOption('all');
-  } else if (folder === 'convertit') {
-    await page.locator('summary').nth(1).click();
-    assert(await page.locator('details').nth(1).getAttribute('open') !== null);
-  } else if (folder === 'converter') {
+  } else if (folder === 'courtyard') {
+    await page.locator('#topic-list .row-link').first().waitFor();
+    await page.locator('#topic-search').fill('неттакойтемы');
+    assert(await page.locator('#topic-empty').isVisible());
+    await page.locator('#clear-topics').click();
+    await page.locator('#topic-filter').selectOption('Мастерская');
+    assert.equal(await page.locator('.topic-card').count(),2);
+    await page.locator('#clear-topics').click();
+    await page.locator('#topic-list .row-link').first().click();
+    await page.locator('#reply-section').waitFor();
+    await page.locator('#add-reply').click();
+    assert.equal(await page.locator('#reply-author').getAttribute('aria-invalid'),'true');
+    await page.locator('#reply-author').fill('Тестовый читатель');
+    await page.locator('#reply-text').fill('<img src=x onerror=alert(1)>');
+    await page.locator('#add-reply').click();
+    assert((await page.locator('.post-body').last().textContent()).includes('<img src=x'));
+    assert.equal(await page.locator('img').count(),0);
+    await page.reload();
+    assert((await page.locator('.post-body').last().textContent()).includes('<img src=x'));
+    await page.locator('.forum-header a[href="/discussions/new.html"]').click();
+    const createdTitle='Тестовая новая тема '+ 'Д'.repeat(100);
+    await page.locator('#topic-title').fill(createdTitle);
+    await page.locator('#topic-author').fill('А'.repeat(40));
+    await page.locator('#topic-text').fill('Достаточно длинное сообщение для новой темы.');
+    await page.locator('.forum-header a[href="/"]').first().click();
+    assert(await page.locator('#leave-dialog').isVisible());
+    await page.locator('#stay-here').click();
+    await page.locator('#create-topic').click();
+    await page.waitForURL('**/discussions/thread.html?*');
+    await page.waitForFunction(title=>document.querySelector('h1')?.textContent===title,createdTitle);
+    assert.equal(await page.locator('h1').textContent(),createdTitle);
+    await page.reload();
+    await page.waitForFunction(title=>document.querySelector('h1')?.textContent===title,createdTitle);
+    assert.equal(await page.locator('h1').textContent(),createdTitle);
+    assert(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)),'Long thread title/author overflow');
+  } else if (folder === 'steep-hour') {
     await page.locator('#tea-kind').selectOption('240');
     assert.equal(await page.locator('#tea-clock').textContent(),'04:00');
     await page.locator('#tea-start').click();
@@ -53,30 +85,53 @@ async function actions(page,folder) {
     await page.evaluate(() => { const now = Date.now(); Date.now = () => now + 300000; });
     await page.waitForFunction(() => document.querySelector('#tea-state').textContent.includes('Чай готов'));
     await page.reload();
-  } else if (folder === 'downloader') {
+  } else if (folder === 'spoon-ratio') {
     await page.locator('#servings').fill('4');
     assert.equal(await page.locator('[data-grams="80"]').textContent(),'160');
     await page.locator('#servings').fill('0');
     assert.equal(await page.locator('#servings').getAttribute('aria-invalid'),'true');
     assert.equal(await page.locator('[data-grams="80"]').textContent(),'160');
     await page.locator('#servings').fill('2');
-  } else if (folder === 'filecloud') {
-    await page.locator('#save-reading').click();
-    assert((await page.locator('#reading-status').textContent()).includes('Добавьте'));
-    await page.locator('#book-name').fill('Тестовая книга');
-    await page.locator('#book-note').fill('<img src=x onerror=alert(1)>');
-    await page.locator('#save-reading').click();
-    await page.reload();
-    assert.equal(await page.locator('#book-name').inputValue(),'Тестовая книга');
-    assert.equal(await page.locator('#book-note').inputValue(),'<img src=x onerror=alert(1)>');
+  } else if (folder === 'editorial') {
+    await page.locator('#article-rows .row-link').first().waitFor();
+    assert.equal(await page.locator('#stat-total').textContent(),'10');
+    await page.locator('#article-next').click();
+    assert.equal(await page.locator('#article-rows tr').count(),2);
+    await page.locator('#article-search').fill('неттакогоматериала');
+    assert(await page.locator('#article-empty').isVisible());
+    await page.locator('#clear-articles').click();
+    await page.locator('#article-filter').selectOption('ready');
+    assert.equal(await page.locator('#article-rows tr').count(),4);
+    await page.locator('#clear-articles').click();
+    await page.locator('.page-heading a').click();
+    await page.locator('#save-article').click();
+    assert.equal(await page.locator('#article-title').getAttribute('aria-invalid'),'true');
+    await page.locator('#article-title').fill('Материал из проверки');
+    await page.locator('#article-text').fill('<img src=x onerror=alert(1)> Безопасный текст материала.');
+    await page.locator('#article-status').selectOption('ready');
+    await page.locator('#back-to-library').click();
+    assert(await page.locator('#leave-dialog').isVisible());
+    await page.keyboard.press('Escape');
+    await page.locator('#save-article').click();
+    await page.waitForURL('**/?saved=1');
+    assert.equal(await page.locator('#stat-total').textContent(),'11');
+    await page.locator('#article-search').fill('Материал из проверки');
+    await page.locator('#article-rows .row-link').click();
+    await page.waitForFunction(()=>!document.querySelector('#editor-fields').disabled);
+    assert((await page.locator('#article-text').inputValue()).includes('<img src=x'));
     assert.equal(await page.locator('img').count(),0);
-  } else if (folder === 'games-site') {
+    await page.locator('#article-title').fill('Обновлённый материал');
+    await page.locator('#save-article').click();
+    await page.waitForURL('**/?*');
+    await page.locator('#clear-articles').click();
+    assert((await page.locator('#article-rows').textContent()).includes('Обновлённый материал'));
+  } else if (folder === 'fold-studies') {
     assert(await page.locator('#fold-prev').isDisabled());
     for (let i=0;i<4;i++) await page.locator('#fold-next').click();
     assert(await page.locator('#fold-next').isDisabled());
     assert.equal(await page.locator('#fold-position').textContent(),'Шаг 5 из 5');
     for (let i=0;i<4;i++) await page.locator('#fold-prev').click();
-  } else if (folder === 'modmanager') {
+  } else if (folder === 'chroma-deck') {
     await page.locator('#ink-color').evaluate(el => { el.value='#000000'; el.dispatchEvent(new Event('input',{bubbles:true})); });
     await page.locator('#paper-color').evaluate(el => { el.value='#ffffff'; el.dispatchEvent(new Event('input',{bubbles:true})); });
     assert.equal(await page.locator('#contrast-ratio').textContent(),'21.00 : 1');
@@ -85,7 +140,7 @@ async function actions(page,folder) {
     await page.locator('#paper-color').evaluate(el => { el.value='#ffffff'; el.dispatchEvent(new Event('input',{bubbles:true})); });
     assert.equal(await page.locator('#contrast-ratio').textContent(),'1.00 : 1');
     await page.reload();
-  } else if (folder === 'speedtest') {
+  } else if (folder === 'seven-days') {
     await page.locator('#week-goal').fill('Десять страниц');
     await page.locator('#week-goal').blur();
     await page.locator('[data-day="0"]').click();
@@ -95,7 +150,7 @@ async function actions(page,folder) {
     assert.equal(await page.locator('[data-day="0"]').getAttribute('aria-pressed'),'true');
     for (let i=1;i<7;i++) await page.locator(`[data-day="${i}"]`).click();
     assert.equal(await page.locator('#week-total').textContent(),'7 из 7');
-  } else if (folder === 'YouTube') {
+  } else if (folder === 'orbit-almanac') {
     for (const [i,name] of ['Меркурий','Венера','Земля','Марс'].entries()) {
       await page.locator(`[data-planet="${i}"]`).click();
       assert.equal(await page.locator('#planet-name').textContent(),name);
@@ -114,7 +169,7 @@ async function actions(page,folder) {
     await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('blocked'))}}));
     await page.locator('[data-copy-reference]').click();
     assert((await page.locator('[data-copy-result]').textContent()).includes('вручную'));
-    await page.locator(folder === '503-1' ? '#pause-retry' : '#still-refresh').click();
+    await page.locator(folder === 'slate-status' ? '#pause-retry' : '#still-refresh').click();
     await page.waitForLoadState('networkidle');
     assert(await page.locator('h1').isVisible());
     const nextId=await page.locator('[data-request-id]').textContent();
@@ -130,7 +185,7 @@ async function actions(page,folder) {
 (async () => {
   browser = await chromium.launch({channel:'chrome',headless:true});
   for (const [mode,root] of [['base',base], ...(random ? [['randomized',random]] : [])]) {
-    for (const folder of folders) {
+    for (const folder of folders.filter(name=>!process.env.SELFSTEAL_BROWSER_ONLY||process.env.SELFSTEAL_BROWSER_ONLY===name)) {
       const url = await serve(path.join(root,folder));
       const context = await browser.newContext({reducedMotion:'reduce',viewport:{width:1366,height:900}});
       const calls = [], errors = [], missing = [];
@@ -144,8 +199,9 @@ async function actions(page,folder) {
       page.on('pageerror',err => errors.push(err.message));
       page.on('response',res => { if (res.status() >= 400) missing.push(res.url()); });
       await page.goto(url,{waitUntil:'networkidle'});
-      assert.equal(calls.length,mode==='base' && folder.startsWith('503-') ? 1 : 0,`${mode}/${folder}: IP mode`);
-      if (folder.startsWith('503-')) assert.equal(await page.locator('[data-address]').textContent(),mode==='base' ? '203.0.113.42' : 'Не определён');
+      assert(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)),`${folder}: overflow after local edits`);
+      assert.equal(calls.length,mode==='base' && folder.endsWith('-status') ? 1 : 0,`${mode}/${folder}: IP mode`);
+      if (folder.endsWith('-status')) assert.equal(await page.locator('[data-address]').textContent(),mode==='base' ? '203.0.113.42' : 'Не определён');
       const views=[];
       for (const width of [1366,768,390,320]) {
         await page.setViewportSize({width,height:900});
@@ -171,28 +227,59 @@ async function actions(page,folder) {
       assert.deepEqual(errors,[],`${mode}/${folder}: browser errors`);
       assert.deepEqual(missing,[],`${mode}/${folder}: missing resources`);
       report.push({folder,mode,views,errors,missing});
-      await context.close();
       const noJS = await browser.newContext({javaScriptEnabled:false});
       const staticPage = await noJS.newPage(); await staticPage.goto(url);
       assert(await staticPage.locator('h1').isVisible());
       assert((await staticPage.locator('main').innerText()).length > 80);
       await noJS.close();
+      if (['courtyard','editorial'].includes(folder)) {
+        const paths=folder==='editorial'?['/workspace/editor.html']:['/discussions/new.html','/discussions/thread.html?id=conversation-1'];
+        for(const route of paths){
+          await page.goto(url+route,{waitUntil:'networkidle'});
+          const routeViews=[];
+          for(const width of [1366,768,390,320]){
+            await page.setViewportSize({width,height:900});
+            assert(await page.locator('h1').isVisible(),`${folder}/${route}: heading`);
+            const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+            assert(!overflow,`${mode}/${folder}/${route}/${width}: horizontal overflow`);
+            if(pictures&&[1366,390].includes(width))await page.screenshot({path:path.join(pictures,`${mode}-${folder}-${route.includes('thread')?'thread':route.includes('new')?'new':'editor'}-${width}.png`),fullPage:true});
+            routeViews.push({width,overflow});
+          }
+          report.push({folder,mode,route,views:routeViews});
+        }
+        const broken=await browser.newContext();
+        await broken.route('**/records/*.json',route=>route.fulfill({status:503,body:'Unavailable'}));
+        const failure=await broken.newPage();await failure.goto(url,{waitUntil:'networkidle'});
+        assert(await failure.locator('#load-error').isVisible());
+        await broken.unroute('**/records/*.json');await failure.locator('#retry-load').click();
+        await failure.waitForFunction(()=>document.querySelectorAll('#topic-list .topic-card, #article-rows tr').length>0);
+        await broken.close();
+        const corrupt=await browser.newContext();
+        await corrupt.addInitScript(()=>{localStorage.setItem('practice-topics','[{"id":"bad","title":"Bad topic","category":"Идеи","posts":[{"author":"","text":"text","date":"2026-10-25"}]}]');localStorage.setItem('folio-desk-records','{broken');});
+        const recovered=await corrupt.newPage();await recovered.goto(url,{waitUntil:'networkidle'});
+        assert((await recovered.locator('#storage-note').textContent()).includes('недоступны'));
+        assert(await recovered.locator(folder==='editorial'?'#article-rows .row-link':'#topic-list .row-link').first().isVisible());
+        await corrupt.close();
+      }
       // Verify denied storage and failed network independently of the happy path.
-      if (['filecloud','speedtest'].includes(folder)) {
+      if (['editorial','seven-days'].includes(folder)) {
         const blocked = await browser.newContext();
         await blocked.addInitScript(() => { Object.defineProperty(window,'localStorage',{get(){ throw new DOMException('Unavailable','SecurityError'); }}); });
         const offline = await blocked.newPage(); await offline.goto(url);
-        if (folder==='filecloud') { await offline.locator('#book-note').fill('Сохраните эту мысль'); await offline.locator('#save-reading').click(); assert((await offline.locator('#reading-status').textContent()).includes('Не удалось сохранить')); }
+        if (folder==='editorial') { await offline.goto(url+'/workspace/editor.html'); await offline.locator('#article-title').fill('Текст при отказе'); await offline.locator('#article-text').fill('Достаточно длинный текст материала.'); await offline.locator('#save-article').click(); assert((await offline.locator('#editor-message').textContent()).includes('Не удалось сохранить')); }
         else { await offline.locator('[data-day="0"]').click(); assert((await offline.locator('#week-feedback').textContent()).includes('Не удалось сохранить')); }
         await blocked.close();
       }
-      if (folder.startsWith('503-') && mode==='base') {
+      if (folder.endsWith('-status') && mode==='base') {
         const failed = await browser.newContext();
         await failed.route('https://api.ipify.org/**',route => route.abort());
         const fallback = await failed.newPage(); await fallback.goto(url,{waitUntil:'networkidle'});
         assert.equal(await fallback.locator('[data-address]').textContent(),'Не определён');
         await failed.close();
       }
+      assert.deepEqual(errors,[],`${mode}/${folder}: browser errors on subpages`);
+      assert.deepEqual(missing,[],`${mode}/${folder}: missing subpage resources`);
+      await context.close();
       console.log(`PASS: ${mode}/${folder}: four widths, interactions, keyboard, no-JS and failure states`);
     }
   }

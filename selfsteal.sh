@@ -7,9 +7,9 @@
 # ║  Author:  DigneZzZ (https://github.com/DigneZzZ)               ║
 # ║  License: MIT                                                  ║
 # ╚════════════════════════════════════════════════════════════════╝
-# VERSION=2.13.0
+# VERSION=2.14.0
 
-SCRIPT_VERSION="2.13.0"
+SCRIPT_VERSION="2.14.0"
 
 # Handle @ prefix for consistency with other scripts
 if [ $# -gt 0 ] && [ "$1" = "@" ]; then
@@ -113,25 +113,25 @@ DEFAULT_PORT="9443"
 
 # Template Registry (id:folder:emoji:name)
 declare -A TEMPLATE_FOLDERS=(
-    ["1"]="10gag"
-    ["2"]="convertit"
-    ["3"]="converter"
-    ["4"]="downloader"
-    ["5"]="filecloud"
-    ["6"]="games-site"
-    ["7"]="modmanager"
-    ["8"]="speedtest"
-    ["9"]="YouTube"
-    ["10"]="503-1"
-    ["11"]="503-2"
+    ["1"]="bracken"
+    ["2"]="courtyard"
+    ["3"]="steep-hour"
+    ["4"]="spoon-ratio"
+    ["5"]="editorial"
+    ["6"]="fold-studies"
+    ["7"]="chroma-deck"
+    ["8"]="seven-days"
+    ["9"]="orbit-almanac"
+    ["10"]="slate-status"
+    ["11"]="still-status"
 )
 
 declare -A TEMPLATE_NAMES=(
     ["1"]="Bracken Fieldbook - Полевой справочник"
-    ["2"]="Bayline Notes - Архитектурные заметки"
+    ["2"]="Клуб Практика - Форум"
     ["3"]="Steep Hour - Чайный таймер"
     ["4"]="Spoon Ratio - Пересчёт рецепта"
-    ["5"]="Margin Shelf - Книжные заметки"
+    ["5"]="Folio Desk - Редакционный кабинет"
     ["6"]="Fold Studies - Бумажный кораблик"
     ["7"]="Chroma Deck - Подбор цветов"
     ["8"]="Seven Small Days - Недельный трекер"
@@ -3419,7 +3419,7 @@ install_command() {
     
     # List of available templates
     local templates=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11")
-    local template_names=("Bracken Fieldbook" "Bayline Notes" "Steep Hour" "Spoon Ratio" "Margin Shelf" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
+    local template_names=("Bracken Fieldbook" "Клуб Практика" "Steep Hour" "Spoon Ratio" "Folio Desk" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
     
     local selected_template=""
     local selected_name=""
@@ -3741,39 +3741,59 @@ randomize_template() {
     local description="${descriptions[RANDOM % ${#descriptions[@]}]}"
     local hue=$((RANDOM % 360)) token
     token=$(od -An -tx1 -N8 /dev/urandom | tr -d ' \n')
-    local file paper_hex accent_hex red green blue dark paper ink accent wash encoded_paper encoded_accent
-    # Presentation changes apply to the complete HTML documents only. Keep the
-    # installer, download order, ID generation and retry behavior unchanged.
+    local file palette paper_hex red green blue dark=false paper ink accent wash
+    palette=$(find "$dir" -type f -iname '*.css' -print -quit)
+    paper_hex=$(sed -n 's/.*--paper:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$palette" | head -1)
+    if [[ "$paper_hex" =~ ^[a-fA-F0-9]{6}$ ]]; then
+        red=$((16#${paper_hex:0:2})); green=$((16#${paper_hex:2:2})); blue=$((16#${paper_hex:4:2}))
+        if [ $((red + green + blue)) -lt 300 ]; then dark=true; fi
+    elif grep -q -- '--paper:hsl([^;]*,12%)' "$palette"; then dark=true
+    fi
+    if [ "$dark" = true ]; then
+        paper="hsl($hue,22%,12%)"; ink="hsl($hue,18%,94%)"
+        accent="hsl($hue,42%,76%)"; wash="hsl($hue,22%,20%)"
+    else
+        paper="hsl($hue,24%,96%)"; ink="hsl($hue,24%,18%)"
+        accent="hsl($hue,36%,30%)"; wash="hsl($hue,24%,88%)"
+    fi
     while IFS= read -r -d '' file; do
-        paper_hex=$(sed -n 's/^[[:space:]]*--paper:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$file" | head -1)
-        accent_hex=$(sed -n 's/^[[:space:]]*--accent:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$file" | head -1)
-        dark=false
-        if [[ "$paper_hex" =~ ^[a-fA-F0-9]{6}$ ]]; then
-            red=$((16#${paper_hex:0:2})); green=$((16#${paper_hex:2:2})); blue=$((16#${paper_hex:4:2}))
-            if [ $((red + green + blue)) -lt 300 ]; then dark=true; fi
-        elif grep -q -- '--paper:hsl([^;]*,12%)' "$file"; then dark=true
-        fi
-        if [ "$dark" = true ]; then
-            paper="hsl($hue,22%,12%)"; ink="hsl($hue,18%,94%)"
-            accent="hsl($hue,42%,76%)"; wash="hsl($hue,22%,20%)"
-        else
-            paper="hsl($hue,24%,96%)"; ink="hsl($hue,24%,18%)"
-            accent="hsl($hue,36%,30%)"; wash="hsl($hue,24%,88%)"
-        fi
         sed -i "s#<title>[^<]*</title>#<title>${brand}</title>#; s#\(name=\"description\" content=\"\)[^\"]*#\1${description}#; s#\(property=\"og:description\" content=\"\)[^\"]*#\1${description}#; s#\(property=\"og:title\" content=\"\)[^\"]*#\1${brand}#; s#\(name=\"application-name\" content=\"\)[^\"]*#\1${brand}#; s#\(property=\"og:site_name\" content=\"\)[^\"]*#\1${brand}#; s#\(<span data-site-name>\)[^<]*#\1${brand}#g" "$file"
-        sed -i "s#--paper:[^;}]*#--paper:${paper}#g; s#--ink:[^;}]*#--ink:${ink}#g; s#--accent:[^;}]*#--accent:${accent}#g; s#--wash:[^;}]*#--wash:${wash}#g; s#\(name=\"theme-color\" content=\"\)[^\"]*#\1${paper}#" "$file"
-        # Optional IP lookup follows the original flag contract: ordinary mode
-        # disables it; --no-randomize bypasses this function and keeps the URL.
-        sed -i "s#https://api\.ipify\.org?format=json##g" "$file"
-        # Recolor each page's own embedded icon; preserve its original geometry.
-        encoded_paper=$(printf '%s' "$paper" | sed 's/%/%25/g; s/(/%28/g; s/)/%29/g; s/,/%2C/g')
-        encoded_accent=$(printf '%s' "$accent" | sed 's/%/%25/g; s/(/%28/g; s/)/%29/g; s/,/%2C/g')
-        if [ -n "$paper_hex" ]; then sed -i "s#%23${paper_hex}#${encoded_paper}#g" "$file"; fi
-        if [ -n "$accent_hex" ]; then sed -i "s#%23${accent_hex}#${encoded_accent}#g" "$file"; fi
+        sed -i "s#\(name=\"theme-color\" content=\"\)[^\"]*#\1${paper}#" "$file"
+        sed -i -E "s#((href|src)=\"[^\"]*\.(css|js|svg))(\?[^\"]*)?\"#\1?v=${token}\"#g" "$file"
         sed -i "s#</head>#<meta name=\"application-version\" content=\"${token}\"></head>#" "$file"
     done < <(find "$dir" -type f -iname '*.html' -print0)
+    while IFS= read -r -d '' file; do
+        sed -i "s#--paper:[^;}]*#--paper:${paper}#g; s#--ink:[^;}]*#--ink:${ink}#g; s#--accent:[^;}]*#--accent:${accent}#g; s#--wash:[^;}]*#--wash:${wash}#g" "$file"
+    done < <(find "$dir" -type f -iname '*.css' -print0)
+    while IFS= read -r -d '' file; do
+        sed -i "s#https://api\.ipify\.org?format=json##g" "$file"
+    done < <(find "$dir" -type f -iname '*.js' -print0)
+    while IFS= read -r -d '' file; do
+        sed -i "s|fill=\"#[a-fA-F0-9]\{6\}\"|fill=\"${paper}\"|g; s|color=\"#[a-fA-F0-9]\{6\}\"|color=\"${accent}\"|g; s|stroke=\"#[a-fA-F0-9]\{6\}\"|stroke=\"${accent}\"|g" "$file"
+    done < <(find "$dir" -type f -iname '*.svg' -print0)
+    while IFS= read -r -d '' file; do
+        sed -i "s#\(\"name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${brand}\"#g; s#\(\"short_name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${brand}\"#g; s#\(\"description\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${description}\"#g; s#\(\"background_color\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${paper}\"#g; s#\(\"theme_color\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${paper}\"#g" "$file"
+    done < <(find "$dir" -type f -iname '*.webmanifest' -print0)
     log_success "Presentation prepared: $brand"
     return 0
+}
+
+validate_template_files() {
+    local dir="$1" file
+    [ -s "$dir/index.html" ] && [ -s "$dir/files.list" ] || return 1
+    grep -qx 'index.html' "$dir/files.list" || return 1
+    grep -qi '<!doctype html' "$dir/index.html" || return 1
+    while IFS= read -r file || [ -n "$file" ]; do
+        file="${file%$'\r'}"
+        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
+        [ -s "$dir/$file" ] || return 1
+        case "$file" in
+            *.js|*.css)
+                if head -c 256 "$dir/$file" | grep -qiE '<!doctype|<html'; then return 1; fi
+                ;;
+        esac
+    done < "$dir/files.list"
 }
 
 download_template() {
@@ -3800,19 +3820,22 @@ download_template() {
     cd "$HTML_DIR" || return 1
     
     # Пробуем разные методы загрузки
-    if download_via_git "$template_folder"; then
+    if download_via_git "$template_folder" && validate_template_files "$HTML_DIR"; then
+        rm -f -- "$HTML_DIR/files.list"
         [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
         setup_file_permissions
         return 0
     fi
     
-    if download_via_api "$template_folder"; then
+    if download_via_api "$template_folder" && validate_template_files "$HTML_DIR"; then
+        rm -f -- "$HTML_DIR/files.list"
         [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
         setup_file_permissions
         return 0
     fi
     
-    if download_via_curl_fallback "$template_folder"; then
+    if download_via_curl_fallback "$template_folder" && validate_template_files "$HTML_DIR"; then
+        rm -f -- "$HTML_DIR/files.list"
         [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
         setup_file_permissions
         return 0
@@ -3872,9 +3895,9 @@ download_via_api() {
     
     local api_url="https://api.github.com/repos/ayrelia1/remnawave-scripts/git/trees/main?recursive=1"
     local tree_data
-    tree_data=$(curl -s "$api_url" 2>/dev/null)
+    tree_data=$(curl -fsSL --connect-timeout 10 --max-time 60 "$api_url" 2>/dev/null) || return 1
     
-    if [ -z "$tree_data" ] || ! echo "$tree_data" | grep -q '"path"'; then
+    if [[ "$tree_data" != *'"path"'* ]]; then
         return 1
     fi
     
@@ -3882,7 +3905,16 @@ download_via_api() {
     echo -e "${WHITE}📥 Downloading files...${NC}"
     
     local template_files
-    template_files=$(echo "$tree_data" | grep -o '"path":[^,]*' | sed 's/"path":"//' | sed 's/"//' | grep "^sni-templates/$template_folder/")
+    template_files=$(printf '%s' "$tree_data" | awk '
+        BEGIN { RS = "}" }
+        /"type"[[:space:]]*:[[:space:]]*"blob"/ {
+            if (match($0, /"path"[[:space:]]*:[[:space:]]*"[^"]*"/)) {
+                path = substr($0, RSTART, RLENGTH)
+                sub(/^"path"[[:space:]]*:[[:space:]]*"/, "", path)
+                sub(/"$/, "", path)
+                print path
+            }
+        }' | grep "^sni-templates/$template_folder/" || true)
     
     local files_downloaded=0
     
@@ -3891,15 +3923,19 @@ download_via_api() {
             [ -z "$file_path" ] && continue
             
             local relative_path="${file_path#sni-templates/$template_folder/}"
+            [[ "$relative_path" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+            case "/$relative_path/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
             local file_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/$file_path"
             
             local file_dir
             file_dir=$(dirname "$relative_path")
             [ "$file_dir" != "." ] && create_dir_safe "$file_dir"
             
-            if wget -q "$file_url" -O "$relative_path" 2>/dev/null; then
+            if wget -q --timeout=30 --tries=2 "$file_url" -O "$relative_path" 2>/dev/null; then
                 echo -e "${GREEN}   ✅ $relative_path${NC}"
-                ((files_downloaded++))
+                files_downloaded=$((files_downloaded + 1))
+            else
+                return 1
             fi
         done <<< "$template_files"
         
@@ -3914,45 +3950,20 @@ download_via_api() {
 
 # Fallback download via curl
 download_via_curl_fallback() {
-    local template_folder="$1"
-    
-    echo -e "${WHITE}📦 Using curl fallback method...${NC}"
-    
+    local template_folder="$1" file
     local base_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/sni-templates/$template_folder"
-    local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png")
-    local asset_files=("assets/style.css" "assets/script.js" "assets/main.js")
-    
     local files_downloaded=0
-    
-    echo -e "${WHITE}📥 Downloading common files...${NC}"
-    
-    for file in "${common_files[@]}"; do
-        local url="$base_url/$file"
-        if curl -fsSL "$url" -o "$file" 2>/dev/null; then
-            echo -e "${GREEN}   ✅ $file${NC}"
-            ((files_downloaded++))
-        fi
-    done
-    
-    create_dir_safe "assets"
-    echo -e "${WHITE}📁 Downloading assets...${NC}"
-    
-    for file in "${asset_files[@]}"; do
-        local url="$base_url/$file"
-        local filename
-        filename=$(basename "$file")
-        if curl -fsSL "$url" -o "assets/$filename" 2>/dev/null; then
-            echo -e "${GREEN}   ✅ assets/$filename${NC}"
-            ((files_downloaded++))
-        fi
-    done
-    
-    if [ $files_downloaded -gt 0 ]; then
-        show_download_summary "$files_downloaded" "${TEMPLATE_NAMES[$1]:-Template}"
-        return 0
-    fi
-    
-    return 1
+    curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/files.list" -o files.list || return 1
+    while IFS= read -r file || [ -n "$file" ]; do
+        file="${file%$'\r'}"
+        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
+        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
+        create_dir_safe "$(dirname "$file")" || return 1
+        curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/$file" -o "$file" || return 1
+        files_downloaded=$((files_downloaded + 1))
+    done < files.list
+    validate_template_files "$HTML_DIR" || return 1
+    show_download_summary "$files_downloaded" "$template_folder"
 }
 
 # Функция для установки правильных прав доступа

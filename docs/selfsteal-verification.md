@@ -1,3 +1,52 @@
+# Selfsteal 2.14.0 verification
+
+## 2026-10-31 forum, editorial cabinet and separate resources
+
+This section supersedes the single-file distribution notes below. All eleven
+repository directories are renamed, preserving numeric IDs. Each site has
+separate HTML/CSS/JS/SVG/manifest resources and a checked `files.list`. There are
+14 HTML pages, with nested forum/editorial routes and two local JSON datasets.
+
+Template 2 is a forum with search, category filters, paginated topic list, thread,
+new topic, replies and local persistence. Template 5 is an editorial cabinet with
+derived counts, filtered/paginated material list and an editor. User input stays
+literal, invalid fields receive focus, write failures preserve the form, and an
+app-owned dialog handles dirty in-app navigation. No server admin, login, remote
+publication or shared multi-user forum is added. Both 503 behaviors are retained.
+
+Verified:
+
+- Shell syntax, all external JS syntax, JSON, HTML/manifest references, exact
+  inventories, and source scans for donor paths/runtime markers.
+- 66 fixture installations: all 11 sites through actual git/API/curl functions
+  in both modes. Full nested asset graphs are compared, inventories are removed,
+  pretty API JSON works and a missing required stylesheet rejects installation.
+- All existing repository suites plus the updated template suite.
+- Chrome: 14 routes × 2 modes × 4 widths (1366, 768, 390, 320), 112 viewport
+  checks. App flows cover create/edit material, create topic/reply, persistence,
+  filtering, pagination, unsafe strings, long title/author, unsaved navigation,
+  seed JSON failure/retry, corrupted/denied storage, keyboard and reduced motion.
+- Both 503s: references, IP success/failure, manual/automatic retry, countdown
+  and clipboard success/failure remain covered.
+
+The installer contract test permits directory/display registries, presentation
+mutation, validation and asset transports. Domain/port prompts, CLI parsing,
+menus, service management, Caddy/Nginx configuration and method order still match
+the original fork baseline. Transport validation is necessary for separate files;
+no new installer questions or server settings are introduced.
+
+The static UI auditor has 36 actionless-button findings because it only detects
+inline event attributes. Scripts bind actual controls through addEventListener;
+the browser suite exercises reachable actions and native dialogs. Raw findings
+and the manual review are preserved in `selfsteal-ui-audit.json`; no clean strict
+audit is claimed. Canonical ownership is in UX-CONTRACT.md and DESIGN.md.
+
+No dependencies were installed. No live server installation, TLS probe or TSPU
+recognition experiment was run. ShellCheck and the optional DESIGN.md CLI remain
+unavailable. Rollback for this change is commit `cd86af3`.
+
+## Historical 2.13.0 verification
+
 # Selfsteal 2.13.0 verification
 
 Verified locally on 2026-10-31. No server installation or deployment was run.

@@ -1,0 +1,17 @@
+{
+  "name": "Slate Workshop",
+  "short_name": "Slate",
+  "description": "Страница временной недоступности. Попробуйте открыть сайт немного позже.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#f0f2f5",
+  "background_color": "#f0f2f5",
+  "icons": [
+    {
+      "src": "/identity/pause-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

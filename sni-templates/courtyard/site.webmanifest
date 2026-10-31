@@ -1,0 +1,17 @@
+{
+  "name": "Клуб Практика",
+  "short_name": "Клуб Практика",
+  "description": "Обсуждаем мастерскую, дом, растения и небольшие творческие проекты.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#f6f4f8",
+  "background_color": "#f6f4f8",
+  "icons": [
+    {
+      "src": "/identity/club-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
