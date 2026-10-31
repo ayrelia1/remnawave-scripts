@@ -1,19 +1,329 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<link rel="manifest" href="/site.webmanifest" />
-    <title>Meme Flow - Endless Fun</title>
-    <meta name="description" content="Your daily dose of laughter with endless memes, GIFs, and viral content" />
-    <script type="module" crossorigin src="/assets/script.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bracken — заметки о деревьях</title>
+<meta name="description" content="Небольшой полевой справочник: листья, кора и сезонные приметы знакомых деревьев.">
+<meta name="application-name" content="Bracken Fieldbook">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bracken — заметки о деревьях">
+<meta property="og:description" content="Небольшой полевой справочник: листья, кора и сезонные приметы знакомых деревьев.">
+<meta property="og:site_name" content="Bracken Fieldbook">
+<meta name="theme-color" content="#f1f5ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23f1f5ec%22%2F%3E%3Cg%20color%3D%22%23416b43%22%3E%3Cpath%20d%3D%22M20%2049C13%2025%2030%2012%2047%2013C50%2034%2040%2049%2020%2049ZM19%2052L43%2020%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%224%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<style>
+:root{
+  --paper:#f1f5ec;
+  --ink:#22382b;
+  --accent:#416b43;
+  --wash:#dce7d5
+}
+
+
+*{
+  box-sizing:border-box
+}
+html{
+  scroll-behavior:smooth;
+  scrollbar-color:var(--accent) var(--wash);
+  scrollbar-width:auto;
+  scrollbar-gutter:stable
+}
+body{
+  margin:0 auto;
+  padding:0 28px;
+  max-width:1180px;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 'Segoe UI',Arial,sans-serif
+}
+a{
+  color:inherit;
+  text-underline-offset:4px
+}
+a:hover{
+  color:var(--accent)
+}
+h1,h2,h3{
+  line-height:1.2
+}
+p{
+  margin:.8rem 0 1.2rem
+}
+img,svg{
+  max-width:100%
+}
+button,input,select,textarea{
+  font:inherit;
+  color:var(--ink)
+}
+button,.action{
+  border:1px solid transparent;
+  border-radius:6px;
+  padding:.8rem 1.15rem;
+  background:var(--accent);
+  color:var(--paper);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer
+}
+button:hover,.action:hover{
+  filter:brightness(1.12);
+  color:var(--paper)
+}
+button:active,.action:active{
+  transform:translateY(1px)
+}
+button:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none
+}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--accent)
+}
+input,select,textarea{
+  max-width:100%;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:.7rem;
+  background:var(--paper)
+}
+textarea{
+  resize:vertical;
+  min-height:140px
+}
+select,summary{
+  cursor:pointer
+}
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:4px
+}
+footer{
+  padding:1.5rem 0;
+  margin-top:2rem;
+  border-top:1px solid var(--accent);
+  font-size:.8rem
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--accent)
+}
+.lead{
+  font-size:1.12rem;
+  line-height:1.7
+}
+.hint{
+  font-size:.85rem
+}
+.feedback{
+  min-height:3.4em;
+  font-size:.85rem;
+  line-height:1.5
+}
+[hidden]{
+  display:none!important
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:1rem;
+  background:var(--paper);
+  color:var(--ink);
+  z-index:10;
+  padding:.6rem
+}
+.skip:focus{
+  top:.5rem
+}
+::-webkit-scrollbar{
+  width:12px;
+  height:12px
+}
+::-webkit-scrollbar-track{
+  background:var(--wash)
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border:3px solid var(--wash);
+  border-radius:8px
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--ink)
+}
+::-webkit-scrollbar-thumb:active{
+  background:var(--ink)
+}
+@media(forced-colors:active){
+  *{
+  scrollbar-color:auto
+}
+
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto
+}
+*,*:before,*:after{
+  animation:none!important;
+  transition:none!important
+}
+
+}
+@media(max-width:650px){
+  body{
+  padding:0 20px
+}
+footer{
+  margin-top:1rem
+}
+.lead{
+  font-size:1rem
+}
+
+}
+
+
+.field-head{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:center;
+  padding:2rem 0;
+  border-bottom:2px solid var(--ink)
+}
+.field-head a{
+  text-decoration:none
+}
+.field-head span{
+  display:block;
+  font:11px Consolas,monospace;
+  letter-spacing:.2em
+}
+.opening{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  align-items:center;
+  gap:3rem;
+  padding:4rem 0
+}
+.opening h1{
+  font:clamp(2.8rem,5.5vw,5.7rem)/1.04 Georgia,serif;
+  margin:1rem 0
+}
+.leaf-print{
+  margin:0;
+  background:var(--wash);
+  border-radius:50% 50% 4px 4px;
+  padding:1rem 2rem;
+  color:var(--accent);
+  transform:rotate(4deg)
+}
+.leaf-print svg{
+  width:100%;
+  height:320px
+}
+.leaf-print figcaption{
+  font:12px Consolas,monospace;
+  text-align:center;
+  padding:.5rem
+}
+.section-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap
+}
+.specimens{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--accent);
+  border:1px solid var(--accent)
+}
+.specimens article{
+  padding:1.6rem;
+  background:var(--paper)
+}
+.specimens h3{
+  font:1.8rem Georgia,serif;
+  margin:.6rem 0
+}
+.botanical{
+  font:12px Consolas,monospace;
+  color:var(--accent)
+}
+.specimens small{
+  display:block;
+  border-top:1px solid var(--wash);
+  padding-top:1rem
+}
+.field-note{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:2rem;
+  padding:2rem 0;
+  margin-top:2rem
+}
+@media(max-width:650px){
+  .opening{
+  grid-template-columns:1fr;
+  padding:2rem 0
+}
+.leaf-print{
+  max-width:270px;
+  justify-self:center
+}
+.specimens{
+  grid-template-columns:1fr
+}
+.field-note{
+  display:block
+}
+.field-head{
+  font-size:13px
+}
+
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#content">К содержимому</a>
+<header class="field-head"><a href="/"><span data-site-name>Bracken Fieldbook</span></a><a href="#specimens">Открыть справочник ↗</a></header>
+<main id="content" tabindex="-1">
+<section class="opening"><div><p class="eyebrow">Внимательнее к тому, что рядом</p><h1>У каждого дерева<br>свой почерк.</h1><p class="lead">Шесть знакомых видов. Присмотритесь к краю листа, проведите взглядом по стволу — и обычная прогулка станет маленькой экспедицией.</p><a class="action" href="#specimens">Найти знакомый лист ↓</a></div>
+<figure class="leaf-print"><svg viewBox="0 0 300 330" role="img" aria-label="Рисунок листа с прожилками"><path d="M152 292C20 225 30 92 154 24C282 95 281 224 152 292Z" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="3"><path d="M152 315V55M152 130L95 88M152 177L70 133M152 220L77 180M152 130L211 88M152 177L235 133M152 220L226 180"/></g></svg><figcaption>Betula · форма и ритм</figcaption></figure></section>
+<section id="specimens"><div class="section-top"><h2>Полевой указатель</h2><label>Форма листа <select id="leaf-filter"><option value="all">Все деревья</option><option value="broad">Широкие листья</option><option value="needle">Хвоя</option></select></label></div><p id="leaf-count" class="hint" role="status">В справочнике 6 деревьев</p>
+<div class="specimens">
+<article data-leaf="broad"><span class="botanical">Betula pendula</span><h3>Берёза</h3><p>Треугольный лист с зубчатым краем. Белая кора темнеет у основания старых стволов.</p><small>Ищите: тонкие повисающие ветви</small></article>
+<article data-leaf="broad"><span class="botanical">Quercus robur</span><h3>Дуб</h3><p>Округлые лопасти листа и глубокие борозды коры. Жёлуди сидят на длинных плодоножках.</p><small>Ищите: плотную, широкую крону</small></article>
+<article data-leaf="needle"><span class="botanical">Pinus sylvestris</span><h3>Сосна</h3><p>Хвоинки собраны по две. Верхняя часть ствола часто окрашена в тёплый медный цвет.</p><small>Ищите: небольшие овальные шишки</small></article>
+<article data-leaf="broad"><span class="botanical">Acer platanoides</span><h3>Клён</h3><p>Пять острых лопастей напоминают раскрытую ладонь. Семена расходятся парой крылышек.</p><small>Ищите: длинный черешок листа</small></article>
+<article data-leaf="needle"><span class="botanical">Picea abies</span><h3>Ель</h3><p>Короткие отдельные хвоинки окружают веточку. Длинные шишки свисают вниз.</p><small>Ищите: ярусы горизонтальных ветвей</small></article>
+<article data-leaf="broad"><span class="botanical">Tilia cordata</span><h3>Липа</h3><p>Сердцевидный лист слегка несимметричен. У соцветия есть длинный светлый прицветник.</p><small>Ищите: мелкие зубцы по краю</small></article></div></section>
+<aside class="field-note"><h2>Оставьте находку на ветке</h2><p>Для заметки достаточно рисунка или фотографии. Рассмотрите лист с двух сторон и запишите место наблюдения.</p></aside></main><footer><span data-site-name>Bracken Fieldbook</span> · наблюдать, замечать, запоминать</footer>
+<script>
+'use strict';
+
+const filter = document.querySelector('#leaf-filter');
+filter.addEventListener('change', () => {
+  let count = 0;
+  document.querySelectorAll('[data-leaf]').forEach(card => {
+    card.hidden = filter.value !== 'all' && card.dataset.leaf !== filter.value;
+    if (!card.hidden) count++;
+  });
+  document.querySelector('#leaf-count').textContent = `Показано деревьев: ${count}`;
+});
+</script>
+</body>
 </html>

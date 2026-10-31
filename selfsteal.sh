@@ -7,9 +7,9 @@
 # ║  Author:  DigneZzZ (https://github.com/DigneZzZ)               ║
 # ║  License: MIT                                                  ║
 # ╚════════════════════════════════════════════════════════════════╝
-# VERSION=2.11.1
+# VERSION=2.13.0
 
-SCRIPT_VERSION="2.11.1"
+SCRIPT_VERSION="2.13.0"
 
 # Handle @ prefix for consistency with other scripts
 if [ $# -gt 0 ] && [ "$1" = "@" ]; then
@@ -18,7 +18,7 @@ fi
 
 # Debug mode - set via --debug flag
 DEBUG_MODE=false
-SCRIPT_URL="https://raw.githubusercontent.com/dignezzz/remnawave-scripts/main/selfsteal.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/selfsteal.sh"
 UPDATE_URL="$SCRIPT_URL"
 
 while [[ $# -gt 0 ]]; do
@@ -127,17 +127,17 @@ declare -A TEMPLATE_FOLDERS=(
 )
 
 declare -A TEMPLATE_NAMES=(
-    ["1"]="😂 10gag - Сайт мемов"
-    ["2"]="📁 Convertit - Конвертер файлов"
-    ["3"]="🎬 Converter - Видеостудия-конвертер"
-    ["4"]="⬇️ Downloader - Даунлоадер"
-    ["5"]="☁️ FileCloud - Облачное хранилище"
-    ["6"]="🎮 Games-site - Ретро игровой портал"
-    ["7"]="🛠️ ModManager - Мод-менеджер для игр"
-    ["8"]="🚀 SpeedTest - Спидтест"
-    ["9"]="📺 YouTube - Видеохостинг с капчей"
-    ["10"]="⚠️ 503 Error - Страница ошибки v1"
-    ["11"]="⚠️ 503 Error - Страница ошибки v2"
+    ["1"]="Bracken Fieldbook - Полевой справочник"
+    ["2"]="Bayline Notes - Архитектурные заметки"
+    ["3"]="Steep Hour - Чайный таймер"
+    ["4"]="Spoon Ratio - Пересчёт рецепта"
+    ["5"]="Margin Shelf - Книжные заметки"
+    ["6"]="Fold Studies - Бумажный кораблик"
+    ["7"]="Chroma Deck - Подбор цветов"
+    ["8"]="Seven Small Days - Недельный трекер"
+    ["9"]="Orbit Almanac - Атлас планет"
+    ["10"]="Slate Workshop - Страница недоступности 503"
+    ["11"]="Still Service - Страница состояния 503"
 )
 
 # Color definitions
@@ -3419,7 +3419,7 @@ install_command() {
     
     # List of available templates
     local templates=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11")
-    local template_names=("10gag" "Converter" "Convertit" "Downloader" "FileCloud" "Games-site" "ModManager" "SpeedTest" "YouTube" "503 Error v1" "503 Error v2")
+    local template_names=("Bracken Fieldbook" "Bayline Notes" "Steep Hour" "Spoon Ratio" "Margin Shelf" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
     
     local selected_template=""
     local selected_name=""
@@ -3734,83 +3734,45 @@ show_current_template_info() {
 randomize_template() {
     local dir="$1"
     [ -d "$dir" ] || return 0
-
-    # --- helpers ---------------------------------------------------------
-    _rt_hex() {  # _rt_hex N -> N random bytes as lowercase hex
-        local n="${1:-4}"
-        if command -v openssl >/dev/null 2>&1; then
-            openssl rand -hex "$n" 2>/dev/null && return 0
+    local adjectives=(Alder Birch Brook Cedar Clover Copper Fern Hazel Heron Linden Maple Moss Ochre Olive Orchard Pebble Pine Reed Rowan Spruce Stone Willow Wren)
+    local nouns=(Alcove Bench Clearing Corner Cove Garden Grove Journal Landing Ledger Loft Notebook Pavilion Porch Shelf Terrace Trail Window Yard)
+    local brand="${adjectives[RANDOM % ${#adjectives[@]}]} ${nouns[RANDOM % ${#nouns[@]}]}"
+    local descriptions=("Useful things, thoughtfully collected." "A quiet place for everyday discoveries." "Small ideas to return to." "Make a little room for curiosity." "Find something worth keeping.")
+    local description="${descriptions[RANDOM % ${#descriptions[@]}]}"
+    local hue=$((RANDOM % 360)) token
+    token=$(od -An -tx1 -N8 /dev/urandom | tr -d ' \n')
+    local file paper_hex accent_hex red green blue dark paper ink accent wash encoded_paper encoded_accent
+    # Presentation changes apply to the complete HTML documents only. Keep the
+    # installer, download order, ID generation and retry behavior unchanged.
+    while IFS= read -r -d '' file; do
+        paper_hex=$(sed -n 's/^[[:space:]]*--paper:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$file" | head -1)
+        accent_hex=$(sed -n 's/^[[:space:]]*--accent:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$file" | head -1)
+        dark=false
+        if [[ "$paper_hex" =~ ^[a-fA-F0-9]{6}$ ]]; then
+            red=$((16#${paper_hex:0:2})); green=$((16#${paper_hex:2:2})); blue=$((16#${paper_hex:4:2}))
+            if [ $((red + green + blue)) -lt 300 ]; then dark=true; fi
+        elif grep -q -- '--paper:hsl([^;]*,12%)' "$file"; then dark=true
         fi
-        head -c "$n" /dev/urandom 2>/dev/null | od -An -tx1 2>/dev/null | tr -d ' \n' && return 0
-        echo "$RANDOM$RANDOM$RANDOM"
-    }
-    _rt_pick() { local a=("$@"); echo "${a[RANDOM % ${#a[@]}]}"; }
-
-    log_info "Mutating template for per-install uniqueness (anti-fingerprint)..."
-
-    # --- 1. strip provenance / non-asset leaks --------------------------
-    # README.md ships the SmallPoppa source URLs + wget instructions; .map
-    # files leak original sources; markdown/license are never served content.
-    find "$dir" -type f \( -iname '*.md' -o -iname '*.markdown' \
-        -o -iname 'LICENSE' -o -iname 'LICENSE.*' -o -iname '*.map' \
-        -o -iname '.gitignore' -o -iname '.gitattributes' \) -delete 2>/dev/null || true
-
-    # --- 2. per-install identity ----------------------------------------
-    local adjs=(Swift Bright Lumen Nimbus Vivid Prime Atlas Pulse Nova Quartz Onyx Vertex Cobalt Ember Drift Solace Zephyr Apex Halcyon Meridian Aero Cedar Indigo Mistral)
-    local nouns=(Cloud Vault Hub Forge Works Studio Labs Stream Desk Space Grid Port Wave Loop Stack Nest Spark Core Pixel Harbor Bay Field Crest Point)
-    local brand; brand="$(_rt_pick "${adjs[@]}") $(_rt_pick "${nouns[@]}")"
-    local short="${brand%% *}"
-    local tails=("$brand" "$brand — $(_rt_pick Home Dashboard Portal Online Service Cloud Center Access)" "$short · $(_rt_pick Files Media Tools Hub Suite)")
-    local new_title; new_title="$(_rt_pick "${tails[@]}")"
-    local descs=("Fast, simple and secure." "Your files, anywhere you go." "Built for speed and privacy." "Reliable service, every day." "Modern tools that just work." "Simple. Fast. Yours.")
-    local new_desc; new_desc="$(_rt_pick "${descs[@]}")"
-
-    # per-install color rotation: shift UI hue, counter-rotate media so photos
-    # stay correct. One injected <style> recolors any template, SPA or static.
-    local deg=$(( (RANDOM % 300) + 30 ))   # 30..329 degrees
-    local sat=$(( (RANDOM % 30) + 90 ))    # 90..119 percent
-    local cssv; cssv="$(_rt_hex 3)"
-
-    # --- 3. mutate HTML files -------------------------------------------
-    local f
-    while IFS= read -r -d '' f; do
-        sed -i "s#<title>[^<]*</title>#<title>${new_title}</title>#" "$f" 2>/dev/null || true
-        sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
-        sed -i "s#\(name=[\"']description[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_desc}\"#Ig" "$f" 2>/dev/null || true
-        # drop external Google Fonts (off-box fetch + breaks if blocked in RU); system fonts take over
-        sed -i "/fonts\.googleapis\.com/d; /fonts\.gstatic\.com/d" "$f" 2>/dev/null || true
-        # neutralize phone-home IP beacon -> same-origin 404 -> existing fallback text
-        sed -i "s#https\?://api\.ipify\.org[^\"')]*#/_s/ip#g" "$f" 2>/dev/null || true
-        # fix the broken default Vite favicon reference
-        sed -i "s#/vite\.svg#/favicon.svg#g" "$f" 2>/dev/null || true
-        # cache-buster on local css/js refs (changes hash + request pattern)
-        sed -i -E "s#((href|src)=\"[^\"]*\.(css|js))(\?[^\"]*)?\"#\1?v=${cssv}\"#g" "$f" 2>/dev/null || true
-        # per-install color shift + byte noise, injected into <head>
-        sed -i "s#</head>#<style>html{filter:hue-rotate(${deg}deg) saturate(${sat}%)}img,picture,video,svg,canvas{filter:hue-rotate(-${deg}deg)}</style><!-- $(_rt_hex 6) --></head>#I" "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f -iname '*.html' -print0 2>/dev/null)
-
-    # --- 4. mutate css/js: kill phone-home beacons + byte noise ---------
-    # The api.ipify.org beacon lives inside the minified JS bundle, not the
-    # HTML, so it must be neutralized here. Replaced with a same-origin path:
-    # the SPA fallback returns index.html, JSON parse fails, and the template's
-    # own .catch() shows its "IP unknown" text — no off-box request is made.
-    while IFS= read -r -d '' f; do
-        sed -i "s#https\?://api\.ipify\.org[^\"')]*#/_s/ip#g" "$f" 2>/dev/null || true
-        printf '\n/* %s */\n' "$(_rt_hex 6)" >> "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f \( -iname '*.css' -o -iname '*.js' \) -print0 2>/dev/null)
-
-    # --- 5. clean random favicon (also removes svgjs.dev generator marker) -
-    local hue=$(( RANDOM % 360 ))
-    cat > "$dir/favicon.svg" <<SVG 2>/dev/null || true
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="hsl(${hue},68%,50%)"/><circle cx="32" cy="32" r="13" fill="hsl($(( (hue + 45) % 360 )),72%,90%)"/></svg>
-SVG
-
-    # --- 6. fix placeholder manifest brand ------------------------------
-    while IFS= read -r -d '' f; do
-        sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f \( -iname '*.webmanifest' -o -iname 'manifest.json' \) -print0 2>/dev/null)
-
-    log_success "Template mutated — brand: ${brand}, hue +${deg}° (unique per install)"
+        if [ "$dark" = true ]; then
+            paper="hsl($hue,22%,12%)"; ink="hsl($hue,18%,94%)"
+            accent="hsl($hue,42%,76%)"; wash="hsl($hue,22%,20%)"
+        else
+            paper="hsl($hue,24%,96%)"; ink="hsl($hue,24%,18%)"
+            accent="hsl($hue,36%,30%)"; wash="hsl($hue,24%,88%)"
+        fi
+        sed -i "s#<title>[^<]*</title>#<title>${brand}</title>#; s#\(name=\"description\" content=\"\)[^\"]*#\1${description}#; s#\(property=\"og:description\" content=\"\)[^\"]*#\1${description}#; s#\(property=\"og:title\" content=\"\)[^\"]*#\1${brand}#; s#\(name=\"application-name\" content=\"\)[^\"]*#\1${brand}#; s#\(property=\"og:site_name\" content=\"\)[^\"]*#\1${brand}#; s#\(<span data-site-name>\)[^<]*#\1${brand}#g" "$file"
+        sed -i "s#--paper:[^;}]*#--paper:${paper}#g; s#--ink:[^;}]*#--ink:${ink}#g; s#--accent:[^;}]*#--accent:${accent}#g; s#--wash:[^;}]*#--wash:${wash}#g; s#\(name=\"theme-color\" content=\"\)[^\"]*#\1${paper}#" "$file"
+        # Optional IP lookup follows the original flag contract: ordinary mode
+        # disables it; --no-randomize bypasses this function and keeps the URL.
+        sed -i "s#https://api\.ipify\.org?format=json##g" "$file"
+        # Recolor each page's own embedded icon; preserve its original geometry.
+        encoded_paper=$(printf '%s' "$paper" | sed 's/%/%25/g; s/(/%28/g; s/)/%29/g; s/,/%2C/g')
+        encoded_accent=$(printf '%s' "$accent" | sed 's/%/%25/g; s/(/%28/g; s/)/%29/g; s/,/%2C/g')
+        if [ -n "$paper_hex" ]; then sed -i "s#%23${paper_hex}#${encoded_paper}#g" "$file"; fi
+        if [ -n "$accent_hex" ]; then sed -i "s#%23${accent_hex}#${encoded_accent}#g" "$file"; fi
+        sed -i "s#</head>#<meta name=\"application-version\" content=\"${token}\"></head>#" "$file"
+    done < <(find "$dir" -type f -iname '*.html' -print0)
+    log_success "Presentation prepared: $brand"
     return 0
 }
 
@@ -3875,7 +3837,7 @@ download_via_git() {
     local temp_dir="/tmp/selfsteal-template-$$"
     create_dir_safe "$temp_dir" || return 1
     
-    if ! git clone --filter=blob:none --sparse "https://github.com/DigneZzZ/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
+    if ! git clone --filter=blob:none --sparse "https://github.com/ayrelia1/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
         rm -rf "$temp_dir"
         return 1
     fi
@@ -3888,6 +3850,7 @@ download_via_git() {
         local files_copied
         files_copied=$(find "$HTML_DIR" -type f | wc -l)
         log_success "Template files copied: $files_copied files"
+        cd "$HTML_DIR" || return 1
         rm -rf "$temp_dir"
         show_download_summary "$files_copied" "${TEMPLATE_NAMES[$1]:-Template}"
         return 0
@@ -3907,7 +3870,7 @@ download_via_api() {
     
     echo -e "${WHITE}📦 Using wget for recursive download...${NC}"
     
-    local api_url="https://api.github.com/repos/DigneZzZ/remnawave-scripts/git/trees/main?recursive=1"
+    local api_url="https://api.github.com/repos/ayrelia1/remnawave-scripts/git/trees/main?recursive=1"
     local tree_data
     tree_data=$(curl -s "$api_url" 2>/dev/null)
     
@@ -3928,7 +3891,7 @@ download_via_api() {
             [ -z "$file_path" ] && continue
             
             local relative_path="${file_path#sni-templates/$template_folder/}"
-            local file_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/$file_path"
+            local file_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/$file_path"
             
             local file_dir
             file_dir=$(dirname "$relative_path")
@@ -3955,7 +3918,7 @@ download_via_curl_fallback() {
     
     echo -e "${WHITE}📦 Using curl fallback method...${NC}"
     
-    local base_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/sni-templates/$template_folder"
+    local base_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/sni-templates/$template_folder"
     local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png")
     local asset_files=("assets/style.css" "assets/script.js" "assets/main.js")
     
@@ -4033,59 +3996,16 @@ create_fallback_html() {
     local template_name="$1"
     
     cat > "index.html" << EOF
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$template_name</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        .status {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Сейчас страница недоступна. Попробуйте открыть её немного позже.">
+<title>Временная пауза</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:2rem;background:#edf0f4;color:#263849;font:16px/1.7 system-ui,sans-serif}main{max-width:640px;border-top:5px solid #526b84;padding:2rem 0}h1{font:500 clamp(2rem,7vw,4rem)/1.1 Georgia,serif}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #526b84;outline-offset:5px}</style>
 </head>
-<body>
-    <div class="container">
-        <h1>🚀 Service Ready</h1>
-        <p>$template_name template is now active</p>
-        <div class="status">
-            <p>✅ System Online</p>
-        </div>
-    </div>
-</body>
+<body><main><small>503</small><h1>Временная пауза</h1><p>Сейчас страница недоступна. Попробуйте открыть её немного позже.</p><a href="/">Открыть главную</a></main></body>
 </html>
 EOF
 }
@@ -4095,134 +4015,31 @@ create_default_html() {
     echo -e "${WHITE}🌐 Creating Default Website${NC}"
     
     cat > "$HTML_DIR/index.html" << 'EOF'
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 500px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .status {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-top: 20px;
-        }
-        .info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border-left: 4px solid #667eea;
-        }
-        .info h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .command {
-            background: #2d3748;
-            color: #e2e8f0;
-            padding: 10px;
-            border-radius: 4px;
-            font-family: monospace;
-            margin: 10px 0;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Сейчас страница недоступна. Попробуйте открыть её немного позже.">
+<title>Временная пауза</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:2rem;background:#edf0f4;color:#263849;font:16px/1.7 system-ui,sans-serif}main{max-width:640px;border-top:5px solid #526b84;padding:2rem 0}h1{font:500 clamp(2rem,7vw,4rem)/1.1 Georgia,serif}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #526b84;outline-offset:5px}</style>
 </head>
-<body>
-    <div class="container">
-        <h1>🌐 Caddy</h1>
-        <p>Caddy server is running correctly and ready to serve your content.</p>
-        <div class="status">✅ Service Active</div>
-        <div class="info">
-            <h3>🎨 Ready for Templates</h3>
-            <p>Use the template manager to install website templates:</p>
-            <div class="command"> template</div>
-            
-        </div>
-    </div>
-</body>
+<body><main><small>503</small><h1>Временная пауза</h1><p>Сейчас страница недоступна. Попробуйте открыть её немного позже.</p><a href="/">Открыть главную</a></main></body>
 </html>
 EOF
 
     # Create 404 page
     cat > "$HTML_DIR/404.html" << 'EOF'
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 500px;
-        }
-        h1 {
-            color: #e74c3c;
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Проверьте адрес или вернитесь на главную.">
+<title>Страница не найдена</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:2rem;background:#edf0f4;color:#263849;font:16px/1.7 system-ui,sans-serif}main{max-width:640px;border-top:5px solid #526b84;padding:2rem 0}h1{font:500 clamp(2rem,7vw,4rem)/1.1 Georgia,serif}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #526b84;outline-offset:5px}</style>
 </head>
-<body>
-    <div class="container">
-        <h1>404</h1>        <h2>Page Not Found</h2>
-        <p>The page you are looking for does not exist.</p>
-    </div>
-</body>
+<body><main><small>404</small><h1>Страница не найдена</h1><p>Проверьте адрес или вернитесь на главную.</p><a href="/">Открыть главную</a></main></body>
 </html>
 EOF
     echo -e "${GREEN}✅ Default HTML content created${NC}"

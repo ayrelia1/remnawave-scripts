@@ -1,21 +1,330 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<link rel="manifest" href="/site.webmanifest" />
-    <title>RetroStream - Играй в ретро игры онлайн</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/script.js?v=4"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fold Studies — бумажный кораблик</title>
+<meta name="description" content="Пять спокойных шагов от прямоугольного листа к бумажному кораблику.">
+<meta name="application-name" content="Fold Studies">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fold Studies — бумажный кораблик">
+<meta property="og:description" content="Пять спокойных шагов от прямоугольного листа к бумажному кораблику.">
+<meta property="og:site_name" content="Fold Studies">
+<meta name="theme-color" content="#e9f3f7">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23e9f3f7%22%2F%3E%3Cg%20color%3D%22%2323628d%22%3E%3Cpath%20d%3D%22M9%2035H55L44%2049H20ZM31%2014V33H13Z%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%223%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<style>
+:root{
+  --paper:#e9f3f7;
+  --ink:#243e55;
+  --accent:#23628d;
+  --wash:#cee1eb
+}
+
+
+*{
+  box-sizing:border-box
+}
+html{
+  scroll-behavior:smooth;
+  scrollbar-color:var(--accent) var(--wash);
+  scrollbar-width:auto;
+  scrollbar-gutter:stable
+}
+body{
+  margin:0 auto;
+  padding:0 28px;
+  max-width:1180px;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 'Segoe UI',Arial,sans-serif
+}
+a{
+  color:inherit;
+  text-underline-offset:4px
+}
+a:hover{
+  color:var(--accent)
+}
+h1,h2,h3{
+  line-height:1.2
+}
+p{
+  margin:.8rem 0 1.2rem
+}
+img,svg{
+  max-width:100%
+}
+button,input,select,textarea{
+  font:inherit;
+  color:var(--ink)
+}
+button,.action{
+  border:1px solid transparent;
+  border-radius:6px;
+  padding:.8rem 1.15rem;
+  background:var(--accent);
+  color:var(--paper);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer
+}
+button:hover,.action:hover{
+  filter:brightness(1.12);
+  color:var(--paper)
+}
+button:active,.action:active{
+  transform:translateY(1px)
+}
+button:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none
+}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--accent)
+}
+input,select,textarea{
+  max-width:100%;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:.7rem;
+  background:var(--paper)
+}
+textarea{
+  resize:vertical;
+  min-height:140px
+}
+select,summary{
+  cursor:pointer
+}
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:4px
+}
+footer{
+  padding:1.5rem 0;
+  margin-top:2rem;
+  border-top:1px solid var(--accent);
+  font-size:.8rem
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--accent)
+}
+.lead{
+  font-size:1.12rem;
+  line-height:1.7
+}
+.hint{
+  font-size:.85rem
+}
+.feedback{
+  min-height:3.4em;
+  font-size:.85rem;
+  line-height:1.5
+}
+[hidden]{
+  display:none!important
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:1rem;
+  background:var(--paper);
+  color:var(--ink);
+  z-index:10;
+  padding:.6rem
+}
+.skip:focus{
+  top:.5rem
+}
+::-webkit-scrollbar{
+  width:12px;
+  height:12px
+}
+::-webkit-scrollbar-track{
+  background:var(--wash)
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border:3px solid var(--wash);
+  border-radius:8px
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--ink)
+}
+::-webkit-scrollbar-thumb:active{
+  background:var(--ink)
+}
+@media(forced-colors:active){
+  *{
+  scrollbar-color:auto
+}
+
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto
+}
+*,*:before,*:after{
+  animation:none!important;
+  transition:none!important
+}
+
+}
+@media(max-width:650px){
+  body{
+  padding:0 20px
+}
+footer{
+  margin-top:1rem
+}
+.lead{
+  font-size:1rem
+}
+
+}
+
+
+.fold-head{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding:2rem 0;
+  border-bottom:2px dashed var(--accent)
+}
+.fold-head a{
+  font:700 1.5rem 'Trebuchet MS',sans-serif;
+  text-decoration:none
+}
+.fold-title{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  align-items:end;
+  gap:2rem;
+  padding:3rem 0
+}
+.fold-title h1{
+  font:800 clamp(3rem,6vw,5.8rem)/1.02 'Trebuchet MS',sans-serif;
+  letter-spacing:-.045em;
+  margin:1rem 0
+}
+.fold-work{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  background:var(--wash);
+  border-radius:30px;
+  overflow:hidden
+}
+.fold-work figure{
+  margin:0;
+  align-self:center;
+  padding:2rem 0
+}
+.fold-work svg{
+  width:100%
+}
+.fold-work figcaption{
+  text-align:center;
+  font-size:.85rem;
+  padding:0 1rem
+}
+.fold-step{
+  background:var(--paper);
+  margin:12px;
+  padding:2rem;
+  border-radius:20px
+}
+.fold-step h2{
+  font-size:1.8rem
+}
+.fold-step>p:not(.eyebrow){
+  min-height:9em
+}
+.fold-step progress{
+  width:100%;
+  height:8px;
+  accent-color:var(--accent);
+  margin:1rem 0
+}
+.fold-buttons{
+  display:flex;
+  gap:.6rem
+}
+.fold-buttons button{
+  padding:.8rem
+}
+.fold-all{
+  margin:2rem 0;
+  border-bottom:1px solid var(--accent);
+  padding:1rem 0
+}
+.fold-all summary{
+  cursor:pointer;
+  font-weight:700
+}
+.fold-all li{
+  margin:1rem 0
+}
+@media(max-width:700px){
+  .fold-head span{
+  font-size:12px;
+  max-width:150px
+}
+.fold-title,.fold-work{
+  grid-template-columns:1fr
+}
+.fold-title{
+  gap:0
+}
+.fold-step{
+  padding:1.3rem
+}
+.fold-work figure{
+  padding:0
+}
+.fold-step>p:not(.eyebrow){
+  min-height:0
+}
+
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#content">К содержимому</a>
+<header class="fold-head"><a href="/"><span data-site-name>Fold Studies</span></a><span>Бумага помнит каждое движение</span></header><main id="content" tabindex="-1">
+<section class="fold-title"><div><p class="eyebrow">Один лист · пять шагов</p><h1>Маленькое<br>плавание.</h1></div><p class="lead">Начните с обычного прямоугольного листа. Сгибайте не спеша и проводите пальцем по каждой складке.</p></section>
+<section class="fold-work"><figure><svg viewBox="0 0 500 330" role="img" aria-label="Бумажный кораблик"><path d="M65 190H435L350 270H150Z" fill="var(--accent)"/><path d="M250 55V190H105Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/><path d="M258 70L390 185H258Z" fill="var(--wash)" stroke="var(--ink)" stroke-width="3"/><path d="M35 295Q90 275 145 295T255 295T365 295T475 295" fill="none" stroke="var(--ink)" stroke-width="3"/></svg><figcaption>Обычная офисная бумага подойдёт для первого раза.</figcaption></figure><div class="fold-step"><p class="eyebrow" id="fold-position">Шаг 1 из 5</p><h2 id="fold-heading">Найдите середину</h2><p id="fold-copy">Сложите прямоугольный лист пополам по короткой стороне. Разверните, затем сложите пополам по длинной стороне. Оставьте лист сложенным, сгибом вверх.</p><progress id="fold-progress" value="1" max="5" aria-label="Шаги сборки">1 / 5</progress><div class="fold-buttons"><button id="fold-prev" class="secondary" disabled type="button">Назад</button><button id="fold-next" type="button">Следующий шаг</button></div><p id="fold-announcement" class="feedback" role="status"></p></div></section>
+<details class="fold-all"><summary>Все шаги на одной странице</summary><ol><li>Найдите середину: сделайте поперечный и продольный сгибы. Оставьте лист сложенным сгибом вверх.</li><li>Сведите верхние углы к центральной линии. Внизу останутся свободные полоски.</li><li>Поднимите каждую нижнюю полоску вверх со своей стороны. Подогните выступающие уголки.</li><li>Раскройте снизу получившуюся шляпу и сложите её ромбом. Поднимите нижний угол с каждой стороны к верхнему.</li><li>Снова раскройте треугольник снизу в ромб. Потяните верхние уголки в стороны и расправьте дно кораблика.</li></ol></details></main><footer><span data-site-name>Fold Studies</span> · складка за складкой</footer>
+<script>
+'use strict';
+
+const steps = [
+ ['Найдите середину','Сложите прямоугольный лист пополам по короткой стороне. Разверните, затем сложите пополам по длинной стороне. Оставьте лист сложенным, сгибом вверх.'],
+ ['Сведите углы','Загните верхние углы к центральной линии. Получится треугольная вершина и две свободные полоски бумаги внизу.'],
+ ['Поднимите борта','Поднимите нижнюю полоску вверх с каждой стороны. Выступающие уголки подогните за края треугольника. Получится бумажная шляпа.'],
+ ['Сложите ромб','Раскройте шляпу снизу и сведите боковые углы — получится ромб. Нижний угол каждой стороны поднимите к верхнему.'],
+ ['Отправляйтесь в плавание','Раскройте новый треугольник снизу в ромб. Потяните верхние уголки в стороны и осторожно расправьте дно. Кораблик готов.']
+];
+let step = 0;
+const prev = document.querySelector('#fold-prev'), next = document.querySelector('#fold-next');
+function render() {
+  document.querySelector('#fold-heading').textContent = steps[step][0];
+  document.querySelector('#fold-copy').textContent = steps[step][1];
+  document.querySelector('#fold-position').textContent = `Шаг ${step + 1} из 5`;
+  document.querySelector('#fold-progress').value = step + 1;
+  prev.disabled = step === 0; next.disabled = step === 4;
+  document.querySelector('#fold-announcement').textContent = `Шаг ${step + 1}: ${steps[step][0]}`;
+}
+prev.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+next.addEventListener('click', () => { if (step < 4) { step++; render(); } });
+</script>
+</body>
 </html>

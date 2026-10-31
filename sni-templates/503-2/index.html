@@ -1,14 +1,403 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>503 - Критическая нагрузка системы</title>
-    <script type="module" crossorigin src="/assets/main.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Still Service — страница недоступна</title>
+<meta name="description" content="Сервис временно недоступен. Сохраните адрес и вернитесь позже.">
+<meta name="application-name" content="Still Service">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Still Service — страница недоступна">
+<meta property="og:description" content="Сервис временно недоступен. Сохраните адрес и вернитесь позже.">
+<meta property="og:site_name" content="Still Service">
+<meta name="theme-color" content="#f5eef6">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23f5eef6%22%2F%3E%3Cg%20color%3D%22%23735280%22%3E%3Cpath%20d%3D%22M17%2021L12%2038H25L20%2051M40%2013L34%2031H47L40%2049%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%224%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<style>
+:root{
+  --paper:#f5eef6;
+  --ink:#43374f;
+  --accent:#735280;
+  --wash:#e8dced
+}
+
+
+*{
+  box-sizing:border-box
+}
+html{
+  scroll-behavior:smooth;
+  scrollbar-color:var(--accent) var(--wash);
+  scrollbar-width:auto;
+  scrollbar-gutter:stable
+}
+body{
+  margin:0 auto;
+  padding:0 28px;
+  max-width:1180px;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 'Segoe UI',Arial,sans-serif
+}
+a{
+  color:inherit;
+  text-underline-offset:4px
+}
+a:hover{
+  color:var(--accent)
+}
+h1,h2,h3{
+  line-height:1.2
+}
+p{
+  margin:.8rem 0 1.2rem
+}
+img,svg{
+  max-width:100%
+}
+button,input,select,textarea{
+  font:inherit;
+  color:var(--ink)
+}
+button,.action{
+  border:1px solid transparent;
+  border-radius:6px;
+  padding:.8rem 1.15rem;
+  background:var(--accent);
+  color:var(--paper);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer
+}
+button:hover,.action:hover{
+  filter:brightness(1.12);
+  color:var(--paper)
+}
+button:active,.action:active{
+  transform:translateY(1px)
+}
+button:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none
+}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--accent)
+}
+input,select,textarea{
+  max-width:100%;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:.7rem;
+  background:var(--paper)
+}
+textarea{
+  resize:vertical;
+  min-height:140px
+}
+select,summary{
+  cursor:pointer
+}
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:4px
+}
+footer{
+  padding:1.5rem 0;
+  margin-top:2rem;
+  border-top:1px solid var(--accent);
+  font-size:.8rem
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--accent)
+}
+.lead{
+  font-size:1.12rem;
+  line-height:1.7
+}
+.hint{
+  font-size:.85rem
+}
+.feedback{
+  min-height:3.4em;
+  font-size:.85rem;
+  line-height:1.5
+}
+[hidden]{
+  display:none!important
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:1rem;
+  background:var(--paper);
+  color:var(--ink);
+  z-index:10;
+  padding:.6rem
+}
+.skip:focus{
+  top:.5rem
+}
+::-webkit-scrollbar{
+  width:12px;
+  height:12px
+}
+::-webkit-scrollbar-track{
+  background:var(--wash)
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border:3px solid var(--wash);
+  border-radius:8px
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--ink)
+}
+::-webkit-scrollbar-thumb:active{
+  background:var(--ink)
+}
+@media(forced-colors:active){
+  *{
+  scrollbar-color:auto
+}
+
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto
+}
+*,*:before,*:after{
+  animation:none!important;
+  transition:none!important
+}
+
+}
+@media(max-width:650px){
+  body{
+  padding:0 20px
+}
+footer{
+  margin-top:1rem
+}
+.lead{
+  font-size:1rem
+}
+
+}
+
+
+body{
+  max-width:1180px
+}
+.still-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:calc(100svh - 85px);
+  padding:1rem 0;
+  gap:4rem
+}
+.still-sidebar{
+  background:var(--wash);
+  padding:2rem;
+  border-radius:100px 100px 10px 10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:2rem
+}
+.still-sidebar a{
+  font:700 2.4rem/1 Georgia,serif;
+  text-decoration:none;
+  padding-top:1rem
+}
+.still-sidebar a span{
+  font-weight:400;
+  font-style:italic
+}
+.still-sidebar p{
+  font-size:.85rem
+}
+.still-emblem{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  height:160px
+}
+.still-emblem i{
+  display:block;
+  width:22px;
+  height:95px;
+  background:var(--accent);
+  border-radius:30px;
+  transform:rotate(25deg)
+}
+.still-emblem i:nth-child(2){
+  height:140px
+}
+.still-emblem i:nth-child(3){
+  height:60px
+}
+.still-content{
+  align-self:center;
+  padding:2rem 0;
+  max-width:690px
+}
+.still-top{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  font:11px Consolas,monospace;
+  letter-spacing:.12em;
+  color:var(--accent)
+}
+.still-content h1{
+  font:500 clamp(2.9rem,5vw,5rem)/1.04 Georgia,serif;
+  letter-spacing:-.03em;
+  margin:2rem 0 1rem
+}
+.still-actions{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin:1.5rem 0 2rem
+}
+.still-actions>span{
+  font-size:.8rem
+}
+.still-info h2{
+  font-size:1rem
+}
+.still-info dl{
+  margin-top:1.2rem
+}
+.still-info dl div{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:1rem;
+  padding:.8rem 0;
+  border-top:1px solid var(--accent);
+  font-size:.85rem
+}
+.still-info dt{
+  color:var(--accent)
+}
+.still-info dd{
+  margin:0;
+  overflow-wrap:anywhere
+}
+.still-footer{
+  font-size:.8rem
+}
+@media(max-width:750px){
+  .still-layout{
+  grid-template-columns:1fr;
+  gap:1rem
+}
+.still-sidebar{
+  border-radius:20px;
+  flex-direction:row;
+  align-items:center;
+  padding:1rem 1.4rem;
+  gap:1rem
+}
+.still-sidebar a{
+  font-size:1.8rem;
+  padding:0
+}
+.still-sidebar p{
+  display:none
+}
+.still-emblem{
+  height:75px;
+  transform:scale(.5);
+  transform-origin:center right
+}
+.still-content{
+  padding:1rem 0
+}
+.still-info dl div{
+  grid-template-columns:1fr;
+  gap:.3rem
+}
+.still-top{
+  font-size:10px
+}
+
+}
+
+
+.reference-panel { margin-top:1.5rem; border-top:1px solid var(--accent); padding-top:1rem; }
+.reference-panel dl { margin:.5rem 0 1rem; }
+.reference-panel dt { font-size:.8rem; color:var(--accent); }
+.reference-panel dd { margin:.3rem 0 1rem; min-width:0; }
+.reference-panel code { display:block; font:13px/1.6 Consolas,monospace; overflow-wrap:anywhere; user-select:all; }
+.reference-panel output { font:2rem/1.4 Consolas,monospace; font-variant-numeric:tabular-nums; }
+.copy-feedback { min-height:3em; font-size:.8rem; margin:.6rem 0 0; }
+.still-info { margin-bottom:1rem; }
+.still-sidebar a { overflow-wrap:anywhere; }
+@media(max-width:750px){ .still-sidebar a { max-width:150px; } .still-top { flex-wrap:wrap; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#content">К содержимому</a>
+<main id="content" tabindex="-1" class="still-layout"><aside class="still-sidebar"><a href="/"><span data-site-name>Still Service</span></a><div class="still-emblem" aria-hidden="true"><i></i><i></i><i></i></div><p>Иногда нужно<br>немного времени.</p></aside>
+<section class="still-content"><div class="still-top"><span>ВРЕМЕННО НЕДОСТУПНО</span><span>HTTP 503</span></div><h1>Сделаем<br>короткую паузу.</h1><p class="lead">Сейчас мы не можем показать запрошенную страницу. Через пять минут повторим запрос автоматически; вы также можете обновить страницу раньше.</p><div class="still-actions"><button id="still-refresh" type="button">Обновить страницу</button><span id="still-time">Проверено при открытии</span></div><section class="still-info"><h2>Информация о запросе</h2><dl><div><dt>Состояние</dt><dd>Временная недоступность</dd></div><div><dt>Адрес посетителя</dt><dd data-address>Определяется…</dd></div><div><dt>Что можно сделать</dt><dd>Подождать и повторить запрос</dd></div></dl></section><div class="reference-panel"><dl><div><dt>Код обращения</dt><dd><code data-request-id>Определяется…</code></dd></div><div><dt>Повторный запрос через</dt><dd><output data-countdown aria-label="Время до автоматического обновления">05:00</output></dd></div></dl><button data-copy-reference class="secondary" type="button">Скопировать код</button><p data-copy-result class="copy-feedback" role="status"></p></div><p class="hint">Если страница остаётся недоступной, сохраните её адрес и откройте позже.</p><noscript><p>Обновите страницу через браузер. IP без JavaScript не определяется.</p></noscript></section></main><footer class="still-footer"><span data-site-name>Still Service</span> · ваш запрос не потеряется, если сохранить ссылку</footer>
+<script>
+'use strict';
+
+const address = document.querySelector('[data-address]');
+const endpoint = 'https://api.ipify.org?format=json';
+if (endpoint) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 4000);
+  fetch(endpoint, {signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer'})
+    .then(response => { if (!response.ok) throw new Error('unavailable'); return response.json(); })
+    .then(data => { address.textContent = typeof data.ip === 'string' && /^[0-9a-fA-F:.]{3,45}$/.test(data.ip) ? data.ip : 'Не определён'; })
+    .catch(() => { address.textContent = 'Не определён'; })
+    .finally(() => clearTimeout(timeout));
+} else { address.textContent = 'Не определён'; }
+
+document.querySelector('#still-time').textContent = `Открыто в ${new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}`;
+document.querySelector('#still-refresh').addEventListener('click', () => window.location.reload());
+
+// A local reference for this page load; it is not an authentication token.
+function referenceBytes(count) {
+  const bytes = new Uint8Array(count);
+  if (globalThis.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+  else for (let i=0;i<count;i++) bytes[i]=Math.floor(Math.random()*256);
+  return [...bytes].map(value=>value.toString(16).padStart(2,'0')).join('').toUpperCase();
+}
+const reference = Date.now().toString(36).toUpperCase() + '-' + referenceBytes(16);
+const requestId = document.querySelector('[data-request-id]');
+requestId.textContent = reference;
+const copy = document.querySelector('[data-copy-reference]');
+copy.addEventListener('click', async () => {
+  const message = document.querySelector('[data-copy-result]');
+  try {
+    await navigator.clipboard.writeText(reference);
+    message.textContent = 'Код обращения скопирован.';
+  } catch {
+    message.textContent = 'Выделите код обращения и скопируйте его вручную.';
+    const range = document.createRange(); range.selectNodeContents(requestId);
+    const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+  }
+});
+// The original status pages retry after five minutes. Keep that behavior.
+const deadline = Date.now() + 300000;
+const countdown = document.querySelector('[data-countdown]');
+const ticker = setInterval(() => {
+  const seconds = Math.max(0, Math.ceil((deadline - Date.now())/1000));
+  countdown.textContent = `${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;
+  if (!seconds) { clearInterval(ticker); window.location.reload(); }
+},1000);
+</script>
+</body>
 </html>
