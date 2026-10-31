@@ -89,6 +89,32 @@ bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal
 
 ## 📋 Команды
 
+### Обновление установленной команды после переименования шаблонов
+
+Начиная с 2.14.0 имена каталогов шаблонов изменились. Перед сменой сайта обновите
+CLI: предыдущая версия будет искать старые пути. От `root` выполните:
+
+```bash
+(
+    set -e
+    cli_tmp=$(mktemp)
+    trap 'rm -f "$cli_tmp"' EXIT
+    curl -fsSL https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/selfsteal.sh -o "$cli_tmp"
+    bash -n "$cli_tmp"
+    if [ -f /usr/local/bin/selfsteal ]; then
+        cp -p /usr/local/bin/selfsteal "/usr/local/bin/selfsteal.bak.$(date +%Y%m%d-%H%M%S)"
+    fi
+    install -m 0755 "$cli_tmp" /usr/local/bin/selfsteal
+)
+/usr/local/bin/selfsteal --version
+```
+
+Ожидается версия **2.14.0**. Команда обновляет только CLI с резервной копией;
+сайт, конфигурация и сервисы Caddy/Nginx не переустанавливаются. Затем выберите
+новый сайт через `/usr/local/bin/selfsteal template` (или с `--no-randomize`).
+Запуск свежего скрипта через `curl` с командой `template` сам по себе не заменяет
+сохранённую команду `/usr/local/bin/selfsteal`.
+
 ```bash
 selfsteal          # интерактивное меню
 ```
