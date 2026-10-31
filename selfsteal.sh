@@ -7,9 +7,9 @@
 # ║  Author:  DigneZzZ (https://github.com/DigneZzZ)               ║
 # ║  License: MIT                                                  ║
 # ╚════════════════════════════════════════════════════════════════╝
-# VERSION=2.12.0
+# VERSION=2.11.1
 
-SCRIPT_VERSION="2.12.0"
+SCRIPT_VERSION="2.11.1"
 
 # Handle @ prefix for consistency with other scripts
 if [ $# -gt 0 ] && [ "$1" = "@" ]; then
@@ -18,7 +18,7 @@ fi
 
 # Debug mode - set via --debug flag
 DEBUG_MODE=false
-SCRIPT_URL="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/selfsteal.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/dignezzz/remnawave-scripts/main/selfsteal.sh"
 UPDATE_URL="$SCRIPT_URL"
 
 while [[ $# -gt 0 ]]; do
@@ -127,17 +127,17 @@ declare -A TEMPLATE_FOLDERS=(
 )
 
 declare -A TEMPLATE_NAMES=(
-    ["1"]="Bracken Fieldbook - Полевой справочник"
-    ["2"]="Bayline Notes - Архитектурные заметки"
-    ["3"]="Steep Hour - Чайный таймер"
-    ["4"]="Spoon Ratio - Пересчёт рецепта"
-    ["5"]="Margin Shelf - Книжные заметки"
-    ["6"]="Fold Studies - Бумажный кораблик"
-    ["7"]="Chroma Deck - Подбор цветов"
-    ["8"]="Seven Small Days - Недельный трекер"
-    ["9"]="Orbit Almanac - Атлас планет"
-    ["10"]="Slate Workshop - Страница недоступности 503"
-    ["11"]="Still Service - Страница состояния 503"
+    ["1"]="😂 10gag - Сайт мемов"
+    ["2"]="📁 Convertit - Конвертер файлов"
+    ["3"]="🎬 Converter - Видеостудия-конвертер"
+    ["4"]="⬇️ Downloader - Даунлоадер"
+    ["5"]="☁️ FileCloud - Облачное хранилище"
+    ["6"]="🎮 Games-site - Ретро игровой портал"
+    ["7"]="🛠️ ModManager - Мод-менеджер для игр"
+    ["8"]="🚀 SpeedTest - Спидтест"
+    ["9"]="📺 YouTube - Видеохостинг с капчей"
+    ["10"]="⚠️ 503 Error - Страница ошибки v1"
+    ["11"]="⚠️ 503 Error - Страница ошибки v2"
 )
 
 # Color definitions
@@ -3419,7 +3419,7 @@ install_command() {
     
     # List of available templates
     local templates=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11")
-    local template_names=("Bracken Fieldbook" "Bayline Notes" "Steep Hour" "Spoon Ratio" "Margin Shelf" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
+    local template_names=("10gag" "Converter" "Convertit" "Downloader" "FileCloud" "Games-site" "ModManager" "SpeedTest" "YouTube" "503 Error v1" "503 Error v2")
     
     local selected_template=""
     local selected_name=""
@@ -3724,9 +3724,13 @@ show_current_template_info() {
 # ============================================
 # Template Mutation (anti-fingerprint)
 # ============================================
-# Vary presentation at install time. This changes metadata, palette, icons and
-# cache queries; it does not provide a guarantee against traffic classification.
-# ===== TESTABLE-BLOCK: template-randomization =====
+# Makes every install byte-unique and slightly different in appearance so the
+# served decoy does NOT match the public sni-templates repo by hash/title/
+# structure, and strips known provenance leaks. Safe for the minified
+# React/Vite SPA shells most templates ship as: it never renames CSS classes
+# or reorders DOM (that would break the bundles) — uniqueness comes from
+# title/brand/meta/manifest changes, a per-install CSS hue rotation, byte
+# noise, cache-busters and a freshly generated favicon.
 randomize_template() {
     local dir="$1"
     [ -d "$dir" ] || return 0
@@ -3742,43 +3746,30 @@ randomize_template() {
     }
     _rt_pick() { local a=("$@"); echo "${a[RANDOM % ${#a[@]}]}"; }
 
-    log_info "Applying an installation-specific presentation..."
+    log_info "Mutating template for per-install uniqueness (anti-fingerprint)..."
 
     # --- 1. strip provenance / non-asset leaks --------------------------
-    # Repository documentation and source maps are not public website assets.
+    # README.md ships the SmallPoppa source URLs + wget instructions; .map
+    # files leak original sources; markdown/license are never served content.
     find "$dir" -type f \( -iname '*.md' -o -iname '*.markdown' \
         -o -iname 'LICENSE' -o -iname 'LICENSE.*' -o -iname '*.map' \
         -o -iname '.gitignore' -o -iname '.gitattributes' \) -delete 2>/dev/null || true
 
     # --- 2. per-install identity ----------------------------------------
-    local adjs=(Alder Alpine Apricot Aspen Autumn Birch Bramble Brook Canvas Clover Copper Coral Fern Flint Garnet Hazel Heron Linden Maple Meadow Moss Mulberry Ochre Olive Opal Orchard Pebble Petal Pine Reed Rowan Saffron Silver Spruce Stone Willow Wren)
-    local nouns=(Alcove Arcade Basket Bench Cabin Circle Clearing Corner Courtyard Cove Garden Grove Landing Lantern Ledger Loft Meadow Mill Notebook Passage Pavilion Pier Porch Room Shelf Terrace Trail Window Yard)
+    local adjs=(Swift Bright Lumen Nimbus Vivid Prime Atlas Pulse Nova Quartz Onyx Vertex Cobalt Ember Drift Solace Zephyr Apex Halcyon Meridian Aero Cedar Indigo Mistral)
+    local nouns=(Cloud Vault Hub Forge Works Studio Labs Stream Desk Space Grid Port Wave Loop Stack Nest Spark Core Pixel Harbor Bay Field Crest Point)
     local brand; brand="$(_rt_pick "${adjs[@]}") $(_rt_pick "${nouns[@]}")"
     local short="${brand%% *}"
-    local tails=("$brand" "$brand | $(_rt_pick Workspace Collection Journal Library Workshop)" "$short · $(_rt_pick Explore Discover Browse Create Welcome)")
+    local tails=("$brand" "$brand — $(_rt_pick Home Dashboard Portal Online Service Cloud Center Access)" "$short · $(_rt_pick Files Media Tools Hub Suite)")
     local new_title; new_title="$(_rt_pick "${tails[@]}")"
-    local descs=("A little space for the things you come back to." "Make room for your next idea." "Find your place and take the next step." "A considered workspace for everyday tasks." "Keep useful things close at hand." "Something worth keeping, somewhere easy to find." "Browse the collection at your own pace." "Small details for a more organized day." "Your next project starts with a little space." "A place to pick up where you left off.")
+    local descs=("Fast, simple and secure." "Your files, anywhere you go." "Built for speed and privacy." "Reliable service, every day." "Modern tools that just work." "Simple. Fast. Yours.")
     local new_desc; new_desc="$(_rt_pick "${descs[@]}")"
 
-    # Keep light/dark contrast while varying the semantic palette. Unlike a
-    # whole-document filter, this does not recolor photographs or fix descendants.
-    local hue=$(( RANDOM % 360 ))
-    local cssv; cssv="$(_rt_hex 5)"
-    local paper ink accent wash dark=false paper_hex red green blue
-    local palette_file
-    palette_file=$(find "$dir" -type f -name '*.css' -print -quit)
-    paper_hex=$(sed -n 's/.*--paper:#\([a-fA-F0-9]\{6\}\).*/\1/p' "$palette_file" | head -1)
-    if [[ "$paper_hex" =~ ^[a-fA-F0-9]{6}$ ]]; then
-        red=$((16#${paper_hex:0:2})); green=$((16#${paper_hex:2:2})); blue=$((16#${paper_hex:4:2}))
-        if [ $((red + green + blue)) -lt 300 ]; then dark=true; fi
-    fi
-    if [ "$dark" = true ]; then
-        paper="hsl($hue,22%,12%)"; ink="hsl($hue,18%,94%)"
-        accent="hsl($hue,42%,76%)"; wash="hsl($hue,22%,20%)"
-    else
-        paper="hsl($hue,24%,96%)"; ink="hsl($hue,24%,18%)"
-        accent="hsl($hue,36%,30%)"; wash="hsl($hue,24%,88%)"
-    fi
+    # per-install color rotation: shift UI hue, counter-rotate media so photos
+    # stay correct. One injected <style> recolors any template, SPA or static.
+    local deg=$(( (RANDOM % 300) + 30 ))   # 30..329 degrees
+    local sat=$(( (RANDOM % 30) + 90 ))    # 90..119 percent
+    local cssv; cssv="$(_rt_hex 3)"
 
     # --- 3. mutate HTML files -------------------------------------------
     local f
@@ -3786,99 +3777,91 @@ randomize_template() {
         sed -i "s#<title>[^<]*</title>#<title>${new_title}</title>#" "$f" 2>/dev/null || true
         sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
         sed -i "s#\(name=[\"']description[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_desc}\"#Ig" "$f" 2>/dev/null || true
-        # Keep social previews and installed-app labels aligned with the new identity.
-        sed -i "s#\(property=[\"']og:title[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_title}\"#Ig; s#\(property=[\"']og:description[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${new_desc}\"#Ig" "$f" 2>/dev/null || true
-        sed -i "s#\(name=[\"']\(application-name\|apple-mobile-web-app-title\)[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${brand}\"#Ig; s#\(property=[\"']og:site_name[\"'][^>]*content=\)[\"'][^\"']*[\"']#\1\"${brand}\"#Ig" "$f" 2>/dev/null || true
         # drop external Google Fonts (off-box fetch + breaks if blocked in RU); system fonts take over
         sed -i "/fonts\.googleapis\.com/d; /fonts\.gstatic\.com/d" "$f" 2>/dev/null || true
+        # neutralize phone-home IP beacon -> same-origin 404 -> existing fallback text
+        sed -i "s#https\?://api\.ipify\.org[^\"')]*#/_s/ip#g" "$f" 2>/dev/null || true
+        # fix the broken default Vite favicon reference
+        sed -i "s#/vite\.svg#/favicon.svg#g" "$f" 2>/dev/null || true
         # cache-buster on local css/js refs (changes hash + request pattern)
         sed -i -E "s#((href|src)=\"[^\"]*\.(css|js))(\?[^\"]*)?\"#\1?v=${cssv}\"#g" "$f" 2>/dev/null || true
-        sed -i "s#\(name=\"theme-color\" content=\"\)[^\"]*#\1${paper}#" "$f" 2>/dev/null || true
+        # per-install color shift + byte noise, injected into <head>
+        sed -i "s#</head>#<style>html{filter:hue-rotate(${deg}deg) saturate(${sat}%)}img,picture,video,svg,canvas{filter:hue-rotate(-${deg}deg)}</style><!-- $(_rt_hex 6) --></head>#I" "$f" 2>/dev/null || true
     done < <(find "$dir" -type f -iname '*.html' -print0 2>/dev/null)
 
-    # Page scripts treat an empty endpoint as an unavailable address. Do not
-    # substitute a recognizable synthetic URL or make an unnecessary request.
+    # --- 4. mutate css/js: kill phone-home beacons + byte noise ---------
+    # The api.ipify.org beacon lives inside the minified JS bundle, not the
+    # HTML, so it must be neutralized here. Replaced with a same-origin path:
+    # the SPA fallback returns index.html, JSON parse fails, and the template's
+    # own .catch() shows its "IP unknown" text — no off-box request is made.
     while IFS= read -r -d '' f; do
-        sed -i "s#https\?://api\.ipify\.org[^\"')]*##g" "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f -iname '*.js' -print0 2>/dev/null)
-    while IFS= read -r -d '' f; do
-        sed -i "s#--paper:[^;}]*#--paper:${paper}#g; s#--ink:[^;}]*#--ink:${ink}#g; s#--accent:[^;}]*#--accent:${accent}#g; s#--wash:[^;}]*#--wash:${wash}#g" "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f -iname '*.css' -print0 2>/dev/null)
-    # Retain each authored symbol instead of giving every site the same icon.
-    while IFS= read -r -d '' f; do
-        sed -i "s|fill=\"#[a-fA-F0-9]\{6\}\"|fill=\"${paper}\"|g; s|color=\"#[a-fA-F0-9]\{6\}\"|color=\"${accent}\"|g" "$f" 2>/dev/null || true
-    done < <(find "$dir" -type f -name '*-mark.svg' -print0 2>/dev/null)
+        sed -i "s#https\?://api\.ipify\.org[^\"')]*#/_s/ip#g" "$f" 2>/dev/null || true
+        printf '\n/* %s */\n' "$(_rt_hex 6)" >> "$f" 2>/dev/null || true
+    done < <(find "$dir" -type f \( -iname '*.css' -o -iname '*.js' \) -print0 2>/dev/null)
 
-    # --- 6. synchronize manifest metadata ------------------------------
+    # --- 5. clean random favicon (also removes svgjs.dev generator marker) -
+    local hue=$(( RANDOM % 360 ))
+    cat > "$dir/favicon.svg" <<SVG 2>/dev/null || true
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="hsl(${hue},68%,50%)"/><circle cx="32" cy="32" r="13" fill="hsl($(( (hue + 45) % 360 )),72%,90%)"/></svg>
+SVG
+
+    # --- 6. fix placeholder manifest brand ------------------------------
     while IFS= read -r -d '' f; do
         sed -i "s#MyWebSite#${brand}#g; s#MySite#${short}#g" "$f" 2>/dev/null || true
-        sed -i "s#\(\"name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${brand}\"#g; s#\(\"short_name\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${short}\"#g; s#\(\"description\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${new_desc}\"#g" "$f" 2>/dev/null || true
-        sed -i "s#\(\"background_color\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${paper}\"#g; s#\(\"theme_color\"[[:space:]]*:[[:space:]]*\)\"[^\"]*\"#\1\"${paper}\"#g" "$f" 2>/dev/null || true
     done < <(find "$dir" -type f \( -iname '*.webmanifest' -o -iname 'manifest.json' \) -print0 2>/dev/null)
 
-    log_success "Presentation prepared — ${brand}"
+    log_success "Template mutated — brand: ${brand}, hue +${deg}° (unique per install)"
     return 0
 }
-# ===== END TESTABLE-BLOCK: template-randomization =====
 
-# ===== TESTABLE-BLOCK: template-download =====
-validate_template_files() {
-    local dir="$1" file
-    [ -s "$dir/index.html" ] && [ -s "$dir/files.list" ] || return 1
-    grep -qx 'index.html' "$dir/files.list" || return 1
-    grep -qi '<!doctype html' "$dir/index.html" || return 1
-    while IFS= read -r file || [ -n "$file" ]; do
-        file="${file%$'\r'}"
-        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
-        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
-        [ -s "$dir/$file" ] || return 1
-        case "$file" in
-            *.js|*.css)
-                if head -c 256 "$dir/$file" | grep -qiE '<!doctype|<html'; then return 1; fi
-                ;;
-        esac
-    done < "$dir/files.list"
+download_template() {
+    local template_type="$1"
+    local template_folder=""
+    local template_name=""
+    
+    # Получаем данные из регистра
+    if [[ -n "${TEMPLATE_FOLDERS[$template_type]:-}" ]]; then
+        template_folder="${TEMPLATE_FOLDERS[$template_type]}"
+        template_name="${TEMPLATE_NAMES[$template_type]}"
+    else
+        log_error "Unknown template type: $template_type"
+        return 1
+    fi
+    
+    echo -e "${WHITE}🎨 Downloading Template: $template_name${NC}"
+    echo -e "${GRAY}$(printf '─%.0s' $(seq 1 50))${NC}"
+    echo
+    
+    # Создаем директорию
+    create_dir_safe "$HTML_DIR" || return 1
+    rm -rf "${HTML_DIR:?}"/* 2>/dev/null || true
+    cd "$HTML_DIR" || return 1
+    
+    # Пробуем разные методы загрузки
+    if download_via_git "$template_folder"; then
+        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
+        setup_file_permissions
+        return 0
+    fi
+    
+    if download_via_api "$template_folder"; then
+        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
+        setup_file_permissions
+        return 0
+    fi
+    
+    if download_via_curl_fallback "$template_folder"; then
+        [ "${RANDOMIZE_TEMPLATE:-true}" = true ] && randomize_template "$HTML_DIR"
+        setup_file_permissions
+        return 0
+    fi
+    
+    log_error "Failed to download any files"
+    log_warning "Creating fallback template..."
+    create_fallback_html "$template_name"
+    return 1
 }
 
-download_template() (
-    local template_type="$1" template_folder="${TEMPLATE_FOLDERS[$1]:-}"
-    local template_name="${TEMPLATE_NAMES[$1]:-Template}" target="$HTML_DIR" work method
-    [ -n "$template_folder" ] || { log_error "Unknown template type: $template_type"; return 1; }
-    create_dir_safe "$target" || return 1
-    work=$(mktemp -d "${target}.download.XXXXXX") || return 1
-    trap 'rm -rf -- "$work"' EXIT
-    HTML_DIR="$work/site"
-    log_info "Downloading template: $template_name"
-    for method in download_via_git download_via_api download_via_curl_fallback; do
-        cd "$work" || return 1
-        rm -rf -- "$HTML_DIR"
-        create_dir_safe "$HTML_DIR" || return 1
-        cd "$HTML_DIR" || return 1
-        if "$method" "$template_folder" && validate_template_files "$HTML_DIR"; then
-            # The download inventory is installer metadata, not served site content.
-            rm -f -- "$HTML_DIR/files.list"
-            if [ "${RANDOMIZE_TEMPLATE:-true}" = true ]; then randomize_template "$HTML_DIR"; fi
-            # Keep the document-root directory itself in place for Docker bind mounts.
-            cp -a "$target" "$work/previous" || return 1
-            find "$target" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
-            if ! cp -a "$HTML_DIR/." "$target/"; then
-                find "$target" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
-                cp -a "$work/previous/." "$target/" || log_error "Could not restore previous template"
-                return 1
-            fi
-            HTML_DIR="$target"
-            setup_file_permissions
-            return 0
-        fi
-        log_warning "Incomplete template from $method; trying the next download method"
-    done
-    log_error "Could not download a complete template; previous site preserved"
-    return 1
-)
-
-# ===== END TESTABLE-BLOCK: template-download =====
-
-# ===== TESTABLE-BLOCK: template-transports =====
 # Download via git sparse-checkout
 download_via_git() {
     local template_folder="$1"
@@ -3892,7 +3875,7 @@ download_via_git() {
     local temp_dir="/tmp/selfsteal-template-$$"
     create_dir_safe "$temp_dir" || return 1
     
-    if ! git clone --filter=blob:none --sparse "https://github.com/ayrelia1/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
+    if ! git clone --filter=blob:none --sparse "https://github.com/DigneZzZ/remnawave-scripts.git" "$temp_dir" 2>/dev/null; then
         rm -rf "$temp_dir"
         return 1
     fi
@@ -3924,11 +3907,11 @@ download_via_api() {
     
     echo -e "${WHITE}📦 Using wget for recursive download...${NC}"
     
-    local api_url="https://api.github.com/repos/ayrelia1/remnawave-scripts/git/trees/main?recursive=1"
+    local api_url="https://api.github.com/repos/DigneZzZ/remnawave-scripts/git/trees/main?recursive=1"
     local tree_data
-    tree_data=$(curl -fsSL --connect-timeout 10 --max-time 60 "$api_url" 2>/dev/null) || return 1
+    tree_data=$(curl -s "$api_url" 2>/dev/null)
     
-    if [[ "$tree_data" != *'"path"'* ]]; then
+    if [ -z "$tree_data" ] || ! echo "$tree_data" | grep -q '"path"'; then
         return 1
     fi
     
@@ -3936,16 +3919,7 @@ download_via_api() {
     echo -e "${WHITE}📥 Downloading files...${NC}"
     
     local template_files
-    template_files=$(printf '%s' "$tree_data" | awk '
-        BEGIN { RS = "}" }
-        /"type"[[:space:]]*:[[:space:]]*"blob"/ {
-            if (match($0, /"path"[[:space:]]*:[[:space:]]*"[^"]*"/)) {
-                path = substr($0, RSTART, RLENGTH)
-                sub(/^"path"[[:space:]]*:[[:space:]]*"/, "", path)
-                sub(/"$/, "", path)
-                print path
-            }
-        }' | grep "^sni-templates/$template_folder/" || true)
+    template_files=$(echo "$tree_data" | grep -o '"path":[^,]*' | sed 's/"path":"//' | sed 's/"//' | grep "^sni-templates/$template_folder/")
     
     local files_downloaded=0
     
@@ -3954,19 +3928,15 @@ download_via_api() {
             [ -z "$file_path" ] && continue
             
             local relative_path="${file_path#sni-templates/$template_folder/}"
-            [[ "$relative_path" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
-            case "/$relative_path/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
-            local file_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/$file_path"
+            local file_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/$file_path"
             
             local file_dir
             file_dir=$(dirname "$relative_path")
             [ "$file_dir" != "." ] && create_dir_safe "$file_dir"
             
-            if wget -q --timeout=30 --tries=2 "$file_url" -O "$relative_path" 2>/dev/null; then
+            if wget -q "$file_url" -O "$relative_path" 2>/dev/null; then
                 echo -e "${GREEN}   ✅ $relative_path${NC}"
-                files_downloaded=$((files_downloaded + 1))
-            else
-                return 1
+                ((files_downloaded++))
             fi
         done <<< "$template_files"
         
@@ -3981,22 +3951,46 @@ download_via_api() {
 
 # Fallback download via curl
 download_via_curl_fallback() {
-    local template_folder="$1" file
-    local base_url="https://raw.githubusercontent.com/ayrelia1/remnawave-scripts/main/sni-templates/$template_folder"
+    local template_folder="$1"
+    
+    echo -e "${WHITE}📦 Using curl fallback method...${NC}"
+    
+    local base_url="https://raw.githubusercontent.com/DigneZzZ/remnawave-scripts/main/sni-templates/$template_folder"
+    local common_files=("index.html" "favicon.ico" "favicon.svg" "site.webmanifest" "apple-touch-icon.png" "favicon-96x96.png")
+    local asset_files=("assets/style.css" "assets/script.js" "assets/main.js")
+    
     local files_downloaded=0
-    curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/files.list" -o files.list || return 1
-    while IFS= read -r file || [ -n "$file" ]; do
-        file="${file%$'\r'}"
-        [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]] || return 1
-        case "/$file/" in *'/../'*|*'/./'*|*'//'*) return 1 ;; esac
-        create_dir_safe "$(dirname "$file")" || return 1
-        curl -fsSL --connect-timeout 10 --max-time 60 "$base_url/$file" -o "$file" || return 1
-        files_downloaded=$((files_downloaded + 1))
-    done < files.list
-    validate_template_files "$HTML_DIR" || return 1
-    show_download_summary "$files_downloaded" "$template_folder"
+    
+    echo -e "${WHITE}📥 Downloading common files...${NC}"
+    
+    for file in "${common_files[@]}"; do
+        local url="$base_url/$file"
+        if curl -fsSL "$url" -o "$file" 2>/dev/null; then
+            echo -e "${GREEN}   ✅ $file${NC}"
+            ((files_downloaded++))
+        fi
+    done
+    
+    create_dir_safe "assets"
+    echo -e "${WHITE}📁 Downloading assets...${NC}"
+    
+    for file in "${asset_files[@]}"; do
+        local url="$base_url/$file"
+        local filename
+        filename=$(basename "$file")
+        if curl -fsSL "$url" -o "assets/$filename" 2>/dev/null; then
+            echo -e "${GREEN}   ✅ assets/$filename${NC}"
+            ((files_downloaded++))
+        fi
+    done
+    
+    if [ $files_downloaded -gt 0 ]; then
+        show_download_summary "$files_downloaded" "${TEMPLATE_NAMES[$1]:-Template}"
+        return 0
+    fi
+    
+    return 1
 }
-# ===== END TESTABLE-BLOCK: template-transports =====
 
 # Функция для установки правильных прав доступа
 setup_file_permissions() {
@@ -4034,47 +4028,205 @@ show_download_summary() {
     echo -e "${GREEN}✅ Template downloaded successfully${NC}"
 }
 
-# A failed initial download still needs a self-contained public status page.
-# ===== TESTABLE-BLOCK: template-default =====
+# Fallback функция для создания базового HTML если скачивание не удалось
 create_fallback_html() {
-    cat > "index.html" <<'EOF'
-<!doctype html>
-<html lang="ru">
+    local template_name="$1"
+    
+    cat > "index.html" << EOF
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Небольшая пауза</title>
-<meta name="description" content="Страница временно недоступна. Вернитесь немного позже.">
-<style>
-*{box-sizing:border-box}body{margin:0;padding:2rem;min-height:100svh;display:grid;place-items:center;background:#edf0f4;color:#263849;font:16px/1.7 system-ui,sans-serif}main{width:min(100%,620px);border-top:5px solid #526b84;padding:2rem 0}small{letter-spacing:.15em}h1{font:500 clamp(2rem,7vw,4rem)/1.1 Georgia,serif}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #526b84;outline-offset:5px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$template_name</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .status {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
-<body><main><small>503 / ВРЕМЕННАЯ НЕДОСТУПНОСТЬ</small><h1>Пожалуйста,<br>загляните позже.</h1><p>Сейчас страница недоступна. Подождите немного и повторите запрос.</p><a href="/">Попробовать снова</a></main></body>
+<body>
+    <div class="container">
+        <h1>🚀 Service Ready</h1>
+        <p>$template_name template is now active</p>
+        <div class="status">
+            <p>✅ System Online</p>
+        </div>
+    </div>
+</body>
 </html>
 EOF
 }
 
-# Retain the installer's fallback call contract without publishing setup details.
+# Create default HTML content for initial installation
 create_default_html() {
     echo -e "${WHITE}🌐 Creating Default Website${NC}"
-    (cd "$HTML_DIR" && create_fallback_html "Service unavailable") || return 1
-    cat > "$HTML_DIR/404.html" <<'EOF'
-<!doctype html>
-<html lang="ru">
+    
+    cat > "$HTML_DIR/index.html" << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Страница не найдена</title>
-<style>
-*{box-sizing:border-box}body{margin:0;padding:2rem;min-height:100svh;display:grid;place-items:center;background:#edf0f4;color:#263849;font:16px/1.7 system-ui,sans-serif}main{max-width:600px;border-top:5px solid #526b84;padding:2rem 0}h1{font:500 clamp(2rem,7vw,4rem)/1.1 Georgia,serif}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #526b84;outline-offset:5px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .status {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .command {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
-<body><main><small>404 / СТРАНИЦА НЕ НАЙДЕНА</small><h1>Здесь пока<br>ничего нет.</h1><p>Проверьте адрес или вернитесь на главную страницу.</p><a href="/">На главную</a></main></body>
+<body>
+    <div class="container">
+        <h1>🌐 Caddy</h1>
+        <p>Caddy server is running correctly and ready to serve your content.</p>
+        <div class="status">✅ Service Active</div>
+        <div class="info">
+            <h3>🎨 Ready for Templates</h3>
+            <p>Use the template manager to install website templates:</p>
+            <div class="command"> template</div>
+            
+        </div>
+    </div>
+</body>
+</html>
+EOF
+
+    # Create 404 page
+    cat > "$HTML_DIR/404.html" << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #e74c3c;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>        <h2>Page Not Found</h2>
+        <p>The page you are looking for does not exist.</p>
+    </div>
+</body>
 </html>
 EOF
     echo -e "${GREEN}✅ Default HTML content created${NC}"
 }
-# ===== END TESTABLE-BLOCK: template-default =====
 
 # Function to show template options (dynamically generated from registry)
 show_template_options() {

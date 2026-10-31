@@ -1,17 +1,21 @@
 {
-  "name": "Chroma Deck",
-  "short_name": "Chroma",
-  "description": "Подберите пару цветов и сравните контраст текста на выбранном фоне.",
-  "lang": "ru",
-  "start_url": "/",
-  "display": "browser",
-  "background_color": "#f0f0f4",
-  "theme_color": "#f0f0f4",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
-      "src": "/swatches-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }

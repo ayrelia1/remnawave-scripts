@@ -32,28 +32,6 @@ Blocks: `managed-files`, `caddyfile-template`, `caddy-safety`, `caddyfile-migrat
 | `test-caddy-safety.sh` | domain collection, catch-all opt-in, validate-before-reload, health check, automatic rollback, and the 11.09 incident replayed through `migrate_caddyfile` |
 | `test-no-unguarded-writes.sh` | structural scan: every write to a managed config path must be gated |
 | `test-remnanode-version.sh` | old package-based and new bundled node versions, menu/status output with built-in or external Xray, and missing metadata |
-| `test-selfsteal-templates.sh` | all eleven template identities, synchronized randomized metadata, IP lookup handling, distinct installations, and both mutation modes across all three download methods |
-| `test-selfsteal-downloads.sh` | real API and curl transports against local fixtures, complete nested asset downloads, missing/HTML-filled scripts, and preservation of the previous site on failure |
-
-The Selfsteal suite extracts marked functions from `selfsteal.sh` and operates
-only on temporary copies. It does not run the installer, contact GitHub or start
-containers. If Node.js is available, `check-selfsteal-template-assets.js` also
-checks every HTML/manifest asset reference, SVG icons and script syntax. It also
-runs `check-selfsteal-independent-pages.js` (no donor bundles; readable HTML)
-and `check-selfsteal-flow.js` (pinned donor install/CLI/configuration contracts).
-
-For browser verification with an existing Playwright and Chrome installation:
-
-```bash
-# Optional paths point to downloaded and randomized fixtures.
-node tests/check-selfsteal-browser.cjs sni-templates /path/to/randomized
-```
-
-This suite binds only loopback, closes its servers/browser on completion, and
-checks four viewport widths, local interactions, keyboard navigation, no-JS
-content, denied storage and failed IP requests. It never installs dependencies
-or executes the server installer. `SELFSTEAL_TEST_RANDOM_OUTPUT` and
-`SELFSTEAL_TEST_OUTPUT` let the shell suites export local fixture copies.
 
 The RemnaNode suite loads functions directly from `remnanode.sh`. It runs the real
 version parser in Node.js with fixture files and replaces only the Docker boundary;

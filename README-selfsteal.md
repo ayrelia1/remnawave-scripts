@@ -2,9 +2,9 @@
 
 # 🎭 Selfsteal — Caddy/Nginx для Reality
 
-[![Версия](https://img.shields.io/badge/selfsteal.sh-2.12.0-blue.svg)](#-что-нового)
+[![Версия](https://img.shields.io/badge/selfsteal.sh-2.11.1-blue.svg)](#-что-нового)
 [![Веб-сервер](https://img.shields.io/badge/Caddy_%7C_Nginx-supported-brightgreen.svg)](#-сравнение-caddy-vs-nginx)
-[![Шаблоны](https://img.shields.io/badge/шаблонов-11_standalone-purple.svg)](#-шаблоны-сайтов)
+[![Шаблоны](https://img.shields.io/badge/шаблонов-11_AI--generated-purple.svg)](#-шаблоны-сайтов)
 [![Лицензия MIT](https://img.shields.io/badge/Лицензия-MIT-yellow.svg)](./LICENSE)
 
 <img src="assets/preview-selfsteal.svg" alt="Меню selfsteal" width="640">
@@ -21,8 +21,6 @@
 
 | Версия | Главное |
 |---|---|
-| **2.12.0** | Все 11 сайтов написаны заново: новые темы, HTML/CSS/JS, пути ресурсов и иконки; установка и серверные конфигурации сохранены как у донора; обе страницы 503 используют новое оформление |
-| **2.11.2** | Исправлено центрирование шаблона №10; API и резервная загрузка получают полный набор файлов, неполная загрузка сохраняет предыдущий сайт; обновлены версии ссылок CSS/JS для браузерного кэша |
 | **2.11.1** | `--nginx`: перед установкой acme.sh проверяется и при необходимости ставится cron — без `crontab` установщик acme.sh завершается ошибкой, и выпуск сертификата срывался |
 | **2.11.0** | Проверка сертификата в главном меню и в `status`: выдан ли он на используемый домен, доверенный ли (не self-signed / Caddy Local Authority), сколько дней осталось — для Nginx и Caddy (ACME-сертификат Caddy читается прямо из Docker-тома) |
 | **2.10.1** | Исправлен выпуск SSL для Nginx: ACME-контакт больше не собирается из `hostname` (`user35123@debian.debian` отклонялся Let's Encrypt), битый аккаунт чинится автоматически ([#47](https://github.com/DigneZzZ/remnawave-scripts/issues/47)) |
@@ -47,13 +45,13 @@
 
 ```bash
 # Caddy (по умолчанию)
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ install
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ install
 
 # Nginx с Unix socket (рекомендуется — см. сравнение ниже)
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx install
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx install
 
 # Nginx с TCP-портом вместо socket
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --tcp install
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --tcp install
 ```
 
 <details>
@@ -61,13 +59,13 @@ bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal
 
 ```bash
 # Базовая force-установка (без интерактивных запросов и DNS-проверки)
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com install
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com install
 
 # С конкретным портом и шаблоном
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com --port 8443 --template 5 install
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com --port 8443 --template 5 install
 
 # С ручным wildcard-сертификатом (Nginx или Caddy)
-bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com \
+bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ --nginx --force --domain reality.example.com \
     --ssl-cert /path/to/fullchain.crt --ssl-key /path/to/private.key install
 ```
 
@@ -124,60 +122,24 @@ selfsteal          # интерактивное меню
 
 ## 🎨 Шаблоны сайтов
 
-11 самостоятельных сайтов; при первой установке выбирается случайный. Selfsteal скачивает их из каталога [`sni-templates/`](https://github.com/ayrelia1/remnawave-scripts/tree/main/sni-templates) этого форка. Предыдущие сборки [SmallPoppa/sni-templates](https://github.com/SmallPoppa/sni-templates) полностью заменены, включая HTML, CSS, JavaScript, изображения и иконки.
+11 AI-генерированных шаблонов; при первой установке выбирается случайный. Скрипт качает их из каталога [`sni-templates/`](https://github.com/DigneZzZ/remnawave-scripts/tree/main/sni-templates) этого репозитория (оригинальная коллекция — [SmallPoppa/sni-templates](https://github.com/SmallPoppa/sni-templates)):
 
-| № | Каталог | Страница |
-|---|---|---|
-| 1 | `10gag` | Bracken Fieldbook — справочник деревьев с фильтром |
-| 2 | `convertit` | Bayline Notes — архитектурные заметки |
-| 3 | `converter` | Steep Hour — работающий чайный таймер |
-| 4 | `downloader` | Spoon Ratio — пересчёт ингредиентов по порциям |
-| 5 | `filecloud` | Margin Shelf — книжная заметка в браузере |
-| 6 | `games-site` | Fold Studies — инструкция бумажного кораблика |
-| 7 | `modmanager` | Chroma Deck — подбор цветов и расчёт контраста |
-| 8 | `speedtest` | Seven Small Days — недельный трекер привычки |
-| 9 | `YouTube` | Orbit Almanac — атлас планет |
-| 10 | `503-1` | Slate Workshop — временная недоступность 503 |
-| 11 | `503-2` | Still Service — страница состояния 503 |
-
-Номера и названия каталогов в репозитории сохранены для совместимости команд.
-Сайты раздаются из корня домена: названия каталогов не становятся URL-префиксами.
-Имена CSS/JS/SVG новые и свои для каждого сайта; стандартные `index.html` и
-`site.webmanifest` сохранены. Старые ресурсы удалены, общий React runtime отсутствует.
-Тексты доступны без JavaScript; инструменты работают локально. Внешних картинок,
-шрифтов, аккаунтов, загрузки файлов или имитации удалённых сервисов нет.
+`10gag` (мемы) · `converter` (видеоконвертер) · `convertit` (конвертер файлов, самый «тихий» — без внешних CDN) · `downloader` · `filecloud` (облако с формой логина) · `games-site` (ретро-игры) · `modmanager` · `speedtest` (RU-локализация) · `YouTube` (с бесконечной капчей) · `503 Error v1/v2` (страницы ошибок)
 
 ```bash
 selfsteal template          # интерактивный выбор с превью и бэкапом текущего
 ```
 
-`install` запускает полную установку с вопросами о домене и настройках, как у
-донора. `template` только меняет сайт существующей установки и домен не спрашивает.
-Запуск скачанного скрипта с `template` не заменяет ранее установленный CLI
-`/usr/local/bin/selfsteal`; полная установка устанавливает CLI из этого форка.
-
 ### 🛡️ Антифингерпринт-уникализация (v2.8.0+)
 
-В обычном режиме при установке/смене сайта меняется его оформление:
+Базовые шаблоны публичны и байт-в-байт совпадают у всех — цензор может хешировать страницу и вносить в чёрный список. Поэтому при установке шаблон **автоматически мутируется**:
 
-- Случайные `<title>`, описание и имя приложения; Open Graph и манифест обновляются вместе.
-- Новая палитра через CSS-переменные с сохранением светлого/тёмного режима, новый `?v=` для CSS/JS и новые цвета собственной SVG-иконки сайта. Общий фильтр `hue-rotate`, шумовые комментарии и одинаковая сгенерированная иконка больше не добавляются.
-- Отключается внешний IP-запрос на двух страницах 503. Служебные описания и карты исходников не публикуются; `files.list` удаляется после проверки загрузки в обоих режимах.
+- 🎲 **Уникальность инстанса**: случайные `<title>`/бренд/meta, per-install сдвиг палитры (hue-rotate), байт-«шум» в html/css/js, рандомный `?v=`, свежий `favicon.svg` — два сервера никогда не отдают идентичные файлы
+- 🧹 **Зачистка утечек**: удаляются `README.md`/`*.md`/`*.map` (ссылки на исходный репозиторий), глушится «маяк» на `api.ipify.org`, убираются внешние Google Fonts, чинятся `vite.svg` и `site.webmanifest`
 
-Отключение: `--no-randomize` (также `--no-mutate`). Флаг оставляет базовые цвета,
-тексты, метаданные и файлы без установочной мутации. В шаблонах №10 и №11
-при этом сохраняется запрос к `api.ipify.org` для показа IP. В обычном режиме
-запрос не выполняется, показывается «Не определён». В базовом режиме IP
-подставляется JavaScript после загрузки и не
-меняет исходный HTML. Рандомизация происходит при установке/смене шаблона,
-а не на каждый просмотр страницы. Отличие содержимого не гарантирует защиту
-от классификации трафика или сайта.
+Отключение (для отладки): `--no-randomize`.
 
-Новый HTML и другие имена файлов убирают прежние ресурсы из раздаваемого сайта,
-но не делают использование скрипта нераспознаваемым. Новая коллекция также
-публична. Настройки HTTP/TLS, сертификатов и Xray не менялись; измерений
-распознавания ТСПУ не проводилось. Число 503 — содержимое статической страницы;
-фактический HTTP-статус определяется сохранённой конфигурацией веб-сервера.
+> ⚠️ Контент с иностранных CDN (giphy/unsplash/pexels) вшит в минифицированные бандлы части шаблонов — его не убрать без поломки страницы. Мутация ломает совпадение по хешу, но **не меняет TLS-отпечаток веб-сервера** (см. сравнение выше).
 
 ## 🔧 Конфигурация Xray Reality
 
@@ -296,7 +258,7 @@ rm -rf ~/.acme.sh/ca/acme-v02.api.letsencrypt.org
 
 <div align="center">
 
-**Ресурсы:** [Reality (XTLS)](https://github.com/XTLS/REALITY) · [Caddy](https://caddyserver.com/docs/) · [шаблоны сайтов](https://github.com/ayrelia1/remnawave-scripts/tree/main/sni-templates)
+**Ресурсы:** [Reality (XTLS)](https://github.com/XTLS/REALITY) · [Caddy](https://caddyserver.com/docs/) · [шаблоны сайтов](https://github.com/DigneZzZ/remnawave-scripts/tree/main/sni-templates)
 
 [Сообщить об ошибке](https://github.com/DigneZzZ/remnawave-scripts/issues) · [Сообщество gig.ovh](https://gig.ovh) · Автор: **DigneZzZ** · [MIT License](./LICENSE)
 

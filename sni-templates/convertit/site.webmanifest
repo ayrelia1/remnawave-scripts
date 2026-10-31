@@ -1,17 +1,21 @@
 {
-  "name": "Bayline Notes",
-  "short_name": "Bayline",
-  "description": "Архитектурные заметки о лестницах, окнах и пространствах между домами.",
-  "lang": "ru",
-  "start_url": "/",
-  "display": "browser",
-  "background_color": "#edf1f6",
-  "theme_color": "#edf1f6",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
-      "src": "/streets-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }
