@@ -11,7 +11,7 @@ font service, media CDN, backend or added framework is required.
 | 2 | `courtyard` | Клуб Практика — форум |
 | 3 | `steep-hour` | Steep Hour — чайный таймер |
 | 4 | `spoon-ratio` | Spoon Ratio — рецепт |
-| 5 | `editorial` | Folio Desk — редакционный кабинет |
+| 5 | `editorial` | Folio Access — вход в панель |
 | 6 | `fold-studies` | Fold Studies — оригами |
 | 7 | `chroma-deck` | Chroma Deck — цвета |
 | 8 | `seven-days` | Seven Small Days — недельный трекер |
@@ -20,10 +20,11 @@ font service, media CDN, backend or added framework is required.
 | 11 | `still-status` | Still Service — 503 |
 
 The forum includes `/discussions/thread.html`, `/discussions/new.html` and
-`community/{styles,scripts,records}`. The editorial cabinet includes
-`/workspace/editor.html` and `desk/{styles,scripts,records}`. These browser apps
-persist local records only; no account system or public multi-user publication
-is supplied. See [UX-CONTRACT.md](../UX-CONTRACT.md).
+`community/{styles,scripts,records}`. Template 5 contains only an access screen, `access/{styles,scripts}` and
+a separate identity mark. Every filled sign-in rejects locally; submitted values
+are not transmitted or persisted. Without JavaScript the form is disabled. The
+previous material editor and JSON dataset are removed. Forum records persist
+locally; no account system or public multi-user publication is supplied. See [UX-CONTRACT.md](../UX-CONTRACT.md).
 
 Every `files.list` is an exact download inventory. The installer requires all
 listed files and removes this inventory before serving the site. Git, API and

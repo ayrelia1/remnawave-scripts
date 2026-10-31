@@ -93,38 +93,30 @@ async function actions(page,folder) {
     assert.equal(await page.locator('[data-grams="80"]').textContent(),'160');
     await page.locator('#servings').fill('2');
   } else if (folder === 'editorial') {
-    await page.locator('#article-rows .row-link').first().waitFor();
-    assert.equal(await page.locator('#stat-total').textContent(),'10');
-    await page.locator('#article-next').click();
-    assert.equal(await page.locator('#article-rows tr').count(),2);
-    await page.locator('#article-search').fill('неттакогоматериала');
-    assert(await page.locator('#article-empty').isVisible());
-    await page.locator('#clear-articles').click();
-    await page.locator('#article-filter').selectOption('ready');
-    assert.equal(await page.locator('#article-rows tr').count(),4);
-    await page.locator('#clear-articles').click();
-    await page.locator('.page-heading a').click();
-    await page.locator('#save-article').click();
-    assert.equal(await page.locator('#article-title').getAttribute('aria-invalid'),'true');
-    await page.locator('#article-title').fill('Материал из проверки');
-    await page.locator('#article-text').fill('<img src=x onerror=alert(1)> Безопасный текст материала.');
-    await page.locator('#article-status').selectOption('ready');
-    await page.locator('#back-to-library').click();
-    assert(await page.locator('#leave-dialog').isVisible());
-    await page.keyboard.press('Escape');
-    await page.locator('#save-article').click();
-    await page.waitForURL('**/?saved=1');
-    assert.equal(await page.locator('#stat-total').textContent(),'11');
-    await page.locator('#article-search').fill('Материал из проверки');
-    await page.locator('#article-rows .row-link').click();
-    await page.waitForFunction(()=>!document.querySelector('#editor-fields').disabled);
-    assert((await page.locator('#article-text').inputValue()).includes('<img src=x'));
-    assert.equal(await page.locator('img').count(),0);
-    await page.locator('#article-title').fill('Обновлённый материал');
-    await page.locator('#save-article').click();
-    await page.waitForURL('**/?*');
-    await page.locator('#clear-articles').click();
-    assert((await page.locator('#article-rows').textContent()).includes('Обновлённый материал'));
+    const url=page.url(),requests=[];
+    const watch=request=>requests.push(request.url());page.on('request',watch);
+    await page.locator('#sign-in').click();
+    assert.equal(await page.locator('#login-message').textContent(),'Введите логин.');
+    await page.locator('#login-username').fill('admin');
+    await page.locator('#sign-in').click();
+    assert.equal(await page.locator('#login-message').textContent(),'Введите пароль.');
+    await page.locator('#login-password').fill('Example-password-1');
+    await page.locator('#toggle-password').click();
+    assert.equal(await page.locator('#login-password').getAttribute('type'),'text');
+    await page.locator('#sign-in').click();
+    assert.equal(await page.locator('#login-message').textContent(),'Неверный логин или пароль.');
+    assert.equal(await page.locator('#login-password').inputValue(),'');
+    assert.equal(await page.locator('#login-password').getAttribute('type'),'password');
+    assert.equal(await page.locator('#login-username').inputValue(),'admin');
+    await page.locator('#login-username').fill('<img src=x onerror=alert(1)>');
+    await page.locator('#login-password').fill('Другой пароль');
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#login-message').textContent(),'Неверный логин или пароль.');
+    assert.equal(page.url(),url);
+    assert.deepEqual(requests,[],'Sign-in generated a network request');
+    assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,'Credentials persisted');
+    assert.equal((await page.context().cookies()).length,0);
+    page.off('request',watch);
   } else if (folder === 'fold-studies') {
     assert(await page.locator('#fold-prev').isDisabled());
     for (let i=0;i<4;i++) await page.locator('#fold-next').click();
@@ -231,9 +223,13 @@ async function actions(page,folder) {
       const staticPage = await noJS.newPage(); await staticPage.goto(url);
       assert(await staticPage.locator('h1').isVisible());
       assert((await staticPage.locator('main').innerText()).length > 80);
+      if(folder==='editorial'){
+        assert(await staticPage.locator('#sign-in').isDisabled(),'No-JS sign-in must not submit');
+        assert(await staticPage.locator('#login-password').isDisabled(),'No-JS password field must stay disabled');
+      }
       await noJS.close();
-      if (['courtyard','editorial'].includes(folder)) {
-        const paths=folder==='editorial'?['/workspace/editor.html']:['/discussions/new.html','/discussions/thread.html?id=conversation-1'];
+      if (folder==='courtyard') {
+        const paths=['/discussions/new.html','/discussions/thread.html?id=conversation-1'];
         for(const route of paths){
           await page.goto(url+route,{waitUntil:'networkidle'});
           const routeViews=[];
@@ -242,7 +238,7 @@ async function actions(page,folder) {
             assert(await page.locator('h1').isVisible(),`${folder}/${route}: heading`);
             const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
             assert(!overflow,`${mode}/${folder}/${route}/${width}: horizontal overflow`);
-            if(pictures&&[1366,390].includes(width))await page.screenshot({path:path.join(pictures,`${mode}-${folder}-${route.includes('thread')?'thread':route.includes('new')?'new':'editor'}-${width}.png`),fullPage:true});
+            if(pictures&&[1366,390].includes(width))await page.screenshot({path:path.join(pictures,`${mode}-${folder}-${route.includes('thread')?'thread':'new'}-${width}.png`),fullPage:true});
             routeViews.push({width,overflow});
           }
           report.push({folder,mode,route,views:routeViews});
@@ -252,22 +248,21 @@ async function actions(page,folder) {
         const failure=await broken.newPage();await failure.goto(url,{waitUntil:'networkidle'});
         assert(await failure.locator('#load-error').isVisible());
         await broken.unroute('**/records/*.json');await failure.locator('#retry-load').click();
-        await failure.waitForFunction(()=>document.querySelectorAll('#topic-list .topic-card, #article-rows tr').length>0);
+        await failure.waitForFunction(()=>document.querySelectorAll('#topic-list .topic-card').length>0);
         await broken.close();
         const corrupt=await browser.newContext();
-        await corrupt.addInitScript(()=>{localStorage.setItem('practice-topics','[{"id":"bad","title":"Bad topic","category":"Идеи","posts":[{"author":"","text":"text","date":"2026-10-25"}]}]');localStorage.setItem('folio-desk-records','{broken');});
+        await corrupt.addInitScript(()=>{localStorage.setItem('practice-topics','[{"id":"bad","title":"Bad topic","category":"Идеи","posts":[{"author":"","text":"text","date":"2026-10-25"}]}]');});
         const recovered=await corrupt.newPage();await recovered.goto(url,{waitUntil:'networkidle'});
         assert((await recovered.locator('#storage-note').textContent()).includes('недоступны'));
-        assert(await recovered.locator(folder==='editorial'?'#article-rows .row-link':'#topic-list .row-link').first().isVisible());
+        assert(await recovered.locator('#topic-list .row-link').first().isVisible());
         await corrupt.close();
       }
       // Verify denied storage and failed network independently of the happy path.
-      if (['editorial','seven-days'].includes(folder)) {
+      if (folder==='seven-days') {
         const blocked = await browser.newContext();
         await blocked.addInitScript(() => { Object.defineProperty(window,'localStorage',{get(){ throw new DOMException('Unavailable','SecurityError'); }}); });
         const offline = await blocked.newPage(); await offline.goto(url);
-        if (folder==='editorial') { await offline.goto(url+'/workspace/editor.html'); await offline.locator('#article-title').fill('Текст при отказе'); await offline.locator('#article-text').fill('Достаточно длинный текст материала.'); await offline.locator('#save-article').click(); assert((await offline.locator('#editor-message').textContent()).includes('Не удалось сохранить')); }
-        else { await offline.locator('[data-day="0"]').click(); assert((await offline.locator('#week-feedback').textContent()).includes('Не удалось сохранить')); }
+        await offline.locator('[data-day="0"]').click(); assert((await offline.locator('#week-feedback').textContent()).includes('Не удалось сохранить'));
         await blocked.close();
       }
       if (folder.endsWith('-status') && mode==='base') {

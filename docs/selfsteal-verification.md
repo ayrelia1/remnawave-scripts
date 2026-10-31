@@ -1,3 +1,29 @@
+# Selfsteal 2.14.1 verification
+
+## Rejection-only admin sign-in
+
+Template 5 replaces the material dashboard/editor with a standalone sign-in
+screen and separate CSS/JS/SVG/manifest resources. The old editor route, scripts,
+styles and article JSON are removed. All other template files are unchanged.
+
+Regressions cover empty-field guidance, repeated invalid filled attempts, Enter
+submission, show/hide masking, password clearing, retained username and focus.
+Browser request observation checks zero submission requests and an unchanged
+URL; cookies and web storage remain empty. The no-JavaScript form is disabled.
+Static checks reject credential transport/storage/logging APIs in this script.
+
+Shell/asset/installer-contract and transport suites pass. The updated browser
+matrix contains 13 routes × 2 modes × 4 widths = 104 viewport cases, retaining
+forum and 503 coverage. UI screenshots were inspected in both modes. A live
+server installation was not run. This is presentation only, with no real login
+or account service. The installer flow is unchanged; rollback is `671d0d2`.
+
+The optional strict UI auditor reports 30 actionless-button findings because it
+does not resolve the external addEventListener bindings. The raw findings and
+browser-backed manual review are preserved in `selfsteal-ui-audit.json`.
+
+## Historical 2.14.0 verification
+
 # Selfsteal 2.14.0 verification
 
 ## 2026-10-31 forum, editorial cabinet and separate resources

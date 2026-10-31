@@ -3,15 +3,16 @@
 ## Overview
 
 Eleven independent Russian-language sites live in `sni-templates/`. Seven are
-reference/browser tools, one is an editorial cabinet, one a forum, and two retain
+reference/browser tools, one is a sign-in screen, one a forum, and two retain
 the 503 service-unavailable concept. Each has separate HTML, CSS, JavaScript,
-SVG icons and an application manifest; the forum and cabinet also load local JSON. There is no shared public
+SVG icons and an application manifest; the forum also loads local JSON. There is no shared public
 brand, framework runtime, backend service, remote font or media CDN.
 
 The subject determines the layout: a botanical specimen grid, discussion
-board, tea desk, recipe ledger, editorial workspace, paper-fold lesson, contrast
+board, tea desk, recipe ledger, centered access card, paper-fold lesson, contrast
 specimen, weekly calendar, orbital map and two distinct service-status sheets.
-No fake account forms, uploads, invented service metrics or unimplemented actions.
+The access form intentionally rejects every attempt. No uploads, invented service
+metrics or unimplemented controls are included.
 
 ## Colors
 
@@ -24,7 +25,7 @@ This table mirrors the authored token values; there are no theme adapters.
 | 2 | `courtyard` / Клуб Практика | #f6f4f8 | #49365b | #76508c | #e6deec |
 | 3 | `steep-hour` / Steep Hour | #f7f0e5 | #43372d | #85512d | #e9dcc5 |
 | 4 | `spoon-ratio` / Spoon Ratio | #fff4e8 | #493124 | #9b4328 | #f3ddc6 |
-| 5 | `editorial` / Folio Desk | #f2f5f6 | #24353d | #1e6671 | #e0e8ea |
+| 5 | `editorial` / Folio Access | #f1f4f7 | #22333e | #245d75 | #dae4ec |
 | 6 | `fold-studies` / Fold Studies | #e9f3f7 | #243e55 | #23628d | #cee1eb |
 | 7 | `chroma-deck` / Chroma Deck | #f0f0f4 | #282d42 | #535d9d | #dcdfea |
 | 8 | `seven-days` / Seven Small Days | #eef4ee | #293f38 | #456c58 | #dce8dd |
@@ -40,7 +41,7 @@ and interaction contracts remain fixed. `--no-randomize` preserves authored HTML
 
 ## Typography
 
-Body and cabinet: Segoe UI/Arial/system sans; botanical, tea, recipe and 503 display:
+Body and access page: Segoe UI/Arial/system sans; botanical, tea, recipe and 503 display:
 Georgia; forum, fold, weekly and orbital display: Trebuchet MS; technical values:
 Consolas. Each heading has a subject-specific scale.
 All stacks support Cyrillic without network requests and wrap naturally.
@@ -49,18 +50,22 @@ All stacks support Cyrillic without network requests and wrap naturally.
 
 Each site has an authored entry document, separate presentation/behavior/identity
 files and `site.webmanifest`. The forum has `community/{styles,scripts,records}`
-and `discussions/{thread,new}.html`; the cabinet has `desk/{styles,scripts,records}`
-and `workspace/editor.html`. All repository folder names have been replaced;
+and `discussions/{thread,new}.html`; template 5 has `access/{styles,scripts}` and a separate identity mark. All repository folder names have been replaced;
 the numeric template IDs remain stable. No remote fonts or media are required.
 `files.list` is a checked download inventory, removed before serving the site.
 All transports require the complete inventory, including nested files.
 
-The cabinet uses a dark side navigation, a restrained teal workspace, derived
-record counts and a semantic horizontally scrollable table. The forum uses a
-plum discussion board, a compact category sidebar and a single-column thread.
-Their route, validation, persistence, retry and unsaved-navigation behavior is
-defined in [UX-CONTRACT.md](UX-CONTRACT.md). Neither supplies host admin access,
-accounts, remote publication or multi-user synchronization.
+Template 5 is a restrained private-access page: a centered form, small local
+brand mark, login/password fields and a stable inline error region. Any filled
+submission rejects, clears and remasks the password, retains the username only
+in the current DOM and focuses the password field. Its script has no network,
+storage, cookie or logging code. The disabled-by-default fieldset prevents
+no-JavaScript submissions; inputs have no name attributes. There is no editor,
+cabinet dataset or successful-login destination.
+
+The forum uses a plum discussion board, a compact category sidebar and a single-
+column thread. Its route, persistence, retry and unsaved-navigation behavior is
+defined in [UX-CONTRACT.md](UX-CONTRACT.md).
 
 Normal document scrolling owns every page. Two-column layouts collapse at
 650–750px; small controls and long references must remain inside a 320px viewport.
@@ -71,17 +76,17 @@ in every site's primary stylesheet.
 
 ## Elevation & Depth
 
-Use borders and flat tinted panels. The cabinet and forum use subtle panel borders rather than floating overlays. No decorative glow or animated backgrounds.
+Use borders and flat tinted panels. The access page and forum use subtle panel borders rather than floating overlays. No decorative glow or animated backgrounds.
 
 ## Shapes
 
-Keep subject-specific marks: leaf, stairs, cup, plate, book spines, paper boat,
+Keep subject-specific marks: leaf, stairs, cup, plate, letter F, paper boat,
 overlapping circles, calendar, orbit and two distinct service symbols. Inline
 diagrams are decorative and clearly described; orbital distances are not to scale.
 
 ## Components
 
-The templates are independent sites; forum and cabinet routes share their own
+The templates are independent sites; forum routes share their own
 application controllers. Native HTML
 controls own selection/disclosure/input behavior; their operating-system popup
 geometry is accepted. No shared app component or build dependency is introduced.
@@ -89,15 +94,15 @@ geometry is accepted. No shared app component or build dependency is introduced.
 | Capability | Canonical owner | Source of truth | Allowed variants | Verification |
 |---|---|---|---|---|
 | Select/Listbox | Native select | Labeled fields in page HTML | Botanical filter, tea type | Browser selected/open states |
-| Form | Native inputs and page handlers | Application script and UX-CONTRACT.md | Recipe input, goal, material, topic, reply | Valid/invalid, reload and blocked storage |
+| Form | Native inputs and page handlers | Application script and UX-CONTRACT.md | Recipe input, goal, sign-in, topic, reply | Valid/invalid, reload and blocked storage |
 | Scrollbar | Document primary stylesheet | `html` and scrollbar pseudo-elements | Document and textarea overflow | Narrow layouts and CSS inspection |
 
 All native actions have hover, pressed, focus and disabled states. Feedback uses
-reserved inline `role=status` space. Skip links move focus to the main landmark.
-The cabinet and forum share app-owned dialog behavior across their own routes.
+reserved inline `role=status` space; sign-in errors use `role=alert`. Skip links
+move focus to the main landmark. Forum routes share app-owned dialog behavior.
 There are no toasts, destructive actions, authentication or remote CRUD.
 
-Editorial/forum records and weekly marks are bounded localStorage data, with read/parse/
+Forum records and weekly marks are bounded localStorage data, with read/parse/
 write failures handled. User strings are assigned to textContent or input values,
 never interpreted as HTML. The tea timer uses wall time with pause/reset and
 completion feedback. Recipe scaling preserves its last valid result on invalid

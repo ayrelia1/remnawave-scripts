@@ -41,3 +41,4 @@ for(const folder of folders){
   console.log(`PASS: ${folder}: separate HTML/CSS/JS, metadata, icons, JSON and complete local links`);
 }
 assert.equal(identities.size,11);
+require('./check-selfsteal-login.js');

@@ -7,9 +7,9 @@
 # ║  Author:  DigneZzZ (https://github.com/DigneZzZ)               ║
 # ║  License: MIT                                                  ║
 # ╚════════════════════════════════════════════════════════════════╝
-# VERSION=2.14.0
+# VERSION=2.14.1
 
-SCRIPT_VERSION="2.14.0"
+SCRIPT_VERSION="2.14.1"
 
 # Handle @ prefix for consistency with other scripts
 if [ $# -gt 0 ] && [ "$1" = "@" ]; then
@@ -131,7 +131,7 @@ declare -A TEMPLATE_NAMES=(
     ["2"]="Клуб Практика - Форум"
     ["3"]="Steep Hour - Чайный таймер"
     ["4"]="Spoon Ratio - Пересчёт рецепта"
-    ["5"]="Folio Desk - Редакционный кабинет"
+    ["5"]="Folio Access - Вход в панель"
     ["6"]="Fold Studies - Бумажный кораблик"
     ["7"]="Chroma Deck - Подбор цветов"
     ["8"]="Seven Small Days - Недельный трекер"
@@ -3419,7 +3419,7 @@ install_command() {
     
     # List of available templates
     local templates=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11")
-    local template_names=("Bracken Fieldbook" "Клуб Практика" "Steep Hour" "Spoon Ratio" "Folio Desk" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
+    local template_names=("Bracken Fieldbook" "Клуб Практика" "Steep Hour" "Spoon Ratio" "Folio Access" "Fold Studies" "Chroma Deck" "Seven Small Days" "Orbit Almanac" "Slate Workshop" "Still Service")
     
     local selected_template=""
     local selected_name=""

@@ -102,61 +102,7 @@
     {
       "category": "violation",
       "file": "sni-templates/editorial/index.html",
-      "line": 21,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/index.html",
-      "line": 21,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/index.html",
-      "line": 22,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/index.html",
-      "line": 22,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/workspace/editor.html",
-      "line": 21,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/workspace/editor.html",
-      "line": 22,
-      "message": "Enabled literal button has no detectable action or submit behavior.",
-      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
-      "ruleId": "affordance.actionless-button",
-      "severity": "error"
-    },
-    {
-      "category": "violation",
-      "file": "sni-templates/editorial/workspace/editor.html",
-      "line": 22,
+      "line": 32,
       "message": "Enabled literal button has no detectable action or submit behavior.",
       "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
       "ruleId": "affordance.actionless-button",
@@ -329,10 +275,10 @@
   "projectRoot": ".",
   "schemaVersion": 1,
   "summary": {
-    "errors": 36,
-    "total": 36,
+    "errors": 30,
+    "total": 30,
     "unresolved": 0,
-    "violations": 36,
+    "violations": 30,
     "warnings": 0
   },
   "scope": {
@@ -346,8 +292,8 @@
   },
   "manualReview": {
     "rule": "affordance.actionless-button",
-    "count": 36,
-    "disposition": "Bindings use addEventListener in external scripts, which this auditor does not detect. Reachable controls are exercised in browser flows; closed native dialogs are activated on form routes. No dummy inline handlers were added.",
+    "count": 30,
+    "disposition": "Bindings use addEventListener in external scripts, which this auditor does not detect. Reachable controls are exercised in browser flows; closed native dialogs are activated on forum routes. The sign-in show/hide action and repeated rejection are exercised without network or storage. No dummy inline handlers were added.",
     "evidence": "tests/check-selfsteal-browser.cjs"
   }
 }

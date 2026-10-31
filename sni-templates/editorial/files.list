@@ -1,7 +1,5 @@
-desk/records/articles.json
-desk/scripts/workbench.js
-desk/styles/workbench.css
-identity/folio-mark.svg
+access/scripts/sign-in.js
+access/styles/sign-in.css
+identity/access-mark.svg
 index.html
 site.webmanifest
-workspace/editor.html

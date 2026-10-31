@@ -48,9 +48,9 @@ node tests/check-selfsteal-browser.cjs /path/to/downloaded /path/to/randomized
 
 This optional suite uses loopback only and closes its own browser/servers. It
 checks four viewport widths, interactions, storage/IP/clipboard failure, no-JS
-content, keyboard focus, and 503 ID/timer/manual/automatic retry contracts. The forum/editorial routes
-also exercise creation/editing, pagination, dirty-navigation dialogs, seed-load
-retry, corrupted local records and 112 viewport cases across all routes.
+content, keyboard focus, and 503 ID/timer/manual/automatic retry contracts. Forum routes
+also exercise creation, pagination, dirty-navigation dialogs, seed-load
+retry, corrupted local records and 104 viewport cases across all routes.
 
 The RemnaNode suite loads functions directly from `remnanode.sh`. It runs the real
 version parser in Node.js with fixture files and replaces only the Docker boundary;
@@ -70,3 +70,7 @@ revision that caused the outage:
 git show <pre-fix-rev>:remnawave.sh > /tmp/old.sh
 bash tests/test-no-unguarded-writes.sh /tmp/old.sh   # reports all 15 unguarded writes
 ```
+
+Template 5 additionally runs `check-selfsteal-login.js` and browser assertions
+for rejection-only sign-in, password masking/clearing and zero input transport
+or storage. Its old editor and dataset must remain absent.
