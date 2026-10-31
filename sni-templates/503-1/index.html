@@ -1,25 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Harbor Queue | Ресурс временно занят</title>
-  <meta name="description" content="Запрос ожидает свободного обработчика. Здесь отображаются параметры обращения и время следующей попытки.">
-  <meta name="application-name" content="Harbor Queue">
-  <meta name="apple-mobile-web-app-title" content="Harbor Queue">
-  <meta name="theme-color" content="#213950">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Harbor Queue">
-  <meta property="og:title" content="Harbor Queue | Ресурс временно занят">
-  <meta property="og:description" content="Запрос ожидает свободного обработчика. Здесь отображаются параметры обращения и время следующей попытки.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/style.css?v=20261030.1">
-  <script type="module" src="/assets/main.js?v=20261030.1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slate Workshop — временная пауза</title>
+<meta name="description" content="Страница временной недоступности. Попробуйте открыть сайт немного позже.">
+<meta name="application-name" content="Slate Workshop">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Slate Workshop — временная пауза">
+<meta property="og:description" content="Страница временной недоступности. Попробуйте открыть сайт немного позже.">
+<meta property="og:site_name" content="Slate Workshop">
+<meta name="theme-color" content="#f0f2f5">
+<link rel="icon" type="image/svg+xml" href="/pause-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pause.css">
+<script defer src="/pause.js"></script>
 </head>
 <body>
-  <div id="root"></div>
+<a class="skip" href="#content">К содержимому</a>
+<header class="pause-head"><a href="/">SLATE WORKSHOP</a><span>Состояние сервиса</span></header><main id="content" tabindex="-1" class="pause-main"><section class="pause-number" aria-label="Ошибка 503"><span>HTTP /</span><strong>503</strong><p>Service unavailable</p><svg viewBox="0 0 280 70" aria-hidden="true"><path d="M10 35H72L92 12L120 58L146 25L170 35H270" fill="none" stroke="currentColor" stroke-width="4"/></svg></section>
+<section class="pause-message"><p class="eyebrow">Сейчас здесь небольшая пауза</p><h1>Вернёмся<br>чуть позже.</h1><p class="lead">Страница временно недоступна. Подождите немного и попробуйте открыть её снова.</p><button id="pause-retry" type="button">Попробовать снова</button><p id="pause-counter" class="feedback" role="status">Повторить запрос можно в любое время.</p><dl class="pause-details"><div><dt>Код ответа страницы</dt><dd>503 · временная недоступность</dd></div><div><dt>Ваш IP <small>через ipify</small></dt><dd data-address>Определяется…</dd></div></dl><noscript><p>Обновите страницу средствами браузера. IP без JavaScript не определяется.</p></noscript></section></main><footer>Slate Workshop · спасибо за терпение</footer>
 </body>
 </html>

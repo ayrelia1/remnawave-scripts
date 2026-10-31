@@ -1,24 +1,17 @@
 {
-  "name": "Juniper Status",
-  "short_name": "Juniper Status",
-  "description": "Сервису нужно немного времени. Сведения о запросе и отсчёт до следующей автоматической проверки.",
+  "name": "Still Service",
+  "short_name": "Still",
+  "description": "Сервис временно недоступен. Сохраните адрес и вернитесь позже.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f5eef6",
+  "theme_color": "#f5eef6",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/availability-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#203f3c",
-  "background_color": "#eff6f2",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "ru"
+  ]
 }

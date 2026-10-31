@@ -1,0 +1,281 @@
+:root{
+  --paper:#e9f3f7;
+  --ink:#243e55;
+  --accent:#23628d;
+  --wash:#cee1eb
+}
+
+
+*{
+  box-sizing:border-box
+}
+html{
+  scroll-behavior:smooth;
+  scrollbar-color:var(--accent) var(--wash);
+  scrollbar-width:auto;
+  scrollbar-gutter:stable
+}
+body{
+  margin:0 auto;
+  padding:0 28px;
+  max-width:1180px;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 'Segoe UI',Arial,sans-serif
+}
+a{
+  color:inherit;
+  text-underline-offset:4px
+}
+a:hover{
+  color:var(--accent)
+}
+h1,h2,h3{
+  line-height:1.2
+}
+p{
+  margin:.8rem 0 1.2rem
+}
+img,svg{
+  max-width:100%
+}
+button,input,select,textarea{
+  font:inherit;
+  color:var(--ink)
+}
+button,.action{
+  border:1px solid transparent;
+  border-radius:6px;
+  padding:.8rem 1.15rem;
+  background:var(--accent);
+  color:var(--paper);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer
+}
+button:hover,.action:hover{
+  filter:brightness(1.12);
+  color:var(--paper)
+}
+button:active,.action:active{
+  transform:translateY(1px)
+}
+button:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none
+}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--accent)
+}
+input,select,textarea{
+  max-width:100%;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:.7rem;
+  background:var(--paper)
+}
+textarea{
+  resize:vertical;
+  min-height:140px
+}
+select,summary{
+  cursor:pointer
+}
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:4px
+}
+footer{
+  padding:1.5rem 0;
+  margin-top:2rem;
+  border-top:1px solid var(--accent);
+  font-size:.8rem
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--accent)
+}
+.lead{
+  font-size:1.12rem;
+  line-height:1.7
+}
+.hint{
+  font-size:.85rem
+}
+.feedback{
+  min-height:3.4em;
+  font-size:.85rem;
+  line-height:1.5
+}
+[hidden]{
+  display:none!important
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:1rem;
+  background:var(--paper);
+  color:var(--ink);
+  z-index:10;
+  padding:.6rem
+}
+.skip:focus{
+  top:.5rem
+}
+::-webkit-scrollbar{
+  width:12px;
+  height:12px
+}
+::-webkit-scrollbar-track{
+  background:var(--wash)
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border:3px solid var(--wash);
+  border-radius:8px
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--ink)
+}
+::-webkit-scrollbar-thumb:active{
+  background:var(--ink)
+}
+@media(forced-colors:active){
+  *{
+  scrollbar-color:auto
+}
+
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto
+}
+*,*:before,*:after{
+  animation:none!important;
+  transition:none!important
+}
+
+}
+@media(max-width:650px){
+  body{
+  padding:0 20px
+}
+footer{
+  margin-top:1rem
+}
+.lead{
+  font-size:1rem
+}
+
+}
+
+
+.fold-head{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding:2rem 0;
+  border-bottom:2px dashed var(--accent)
+}
+.fold-head a{
+  font:700 1.5rem 'Trebuchet MS',sans-serif;
+  text-decoration:none
+}
+.fold-title{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  align-items:end;
+  gap:2rem;
+  padding:3rem 0
+}
+.fold-title h1{
+  font:800 clamp(3rem,6vw,5.8rem)/1.02 'Trebuchet MS',sans-serif;
+  letter-spacing:-.045em;
+  margin:1rem 0
+}
+.fold-work{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  background:var(--wash);
+  border-radius:30px;
+  overflow:hidden
+}
+.fold-work figure{
+  margin:0;
+  align-self:center;
+  padding:2rem 0
+}
+.fold-work svg{
+  width:100%
+}
+.fold-work figcaption{
+  text-align:center;
+  font-size:.85rem;
+  padding:0 1rem
+}
+.fold-step{
+  background:var(--paper);
+  margin:12px;
+  padding:2rem;
+  border-radius:20px
+}
+.fold-step h2{
+  font-size:1.8rem
+}
+.fold-step>p:not(.eyebrow){
+  min-height:9em
+}
+.fold-step progress{
+  width:100%;
+  height:8px;
+  accent-color:var(--accent);
+  margin:1rem 0
+}
+.fold-buttons{
+  display:flex;
+  gap:.6rem
+}
+.fold-buttons button{
+  padding:.8rem
+}
+.fold-all{
+  margin:2rem 0;
+  border-bottom:1px solid var(--accent);
+  padding:1rem 0
+}
+.fold-all summary{
+  cursor:pointer;
+  font-weight:700
+}
+.fold-all li{
+  margin:1rem 0
+}
+@media(max-width:700px){
+  .fold-head span{
+  font-size:12px;
+  max-width:150px
+}
+.fold-title,.fold-work{
+  grid-template-columns:1fr
+}
+.fold-title{
+  gap:0
+}
+.fold-step{
+  padding:1.3rem
+}
+.fold-work figure{
+  padding:0
+}
+.fold-step>p:not(.eyebrow){
+  min-height:0
+}
+
+}

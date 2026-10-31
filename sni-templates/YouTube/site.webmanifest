@@ -1,24 +1,17 @@
 {
-  "name": "Кадротека",
-  "short_name": "Кадротека",
-  "description": "Небольшие фильмы, творческие заметки и новые открытия. Найдите следующую историю в Кадротеке.",
+  "name": "Orbit Almanac",
+  "short_name": "Orbit",
+  "description": "Краткий атлас четырёх планет земной группы: размеры, годы и интересные детали.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#151d35",
+  "theme_color": "#151d35",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/orbits-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#18263a",
-  "background_color": "#edf2f8",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "ru"
+  ]
 }

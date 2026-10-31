@@ -1,25 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Кадротека | Истории, которые хочется посмотреть</title>
-  <meta name="description" content="Небольшие фильмы, творческие заметки и новые открытия. Найдите следующую историю в Кадротеке.">
-  <meta name="application-name" content="Кадротека">
-  <meta name="apple-mobile-web-app-title" content="Кадротека">
-  <meta name="theme-color" content="#18263a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Кадротека">
-  <meta property="og:title" content="Кадротека | Истории, которые хочется посмотреть">
-  <meta property="og:description" content="Небольшие фильмы, творческие заметки и новые открытия. Найдите следующую историю в Кадротеке.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/v1/style.css?v=20261030.1">
-  <script type="module" src="/assets/v1/script.js?v=20261030.1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit Almanac — соседи по Солнечной системе</title>
+<meta name="description" content="Краткий атлас четырёх планет земной группы: размеры, годы и интересные детали.">
+<meta name="application-name" content="Orbit Almanac">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Orbit Almanac — соседи по Солнечной системе">
+<meta property="og:description" content="Краткий атлас четырёх планет земной группы: размеры, годы и интересные детали.">
+<meta property="og:site_name" content="Orbit Almanac">
+<meta name="theme-color" content="#151d35">
+<link rel="icon" type="image/svg+xml" href="/orbits-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/orbits.css">
+<script defer src="/orbits.js"></script>
 </head>
 <body>
-  <div id="root"></div>
+<a class="skip" href="#content">К содержимому</a>
+<header class="orbit-nav"><a href="/">ORBIT ALMANAC</a><span>Ближе, чем звёзды</span></header><main id="content" tabindex="-1">
+<section class="orbit-opening"><p class="eyebrow">Четыре каменистых мира</p><h1>Наш маленький<br>угол Вселенной.</h1><p class="lead">У соседних планет разные характеры: от стремительного Меркурия до неспешной Венеры. Познакомьтесь с ними по одной.</p></section>
+<section class="orbit-system"><div class="orbit-map" aria-hidden="true"><i class="orbital o-one"></i><i class="orbital o-two"></i><i class="orbital o-three"></i><i class="orbital o-four"></i><b class="sun"></b><b class="planet p-one"></b><b class="planet p-two"></b><b class="planet p-three"></b><b class="planet p-four"></b></div><div class="planet-sheet"><div class="planet-picks" aria-label="Выбрать планету"><button type="button" data-planet="0" aria-pressed="true">Меркурий</button><button type="button" data-planet="1" aria-pressed="false">Венера</button><button type="button" data-planet="2" aria-pressed="false">Земля</button><button type="button" data-planet="3" aria-pressed="false">Марс</button></div><p class="eyebrow">Планеты земной группы</p><h2 id="planet-name">Меркурий</h2><p id="planet-description">Самая маленькая планета и ближайший сосед Солнца. Его поверхность хранит следы множества древних столкновений.</p><dl><div><dt>Средний диаметр</dt><dd id="planet-diameter">4 879 км</dd></div><div><dt>Оборот вокруг Солнца</dt><dd id="planet-year">88 земных суток</dd></div></dl><p id="planet-live" role="status" class="feedback"></p></div></section>
+<aside class="orbit-note"><h2>Масштаб воображения</h2><p>На схеме показан порядок орбит, а не точные размеры и расстояния. В действительности планеты гораздо меньше пространства между ними.</p></aside></main><footer>Orbit Almanac · заметки о ближайшем космосе</footer>
 </body>
 </html>

@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formatwell | Files in the format you need</title>
-  <meta name="description" content="Choose a file, set the output format and keep your work moving. Explore document, image, video and audio options.">
-  <meta name="application-name" content="Formatwell">
-  <meta name="apple-mobile-web-app-title" content="Formatwell">
-  <meta name="theme-color" content="#282747">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Formatwell">
-  <meta property="og:title" content="Formatwell | Files in the format you need">
-  <meta property="og:description" content="Choose a file, set the output format and keep your work moving. Explore document, image, video and audio options.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/style.css?v=20261030.1">
-  <script type="module" src="/assets/script.js?v=20261030.1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steep Hour — время для чая</title>
+<meta name="description" content="Простой чайный таймер и ориентиры для заваривания зелёного, чёрного чая и улуна.">
+<meta name="application-name" content="Steep Hour">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Steep Hour — время для чая">
+<meta property="og:description" content="Простой чайный таймер и ориентиры для заваривания зелёного, чёрного чая и улуна.">
+<meta property="og:site_name" content="Steep Hour">
+<meta name="theme-color" content="#f7f0e5">
+<link rel="icon" type="image/svg+xml" href="/steeping-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/steeping.css">
+<script defer src="/steeping.js"></script>
 </head>
 <body>
-  <div id="root"></div>
+<a class="skip" href="#content">К содержимому</a>
+<header class="tea-header"><a href="/">STEEP HOUR</a><span>Одна чашка. Немного тишины.</span></header><main id="content" tabindex="-1" class="tea-desk">
+<section class="tea-story"><p class="eyebrow">Небольшой ритуал</p><h1>Пусть день<br>подождёт.</h1><p class="lead">Налейте воду, раскройте аромат листа и оставьте несколько минут только для себя.</p><div class="cup" aria-hidden="true"><div></div></div><p class="hint">Время — отправная точка. Вкус зависит от воды, листа и вашей любимой крепости.</p></section>
+<section class="tea-timer" aria-labelledby="timer-title"><h2 id="timer-title">Время заваривания</h2><label for="tea-kind">Что сегодня в чашке?</label><select id="tea-kind"><option value="180">Зелёный чай · 3 минуты</option><option value="240">Чёрный чай · 4 минуты</option><option value="300">Улун · 5 минут</option></select><p id="tea-water">Вода: 75–85 °C</p><output id="tea-clock" class="tea-clock" aria-label="Осталось времени">03:00</output><div class="tea-buttons"><button id="tea-start" type="button">Начать</button><button id="tea-reset" class="secondary" type="button">Сначала</button></div><p id="tea-state" class="feedback" role="status">Таймер готов.</p><noscript><p>Для таймера включите JavaScript. Ориентир для зелёного чая — 3 минуты.</p></noscript></section>
+<section class="tea-notes"><h2>До первого глотка</h2><p><strong>Согрейте чашку.</strong> Ополосните её горячей водой, прежде чем наливать чай.</p><p><strong>Дайте листу место.</strong> Не заполняйте заварочную ёмкость плотно.</p><p><strong>Попробуйте раньше.</strong> Если чай уже нравится, не обязательно ждать сигнала.</p></section></main><footer>Steep Hour · простой таймер без звуков и уведомлений</footer>
 </body>
 </html>

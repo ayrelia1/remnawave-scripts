@@ -1,24 +1,17 @@
 {
-  "name": "Foliohaven",
-  "short_name": "Foliohaven",
-  "description": "Keep folders, shared work and everyday documents together. Explore a calmer way to organize your file collection.",
+  "name": "Margin Shelf",
+  "short_name": "Margin",
+  "description": "Личная книжная полка с короткими читательскими заметками в вашем браузере.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#efedf7",
+  "theme_color": "#efedf7",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/shelf-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#163e3c",
-  "background_color": "#f0f7f3",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "en"
+  ]
 }

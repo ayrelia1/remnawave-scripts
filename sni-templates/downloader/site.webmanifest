@@ -1,24 +1,17 @@
 {
-  "name": "Parcelink",
-  "short_name": "Parcelink",
-  "description": "Organize download links, choose a media format and review available transfer locations in one workspace.",
+  "name": "Spoon Ratio",
+  "short_name": "Spoon",
+  "description": "Пересчитайте ингредиенты простых овсяных оладий на нужное число порций.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fff4e8",
+  "theme_color": "#fff4e8",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/pantry-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#142d35",
-  "background_color": "#eef5f2",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "ru"
+  ]
 }

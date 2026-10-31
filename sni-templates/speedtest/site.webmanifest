@@ -1,24 +1,17 @@
 {
-  "name": "LineMeter",
-  "short_name": "LineMeter",
-  "description": "Проверьте доступность соединения, задержку и ход тестирования. Дополнительные файлы для ручной проверки канала.",
+  "name": "Seven Small Days",
+  "short_name": "Seven",
+  "description": "Небольшой недельный трекер: выберите одно простое дело и отмечайте свои дни.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#eef4ee",
+  "theme_color": "#eef4ee",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/weekmarks-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#193a42",
-  "background_color": "#edf5f5",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "ru"
+  ]
 }

@@ -36,9 +36,9 @@ for (const folder of folders) {
   for (const file of walk(dir).filter(file => file.endsWith('.js'))) {
     execFileSync(process.execPath, ['--check', file], { stdio: 'pipe' });
   }
-  const icon = fs.readFileSync(path.join(dir, 'favicon-96x96.png'));
-  assert.equal(icon.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
-  assert.equal(icon.readUInt32BE(16), 96);
-  assert.equal(icon.readUInt32BE(20), 96);
+  const icon = fs.readFileSync(path.join(dir, manifest.icons[0].src), 'utf8');
+  assert(icon.includes('<svg') && icon.includes('viewBox="0 0 64 64"'));
   console.log(`PASS: ${folder}: local assets, metadata, icon and JavaScript syntax`);
 }
+require('./check-selfsteal-independent-pages.js');
+require('./check-selfsteal-flow.js');

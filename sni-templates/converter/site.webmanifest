@@ -1,24 +1,17 @@
 {
-  "name": "Formatwell",
-  "short_name": "Formatwell",
-  "description": "Choose a file, set the output format and keep your work moving. Explore document, image, video and audio options.",
+  "name": "Steep Hour",
+  "short_name": "Steep",
+  "description": "Простой чайный таймер и ориентиры для заваривания зелёного, чёрного чая и улуна.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7f0e5",
+  "theme_color": "#f7f0e5",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/steeping-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#282747",
-  "background_color": "#f1f2f9",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "en"
+  ]
 }

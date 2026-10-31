@@ -34,7 +34,7 @@ bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/remnawave
 bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/remnanode.sh) @ install
 
 # Caddy Selfsteal — Reality masking
-bash <(curl -Ls https://github.com/DigneZzZ/remnawave-scripts/raw/main/selfsteal.sh) @ install
+bash <(curl -Ls https://github.com/ayrelia1/remnawave-scripts/raw/main/selfsteal.sh) @ install
 ```
 
 Want only the CLI, without installing anything else? Swap `install` for **`install-script`** — it
@@ -58,7 +58,7 @@ After installation each script is a global command: `remnawave`, `remnanode`, `s
 |---|---|---|---|
 | 🚀 **remnawave.sh** | `6.8.0` | Panel: install, Caddy, backups, subscription-page | this file |
 | 🛰 **remnanode.sh** | `4.6.2` | Node: Xray-core, logs, auto-restart | this file |
-| 🎭 **selfsteal.sh** | `2.11.2` | Caddy masking for Reality, 11 website templates | [README-selfsteal](./README-selfsteal.md) |
+| 🎭 **selfsteal.sh** | `2.12.0` | Caddy/Nginx for Reality, 11 independent websites | [README-selfsteal](./README-selfsteal.md) |
 | 🌐 **wtm.sh** | `1.5.2` | WARP + Tor: WireGuard outbound for Xray, WARP+ | [README-warp](./README-warp.md) |
 | 🐦 **netbird.sh** | `2.0.0` | NetBird mesh VPN: CLI / cloud-init / Ansible | [README-netbird](./README-netbird.md) |
 

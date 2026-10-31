@@ -1,25 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sidewalk | A little break from the ordinary</title>
-  <meta name="description" content="Small discoveries, reaction clips and pictures worth passing around. Browse the latest finds on Sidewalk.">
-  <meta name="application-name" content="Sidewalk">
-  <meta name="apple-mobile-web-app-title" content="Sidewalk">
-  <meta name="theme-color" content="#172d43">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sidewalk">
-  <meta property="og:title" content="Sidewalk | A little break from the ordinary">
-  <meta property="og:description" content="Small discoveries, reaction clips and pictures worth passing around. Browse the latest finds on Sidewalk.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/assets/style.css?v=20261030.1">
-  <script type="module" src="/assets/script.js?v=20261030.1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bracken — заметки о деревьях</title>
+<meta name="description" content="Небольшой полевой справочник: листья, кора и сезонные приметы знакомых деревьев.">
+<meta name="application-name" content="Bracken Fieldbook">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bracken — заметки о деревьях">
+<meta property="og:description" content="Небольшой полевой справочник: листья, кора и сезонные приметы знакомых деревьев.">
+<meta property="og:site_name" content="Bracken Fieldbook">
+<meta name="theme-color" content="#f1f5ec">
+<link rel="icon" type="image/svg+xml" href="/fieldbook-mark.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/fieldbook.css">
+<script defer src="/fieldbook.js"></script>
 </head>
 <body>
-  <div id="root"></div>
+<a class="skip" href="#content">К содержимому</a>
+<header class="field-head"><a href="/">BRACKEN <span>FIELD NOTES</span></a><a href="#specimens">Открыть справочник ↗</a></header>
+<main id="content" tabindex="-1">
+<section class="opening"><div><p class="eyebrow">Внимательнее к тому, что рядом</p><h1>У каждого дерева<br>свой почерк.</h1><p class="lead">Шесть знакомых видов. Присмотритесь к краю листа, проведите взглядом по стволу — и обычная прогулка станет маленькой экспедицией.</p><a class="action" href="#specimens">Найти знакомый лист ↓</a></div>
+<figure class="leaf-print"><svg viewBox="0 0 300 330" role="img" aria-label="Рисунок листа с прожилками"><path d="M152 292C20 225 30 92 154 24C282 95 281 224 152 292Z" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="3"><path d="M152 315V55M152 130L95 88M152 177L70 133M152 220L77 180M152 130L211 88M152 177L235 133M152 220L226 180"/></g></svg><figcaption>Betula · форма и ритм</figcaption></figure></section>
+<section id="specimens"><div class="section-top"><h2>Полевой указатель</h2><label>Форма листа <select id="leaf-filter"><option value="all">Все деревья</option><option value="broad">Широкие листья</option><option value="needle">Хвоя</option></select></label></div><p id="leaf-count" class="hint" role="status">В справочнике 6 деревьев</p>
+<div class="specimens">
+<article data-leaf="broad"><span class="botanical">Betula pendula</span><h3>Берёза</h3><p>Треугольный лист с зубчатым краем. Белая кора темнеет у основания старых стволов.</p><small>Ищите: тонкие повисающие ветви</small></article>
+<article data-leaf="broad"><span class="botanical">Quercus robur</span><h3>Дуб</h3><p>Округлые лопасти листа и глубокие борозды коры. Жёлуди сидят на длинных плодоножках.</p><small>Ищите: плотную, широкую крону</small></article>
+<article data-leaf="needle"><span class="botanical">Pinus sylvestris</span><h3>Сосна</h3><p>Хвоинки собраны по две. Верхняя часть ствола часто окрашена в тёплый медный цвет.</p><small>Ищите: небольшие овальные шишки</small></article>
+<article data-leaf="broad"><span class="botanical">Acer platanoides</span><h3>Клён</h3><p>Пять острых лопастей напоминают раскрытую ладонь. Семена расходятся парой крылышек.</p><small>Ищите: длинный черешок листа</small></article>
+<article data-leaf="needle"><span class="botanical">Picea abies</span><h3>Ель</h3><p>Короткие отдельные хвоинки окружают веточку. Длинные шишки свисают вниз.</p><small>Ищите: ярусы горизонтальных ветвей</small></article>
+<article data-leaf="broad"><span class="botanical">Tilia cordata</span><h3>Липа</h3><p>Сердцевидный лист слегка несимметричен. У соцветия есть длинный светлый прицветник.</p><small>Ищите: мелкие зубцы по краю</small></article></div></section>
+<aside class="field-note"><h2>Оставьте находку на ветке</h2><p>Для заметки достаточно рисунка или фотографии. Рассмотрите лист с двух сторон и запишите место наблюдения.</p></aside></main><footer>Bracken Fieldbook · наблюдать, замечать, запоминать</footer>
 </body>
 </html>

@@ -1,102 +1,115 @@
-# Selfsteal Template Presentation
+# Independent Website Collection
 
 ## Overview
 
-This design context applies only to the eleven independently served sites in
-`sni-templates/`. They are presentation templates, not a connected application.
-Each keeps its original interaction engine, template number and asset paths.
-The collection uses distinct identities rather than a shared public-facing brand.
+The eleven folders in `sni-templates/` are separate Russian-language static
+websites. The 2026-10-31 redesign replaces the previous React distributions,
+their imagery, asset names, DOM, CSS and interactions. The two final entries
+retain the service-unavailable concept. Template IDs and repository directory
+names remain stable for existing installation commands; directory names are
+not public URL prefixes.
 
-The intended result is a set of ordinary content, utility and service-status
-pages with their own writing, restrained typography and recognizable layouts.
-Avoid upstream product names, stock promotional headlines, default generator
-icons and a uniform visual treatment across all templates.
+The installer, domain prompts, CLI parser, Caddy/Nginx configuration and management
+script installation follow donor commit
+`a318e2c8baf3e1a4b77b27b7a56dc349b36a711b`. The template label array is the
+only change inside `install_command`. The download validation fixes remain.
 
 ## Colors
 
-The `:root` block appended to each template's existing stylesheet is the runtime
-source of truth. `--site-ink`, `--site-panel`, `--site-paper`, `--site-accent`,
-`--site-bright`, `--site-wash` and `--site-second` own the local presentation.
-Existing utility declarations use the corresponding palette. Keep selectors
-unchanged when recoloring utility values; selectors containing escaped colors
-must still match their original JavaScript class names.
+Runtime CSS is canonical (model B): each site's first `:root` declaration owns
+`--paper`, `--ink`, `--accent`, `--wash`. The baseline and site-specific rules
+consume these semantic tokens directly. This table mirrors the authored values.
 
-| Directory | Identity | Ink | Accent | Paper | Layout character |
-| --- | --- | --- | --- | --- | --- |
-| `10gag` | Sidewalk | `#172d43` | `#24678c` | `#edf4f8` | Blue masthead rule, compact feed, rounded picture cards |
-| `convertit` | Cutlane | `#102832` | `#68d0c2` | `#edf7f5` | Petrol workspace, large short headline, framed link entry |
-| `converter` | Formatwell | `#282747` | `#574d9b` | `#f1f2f9` | Lavender file desk, two-column feature rows |
-| `downloader` | Parcelink | `#142d35` | `#75c5ae` | `#eef5f2` | Deep green transfer panel, quieter status tiles |
-| `filecloud` | Foliohaven | `#163e3c` | `#247368` | `#f0f7f3` | Left-aligned folder story, pale green opening |
-| `games-site` | Cartridge Club | `#18213d` | `#8ca9f4` | `#eef1f9` | Blue cartridge shelf, amber controls, monospace labels |
-| `modmanager` | Patchbay | `#222b3e` | `#a5b8e8` | `#eff3f9` | Slate library, muted periwinkle, compact feature panels |
-| `speedtest` | LineMeter | `#193a42` | `#216e78` | `#edf5f5` | Dark instrument masthead, pale measurement panel |
-| `YouTube` | Кадротека | `#18263a` | `#91bce8` | `#edf2f8` | Blue viewing room, three-column desktop collection |
-| `503-1` | Harbor Queue | `#213950` | `#276581` | `#edf3f8` | Centered light request card with a strong left rule |
-| `503-2` | Juniper Status | `#203f3c` | `#286e5e` | `#eff6f2` | Green status sheet, paired request and timer panels |
+| ID | Website | CSS owner | Paper | Ink | Accent | Wash |
+|---|---|---|---|---|---|---|
+| 1 | Bracken Fieldbook | `10gag/fieldbook.css` | #f1f5ec | #22382b | #416b43 | #dce7d5 |
+| 2 | Bayline Notes | `convertit/streets.css` | #edf1f6 | #21394b | #285d8e | #d9e4ef |
+| 3 | Steep Hour | `converter/steeping.css` | #f7f0e5 | #43372d | #85512d | #e9dcc5 |
+| 4 | Spoon Ratio | `downloader/pantry.css` | #fff4e8 | #493124 | #9b4328 | #f3ddc6 |
+| 5 | Margin Shelf | `filecloud/shelf.css` | #efedf7 | #302a50 | #68559c | #ded8ef |
+| 6 | Fold Studies | `games-site/creases.css` | #e9f3f7 | #243e55 | #23628d | #cee1eb |
+| 7 | Chroma Deck | `modmanager/swatches.css` | #f0f0f4 | #282d42 | #535d9d | #dcdfea |
+| 8 | Seven Small Days | `speedtest/weekmarks.css` | #eef4ee | #293f38 | #456c58 | #dce8dd |
+| 9 | Orbit Almanac | `YouTube/orbits.css` | #151d35 | #e7edf9 | #a8bbef | #242f4e |
+| 10 | Slate Workshop | `503-1/pause.css` | #f0f2f5 | #263747 | #456880 | #dde4ec |
+| 11 | Still Service | `503-2/availability.css` | #f5eef6 | #43374f | #735280 | #e8dced |
 
-Installation-time hue rotation remains an additional layer over these base
-palettes. `--no-randomize` serves the authored palettes unchanged.
+Ordinary installation varies these tokens, metadata, cache queries and each
+site's SVG symbol colors. It keeps the authored light/dark mode and symbol
+geometry. No whole-document hue filter, synthetic IP endpoint or universal
+generated favicon is injected. `--no-randomize` preserves the authored files.
+These differences do not establish resistance to traffic/site classification.
 
 ## Typography
 
-Use local system fonts; the templates must not require a font CDN. Sidewalk,
-Cutlane, Кадротека and Juniper Status use Trebuchet MS with sans-serif fallbacks.
-Cartridge Club uses Lucida Console/Consolas. The remaining sites use Segoe UI
-with system fallbacks. Heading weight, tracking and scale distinguish the sites;
-controls inherit the page font. Keep readable line lengths and allow headings
-to wrap on narrow screens.
+No font services or remote media. Body text uses Segoe UI/Arial. Botanical,
+tea, recipe and reading headings use Georgia; fold, weekly and orbital headings
+use Trebuchet MS. Technical values use Consolas. Each site's heading rules own
+its scale and spacing. All stacks support Cyrillic; headings wrap naturally.
 
 ## Layout
 
-Each folder is a complete standalone website. Extend its existing stylesheet
-instead of introducing a shared runtime asset that the downloader would omit.
-Preserve application mounting, routes, event handlers, timer behavior, form
-validation, filters and language selection. Change their presentation and copy
-without adding backend capabilities or new external requests.
+Each distribution is authored directly in HTML/CSS/JavaScript. No build step,
+framework, dependency or external shared runtime is required. Files have
+site-specific names such as `fieldbook.js` and `availability.css`. Keep the
+standard `index.html`, `site.webmanifest` and installer-only `files.list` names.
+The downloader removes `files.list` before serving the site. Old bundles, photos,
+source-map links, generator icons and per-site README files are absent.
 
-Pages scroll naturally. Keep request identifiers wrapping inside status cards,
-forms within the viewport, and all existing actions reachable at 390px width.
-Center the Harbor Queue card within the available viewport; its internal text
-alignment must not change the outer flex alignment.
-
-Each distribution includes a `files.list` download inventory. Keep it in sync
-with the folder contents; the installer validates a staged download and removes
-the inventory before publishing the site. Failed downloads preserve the previous
-document root. Keep that directory's inode unchanged for Docker bind mounts.
-Stable version queries on authored CSS/JS links invalidate older browser caches;
-installation randomization replaces those queries with its own random values.
+Distinct structural signatures: a botanical specimen grid; an architectural
+essay notebook; a cup beside a tea clock; a recipe with an ingredient ledger;
+a shelf beside a private note; a paper boat beside a stepper; a contrast specimen;
+a seven-day row; an orbital map; a large split 503; an arched service sidebar.
+Decorative diagrams are original inline SVG/CSS. Do not present them as measured
+charts or scale models. All pages own document scrolling and work at 320px.
 
 ## Elevation & Depth
 
-Use borders and modest shadows to separate tools from their backgrounds.
-Status pages use light surfaces; game and media collections retain dark rooms.
-Do not place bright glows behind routine form controls.
+Use site-specific borders and flat surfaces. Only the reading note has a small
+offset shadow, referencing a loose sheet. No glow effects or animated backgrounds.
 
 ## Shapes
 
-Use the site-specific vector monogram and matching raster icons. Game controls
-remain squarer than storage and media panels. Keep room around monograms so
-maskable application icons remain legible.
+Botanical arch, stepped facade, rounded cup, circular plate, book spines, folded
+triangle, overlapping color circles, weekday pills, orbital rings, pause marks
+and an arched status panel identify the individual subjects.
 
 ## Components
 
-The existing distribution bundles own interaction behavior. Text literals may
-change; class names, format keys, category keys, URLs and validation rules remain
-compatible. Each page stylesheet owns visible focus, scrollbar presentation,
-inherited control typography and reduced-motion overrides.
+These are independent single-page sites, not routes in one application. Native
+HTML controls own select popups, color inputs, number input validation boundaries
+and disclosure behavior. There are no authentication, upload, billing or backend
+flows. Canonical behavior for the applicable capabilities is:
 
-HTML title, description, Open Graph fields and application manifest describe
-the new identity. The Selfsteal randomizer updates those metadata fields
-together. The visible page identity remains the authored template identity,
-as with the original templates. No new data collection is introduced.
+| Capability | Owner / contract | Verification |
+|---|---|---|
+| Navigation | Real anchors, visible skip link on focus, focusable main landmark | Browser keyboard checks |
+| Inputs / selection | Native labeled controls, visible focus, selected/disabled semantics | Browser input and selection cases |
+| Feedback | Inline reserved `role=status` regions; no toast/dialog provider needed | Success, invalid and failure cases |
+| Persistence | Reading note and weekly marks only; bounded localStorage data, caught read/write/parse failures | Reload and denied-storage cases |
+| Scrollbars | Each document stylesheet owns thumb, track, hover, active and forced-colors baseline | CSS baseline and browser overflow checks |
+| Async | 503 IP request only, four-second abort, validated text insertion, failure label; no background reload | Network mock and failed-IP cases |
+
+The tea timer uses elapsed wall time, pause/resume, reset and a completion message
+without sound. Recipe scaling validates 1–12 integer portions and preserves the
+last valid result on invalid input. Reading notes are never inserted as HTML.
+The weekly tracker keys marks to the local Monday and starts a new blank week
+while preserving the goal. Orbit selection and botanical filters are bounded
+local datasets. The paper-fold instruction remains available as a native
+disclosure even without JavaScript.
+
+All body content is present before JavaScript executes. Status retry buttons
+perform an explicit reload. No automatic refresh or invented server-recovery ETA.
+The numeric 503 is presentation content; the installer retains the donor's HTTP
+serving configuration. In base mode the two status pages request ipify; normal
+randomization disables that request and shows the fallback address label.
 
 ## Do's and Don'ts
 
-- Check both the authored page and a randomized installation in a browser.
-- Preserve external IP lookups in the base video and status templates; normal
-  randomized installation keeps the existing same-origin replacement behavior.
-- Keep the template number-to-directory mapping stable.
-- Verify the original interaction paths after editing distributed bundles.
-- Do not confuse different file hashes with a guarantee against classification.
-- Keep author and license attribution in repository documentation.
+- Preserve installer commands, IDs, prompts and server configuration.
+- Validate downloaded asset inventories and preserve the old site on failure.
+- Keep content readable without JavaScript and with third-party requests blocked.
+- Use textContent/input values for visitor-controlled strings.
+- Verify 320/390/768/1366px layouts, reduced motion and keyboard actions.
+- Keep legal attribution in repository documentation, outside served sites.
+- Do not equate changed HTML or different hashes with guaranteed anonymity.

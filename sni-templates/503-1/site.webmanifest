@@ -1,24 +1,17 @@
 {
-  "name": "Harbor Queue",
-  "short_name": "Harbor Queue",
-  "description": "Запрос ожидает свободного обработчика. Здесь отображаются параметры обращения и время следующей попытки.",
+  "name": "Slate Workshop",
+  "short_name": "Slate",
+  "description": "Страница временной недоступности. Попробуйте открыть сайт немного позже.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f0f2f5",
+  "theme_color": "#f0f2f5",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/pause-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "theme_color": "#213950",
-  "background_color": "#edf3f8",
-  "display": "standalone",
-  "start_url": "/",
-  "lang": "ru"
+  ]
 }

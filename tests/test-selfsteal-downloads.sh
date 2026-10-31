@@ -54,14 +54,14 @@ for folder in 10gag convertit converter downloader filecloud games-site modmanag
 done
 HTML_DIR="$WORK_DIR/broken"
 mkdir -p "$HTML_DIR"
-FAIL_ASSET='assets/main.js'
+FAIL_ASSET='availability.js'
 if (cd "$HTML_DIR"; download_via_curl_fallback 503-2); then echo 'FAIL: incomplete download accepted'; exit 1; fi
 if validate_template_files "$HTML_DIR"; then echo 'FAIL: missing JS accepted'; exit 1; fi
 unset FAIL_ASSET
-cp "$REPO_ROOT/sni-templates/503-2/assets/main.js" "$HTML_DIR/assets/main.js"
-printf '<!doctype html><html>Error</html>' > "$HTML_DIR/assets/main.js"
+cp "$REPO_ROOT/sni-templates/503-2/availability.js" "$HTML_DIR/availability.js"
+printf '<!doctype html><html>Error</html>' > "$HTML_DIR/availability.js"
 if validate_template_files "$HTML_DIR"; then echo 'FAIL: HTML in JS asset accepted'; exit 1; fi
-declare -A TEMPLATE_FOLDERS=([11]='503-2') TEMPLATE_NAMES=([11]='Juniper Status')
+declare -A TEMPLATE_FOLDERS=([11]='503-2') TEMPLATE_NAMES=([11]='Still Service')
 download_via_git() { return 1; }; download_via_api() { return 1; }; download_via_curl_fallback() { return 1; }
 HTML_DIR="$WORK_DIR/existing"
 mkdir -p "$HTML_DIR"

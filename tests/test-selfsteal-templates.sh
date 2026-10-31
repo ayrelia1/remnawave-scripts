@@ -7,8 +7,8 @@ WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/selfsteal-templates.XXXXXX")"
 trap 'rm -rf -- "$WORK_DIR"' EXIT
 
 awk '
-    $0 ~ /^# ===== TESTABLE-BLOCK: template-(randomization|download) =====$/ { inside = 1; next }
-    $0 ~ /^# ===== END TESTABLE-BLOCK: template-(randomization|download) =====$/ { inside = 0 }
+    $0 ~ /^# ===== TESTABLE-BLOCK: template-(randomization|download|default) =====$/ { inside = 1; next }
+    $0 ~ /^# ===== END TESTABLE-BLOCK: template-(randomization|download|default) =====$/ { inside = 0 }
     inside { print }
 ' "$REPO_ROOT/selfsteal.sh" > "$WORK_DIR/randomize.sh"
 test -s "$WORK_DIR/randomize.sh"
@@ -19,6 +19,16 @@ log_success() { :; }
 log_warning() { :; }
 log_error() { :; }
 WHITE='' GRAY='' NC=''
+GREEN=''
+
+HTML_DIR="$WORK_DIR/default"
+mkdir -p "$HTML_DIR"
+create_default_html > /dev/null
+test -s "$HTML_DIR/index.html" && test -s "$HTML_DIR/404.html"
+if grep -Eiq 'selfsteal|caddy|template|dignezzz' "$HTML_DIR/"*.html; then
+    echo 'FAIL: fallback page contains installer details'; exit 1
+fi
+echo 'PASS: default and 404 pages preserve output paths without installer details'
 
 for template in 10gag convertit converter downloader filecloud games-site modmanager speedtest YouTube 503-1 503-2; do
     mkdir -p "$WORK_DIR/$template"
@@ -34,24 +44,28 @@ for template in 10gag convertit converter downloader filecloud games-site modman
     grep -Fq "\"name\": \"$brand\"" "$WORK_DIR/$template/site.webmanifest" || { echo "FAIL: $template: stale manifest name"; exit 1; }
     if grep -Rq 'api\.ipify\.org' "$WORK_DIR/$template"; then echo "FAIL: $template: external IP request survived mutation"; exit 1; fi
     if find "$WORK_DIR/$template" -iname '*.md' -o -iname '*.map' | grep -q .; then echo "FAIL: $template: development files survived mutation"; exit 1; fi
-    grep -q 'hue-rotate(' "$html"
+    grep -Rq -- '--accent:hsl(' "$WORK_DIR/$template"
     grep -Eq '(src|href)="[^"]+\.(css|js)\?v=[^"]+"' "$html"
     echo "PASS: $template: metadata, IP handling, assets and color mutation"
+    if [ -n "${SELFSTEAL_TEST_RANDOM_OUTPUT:-}" ]; then
+        mkdir -p "$SELFSTEAL_TEST_RANDOM_OUTPUT/$template"
+        cp -a "$WORK_DIR/$template/." "$SELFSTEAL_TEST_RANDOM_OUTPUT/$template/"
+    fi
 done
 
 # Each invocation creates a distinct installation; the source copy stays pristine.
 cp "$WORK_DIR/503-2/index.html" "$WORK_DIR/first.html"
 randomize_template "$WORK_DIR/503-2"
 if cmp -s "$WORK_DIR/first.html" "$WORK_DIR/503-2/index.html"; then echo 'FAIL: repeated mutation produced identical HTML'; exit 1; fi
-for template in YouTube 503-1 503-2; do
+for template in 503-1 503-2; do
     grep -Rq 'https://api\.ipify\.org' "$REPO_ROOT/sni-templates/$template"
-    if grep -q 'hue-rotate(' "$REPO_ROOT/sni-templates/$template/index.html"; then echo "FAIL: $template: source is already randomized"; exit 1; fi
+    if grep -Rq -- '--accent:hsl(' "$REPO_ROOT/sni-templates/$template"; then echo "FAIL: $template: source is already randomized"; exit 1; fi
 done
 echo 'PASS: independent installs differ and base templates preserve IP requests'
 
 # All download methods must honor --no-randomize, not just direct mutation tests.
 declare -A TEMPLATE_FOLDERS=([11]="503-2")
-declare -A TEMPLATE_NAMES=([11]="Juniper Status")
+declare -A TEMPLATE_NAMES=([11]="Still Service")
 create_dir_safe() { mkdir -p -- "$1"; }
 setup_file_permissions() { :; }
 copy_fixture() { cp -R "$REPO_ROOT/sni-templates/$1/." "$HTML_DIR/"; }
@@ -67,7 +81,7 @@ for DOWNLOAD_METHOD in git api curl; do
     RANDOMIZE_TEMPLATE=true
     download_template 11 > /dev/null
     if grep -Rq 'api\.ipify\.org' "$HTML_DIR"; then echo "FAIL: $DOWNLOAD_METHOD: default download kept the external IP lookup"; exit 1; fi
-    grep -q 'hue-rotate(' "$HTML_DIR/index.html"
+    grep -Rq -- '--accent:hsl(' "$HTML_DIR"
     echo "PASS: $DOWNLOAD_METHOD download honors both randomization modes"
 done
 
